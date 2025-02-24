@@ -1,6 +1,6 @@
 #include <iostream>
 using namespace std;
-void pattern1()
+void pattern1(int n)
 {
     // ****
     // ****
@@ -15,7 +15,7 @@ void pattern1()
         cout << endl;
     }
 }
-void pattern2()
+void pattern2(int n)
 {
     // *
     // **
@@ -30,9 +30,8 @@ void pattern2()
         cout << endl;
     }
 }
-void pattern3()
+void pattern4(int n)
 {
-
     for (int i = 1; i <= n; i++)
     {
         for (int j = 1; j <= i; j++)
@@ -42,9 +41,20 @@ void pattern3()
         cout << endl;
     }
 }
+void pattern5(int n)
+{
+    for (int i = 0; i < n; i++)
+    {
+        for (int j = n - i; j > 0; j--)
+        {
+            cout << "* ";
+        }
+        cout << endl;
+    }
 }
 int main()
 {
-    pattern1();
+    int n = 5;
+    pattern5(n);
     return 0;
 }
