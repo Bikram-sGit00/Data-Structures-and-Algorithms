@@ -2,8 +2,22 @@
 using namespace std;
 
 int main()
+// Q1.****
+//    ****
+//    ****
+//    ****
 {
-    cout << "Hello, World!" << endl;
-    cout << "Hello, World!" << endl;
+    int i;
+    int j;
+
+    for (i = 0; i < 4; i++)
+    {
+        for (j = 0; j < 4; j++)
+        {
+            cout << "*";
+        }
+        cout << endl;
+    }
+
     return 0;
 }
