@@ -1,23 +1,38 @@
 #include <iostream>
 using namespace std;
-
-int main()
-// Q1.****
-//    ****
-//    ****
-//    ****
+void pattern1()
 {
-    int i;
-    int j;
-
-    for (i = 0; i < 4; i++)
+    // ****
+    // ****
+    // ****
+    // ****
+    for (int i = 0; i < 4; i++)
     {
-        for (j = 0; j < 4; j++)
+        for (int j = 0; j < 4; j++)
         {
             cout << "*";
         }
         cout << endl;
     }
+}
+void pattern2()
+{
+    // *
+    // **
+    // ***
+    // ****
+    for (int i = 0; i < 4; i++)
+    {
+        for (int j = 0; j <= i; j++)
+        {
+            cout << "*";
+        }
+        cout << endl;
+    }
+}
 
+int main()
+{
+    pattern1();
     return 0;
 }
