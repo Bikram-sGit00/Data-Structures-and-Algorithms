@@ -246,10 +246,21 @@ void pattern15(int n)
         cout << endl;
     }
 }
-
+void pattern16(int n)
+{
+    for (int i = 0; i < n; i++)
+    {
+        char ch = 'A' + i;
+        for (int j = 0; j <= i; j++)
+        {
+            cout << ch << " ";
+        }
+        cout << endl;
+    }
+}
 int main()
 {
     int n = 5;
-    pattern14(n);
+    pattern16(n);
     return 0;
 }
