@@ -189,9 +189,26 @@ void pattern11(int n)
 }
 void pattern12(int n)
 {
-    for (size_t i = 0; i < count; i++)
+    int spaces = 2 * (n - 1);
+    for (int i = 1; i <= n; i++)
     {
-        /* code */
+        // numbers
+        for (int j = 1; j <= i; j++)
+        {
+            cout << j << " ";
+        }
+        // spaces
+        for (int j = 1; j <= spaces; j++)
+        {
+            cout << " ";
+        }
+        // numbers
+        for (int j = i; j >= 1; j--)
+        {
+            cout << j << " ";
+        }
+        cout << endl;
+        spaces -= 2;
     }
 }
 int main()
