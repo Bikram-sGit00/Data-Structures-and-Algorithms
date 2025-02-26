@@ -289,9 +289,21 @@ void pattern17(int n)
         cout << endl;
     }
 }
+void pattern18(int n)
+{
+    for (int i = 0; i <= n; i++)
+    {
+        char ch = 'A' + n - 1;
+        for (int j = 0; j < i; j++)
+        {
+            cout << char(ch - j) << " ";
+        }
+        cout << endl;
+    }
+}
 int main()
 {
     int n = 5;
-    pattern17(n);
+    pattern18(n);
     return 0;
 }
