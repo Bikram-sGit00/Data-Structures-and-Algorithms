@@ -30,10 +30,26 @@ void understandingVectors()
 
     vector<int> v1(5, 20);
     vector<int> v2(v1); // copy of v1
+
+    // UNDERSTANDING ITERATORS
+    vector<int>::iterator itr = v.begin(); // iterator is a pointer that points to the elements of the vector
+    itr++;                                 // moving the iterator to the next element
+    cout << *itr << endl;
+
+    vector<int>::iterator end = v.end(); // end points to the next of the last element so to get the last element we need to decrement it else it will give garbage value
+    end--;                               // moving the iterator to the last element
+    cout << *end << endl;
+
+    // vector<int>::iterator reverseEnd = v.rend(); // points to the next of the first element so to get the first element we need to decrement it else it will give garbage value
+    // // cout << *reverseEnd << endl;
+
+    // vector<int>::iterator reverseBegin = v.rbegin(); // points to the last element
+    // cout << *reverseBegin << endl;
 }
 int main()
 {
-    cout << "Compiled🚀✨";
+    understandingVectors();
+    cout << "Compilation Done🚀✨";
 
     return 0;
 }
