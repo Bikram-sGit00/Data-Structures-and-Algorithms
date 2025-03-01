@@ -34,22 +34,41 @@ void understandingVectors()
     // UNDERSTANDING ITERATORS
     vector<int>::iterator itr = v.begin(); // iterator is a pointer that points to the elements of the vector
     itr++;                                 // moving the iterator to the next element
-    cout << *itr << endl;
+    // cout << *itr << endl;
 
     vector<int>::iterator end = v.end(); // end points to the next of the last element so to get the last element we need to decrement it else it will give garbage value
     end--;                               // moving the iterator to the last element
-    cout << *end << endl;
+    // cout << *end << endl;
 
     // vector<int>::iterator reverseEnd = v.rend(); // points to the next of the first element so to get the first element we need to decrement it else it will give garbage value
     // // cout << *reverseEnd << endl;
 
     // vector<int>::iterator reverseBegin = v.rbegin(); // points to the last element
     // cout << *reverseBegin << endl;
+
+    // cout << v[0] << endl;    // accessing elements using index
+    // cout << v.at(0) << endl; // accessing elements using at function
+    // cout << v.back() << endl; // returns the last element of the vector
+    // cout << v.front() << endl;
+
+    for (vector<int>::iterator it = v.begin(); it != v.end(); it++)
+    {
+        cout << *it << " ";
+    }
+    for (auto it = v.begin(); it != v.end(); it++) // auto keyword automatically detects the data type of the iterator
+    {
+        cout << *it << " ";
+    }
+    for (auto it : v) // range based loop
+    {
+        cout << it << " "; // :v means for each element in v
+    }
 }
+
 int main()
 {
     understandingVectors();
-    cout << "Compilation Done🚀✨";
+    cout << "\nCompilation Done 🚀✨";
 
     return 0;
 }
