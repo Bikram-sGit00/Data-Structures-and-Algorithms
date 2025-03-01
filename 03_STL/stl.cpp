@@ -176,9 +176,25 @@ void understandingStack()
     // Main operations of stack i.e top(),pop(),push() are --> O(1)
 }
 
+void explainQueue()
+{
+    queue<int> q;
+    q.push(1);
+    q.push(2);
+    q.emplace(4); // {1, 2, 4}
+    cout << q.front() << " ";
+    cout << q.back() << " ";
+    q.pop(); // will remove 1
+
+    q.back() += 5; // last + 5
+    cout << q.back();
+
+    // swap empty same as stack & are O(1)
+}
+
 int main()
 {
-    understandingStack();
+    explainQueue();
     cout << "\nCompilation Done 🚀✨";
 
     return 0;
