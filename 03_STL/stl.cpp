@@ -142,10 +142,24 @@ void understandingList()
     }
     // Rest functions are same as vector
 }
+void understandingDeque()
+{
+    deque<int> dQ;
+
+    dQ.push_back(2);
+    dQ.emplace_back(4);
+    dQ.push_front(6);
+    dQ.emplace_front(8);
+    for (auto it : dQ)
+    {
+        cout << it << " ";
+    }
+}
+
 
 int main()
 {
-    understandingList();
+    
     cout << "\nCompilation Done 🚀✨";
 
     return 0;
