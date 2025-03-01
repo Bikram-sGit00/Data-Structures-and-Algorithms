@@ -191,10 +191,35 @@ void explainQueue()
 
     // swap empty same as stack & are O(1)
 }
+void priorityQueue()
+{
+    // MAX HEAP
+    priority_queue<int> pq;
+    pq.push(5);
+    pq.push(2);
+    pq.push(8);
+    pq.emplace(10);
+    cout << pq.top() << " "; // prints 10 as it is the largest
 
+    pq.pop(); // applies on the h.p element
+    cout << pq.top();
+
+    cout << endl;
+
+    // MIN HEAP
+    priority_queue<int, vector<int>, greater<int>> pQ;
+    pQ.push(5);
+    pQ.push(2);
+    pQ.push(8);
+    pQ.emplace(10);
+    cout << pQ.top();
+
+    // push-->logn    pop-->logn     top--O(1)
+    // size swap empty function same as others
+}
 int main()
 {
-    explainQueue();
+    priorityQueue();
     cout << "\nCompilation Done 🚀✨";
 
     return 0;
