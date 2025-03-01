@@ -85,6 +85,7 @@ void deletionInVector()
 
 void insertionInVector()
 {
+    // Remember insert in an vector is costlier😶‍🌫️...
     vector<int> v = {1, 2, 3, 4, 5};
     v.insert(v.begin() + 2, 5); // inserting 10 at 2nd index
     for (auto it : v)
@@ -127,9 +128,24 @@ void insertionInVector()
     cout << v.empty() << endl; // returns 1 if the vector is empty else 0
 }
 
+void understandingList()
+{
+    list<int> ls;
+
+    ls.push_back(2);
+    ls.emplace_back(4);
+    ls.push_front(6);
+    ls.emplace_front(8);
+    for (auto it : ls)
+    {
+        cout << it << " ";
+    }
+    // Rest functions are same as vector
+}
+
 int main()
 {
-    insertionInVector();
+    understandingList();
     cout << "\nCompilation Done 🚀✨";
 
     return 0;
