@@ -83,9 +83,53 @@ void deletionInVector()
     }
 }
 
+void insertionInVector()
+{
+    vector<int> v = {1, 2, 3, 4, 5};
+    v.insert(v.begin() + 2, 5); // inserting 10 at 2nd index
+    for (auto it : v)
+    {
+        cout << it << " ";
+    }
+
+    cout << endl;
+
+    v.insert(v.begin() + 2, 3, 10); // inserting 10 three times at 2nd index
+    for (auto it : v)
+    {
+        cout << it << " ";
+    }
+
+    cout << endl;
+
+    vector<int> v1 = {7, 8, 9};
+    v.insert(v.begin() + 2, v1.begin(), v1.end()); // inserting elements of v1 at 2nd index from v1.begin() to v1.end()
+    for (auto it : v)
+    {
+        cout << it << " ";
+    }
+
+    cout << endl;
+
+    cout << v.size() << endl;     // How many elements are there in the vector
+    cout << v.capacity() << endl; // returns the capacity of the vector
+    // cout << v.pop_back() << endl; // removes the last element of the vector
+
+    vector<int> swap1 = {1, 2, 3, 4, 5};
+    vector<int> swap2 = {6, 7, 8, 9, 10};
+    swap1.swap(swap2);
+    for (auto its : swap2)
+    {
+        cout << its << " "; // we don't need *its as its is not a pointer
+    }
+
+    v.clear();                 // removes all the elements of the vector
+    cout << v.empty() << endl; // returns 1 if the vector is empty else 0
+}
+
 int main()
 {
-    deletionInVector();
+    insertionInVector();
     cout << "\nCompilation Done 🚀✨";
 
     return 0;
