@@ -34,11 +34,11 @@ void understandingVectors()
     // UNDERSTANDING ITERATORS
     vector<int>::iterator itr = v.begin(); // iterator is a pointer that points to the elements of the vector
     itr++;                                 // moving the iterator to the next element
-    // cout << *itr << endl;
+    cout << *itr << endl;
 
     vector<int>::iterator end = v.end(); // end points to the next of the last element so to get the last element we need to decrement it else it will give garbage value
     end--;                               // moving the iterator to the last element
-    // cout << *end << endl;
+    cout << *end << endl;
 
     // vector<int>::iterator reverseEnd = v.rend(); // points to the next of the first element so to get the first element we need to decrement it else it will give garbage value
     // // cout << *reverseEnd << endl;
@@ -46,10 +46,10 @@ void understandingVectors()
     // vector<int>::iterator reverseBegin = v.rbegin(); // points to the last element
     // cout << *reverseBegin << endl;
 
-    // cout << v[0] << endl;    // accessing elements using index
-    // cout << v.at(0) << endl; // accessing elements using at function
-    // cout << v.back() << endl; // returns the last element of the vector
-    // cout << v.front() << endl;
+    cout << v[0] << endl;     // accessing elements using index
+    cout << v.at(0) << endl;  // accessing elements using at function
+    cout << v.back() << endl; // returns the last element of the vector
+    cout << v.front() << endl;
 
     for (vector<int>::iterator it = v.begin(); it != v.end(); it++)
     {
@@ -65,9 +65,27 @@ void understandingVectors()
     }
 }
 
+void deletionInVector()
+{
+    vector<int> v = {1, 2, 3, 4, 5, 6, 7, 8, 9, 10};
+    v.erase(v.begin() + 2); // this action will reshuffle the vector
+    for (auto it : v)
+    {
+        cout << it << " ";
+    }
+
+    cout << endl;
+
+    v.erase(v.begin() + 2, v.begin() + 5); // remember that the second argument +5 means it will delete the element at 5th index or 4th element
+    for (auto it : v)
+    {
+        cout << it << " ";
+    }
+}
+
 int main()
 {
-    understandingVectors();
+    deletionInVector();
     cout << "\nCompilation Done 🚀✨";
 
     return 0;
