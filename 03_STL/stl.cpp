@@ -296,6 +296,20 @@ void understandingMap()
     // auto it = mpp.find(1); & if doesn't exist will point at the end
     // cout << *(it).second;
 }
+void multiMap()
+{
+    // Now we can store values in same keys
+    // only map[key] cannot be used here
+    // Sorted
+    // logn
+}
+unorderedMap()
+{
+    // Unsorted
+    // keys will be unique
+    // logn
+    // worst case: O(n)
+}
 int main()
 {
     understandingMap();
