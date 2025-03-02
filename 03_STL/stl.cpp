@@ -303,7 +303,7 @@ void multiMap()
     // Sorted
     // logn
 }
-unorderedMap()
+void unorderedMap()
 {
     // Unsorted
     // keys will be unique
@@ -312,7 +312,7 @@ unorderedMap()
 }
 int main()
 {
-    understandingMap();
+
     cout << "\nCompilation Done 🚀✨";
 
     return 0;
