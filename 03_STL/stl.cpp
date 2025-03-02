@@ -259,14 +259,21 @@ void explainMultiSet()
 
     ms.erase(ms.find(1)); // only a single one erased cause this deals with the address
 
-    ms.erase(ms.find(1), ms.find(1) + 2); 
+    // ms.erase(ms.find(1), ms.find(1) + 2);
 
     // rest all function same as set
+}
+void unorderedSet()
+{
+    unordered_set<int> st;
+    // lower _ bound and upper _ bound function does not works, rest all functions are same...
+    // it don't stores in any particular order...
+    // It has a better complexity O(1)
+    // than set in most cases, except some when collision happens O(N)
 }
 int main()
 {
 
-    understandingSets();
     cout << "\nCompilation Done 🚀✨";
 
     return 0;
