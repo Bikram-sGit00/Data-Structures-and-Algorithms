@@ -271,9 +271,34 @@ void unorderedSet()
     // It has a better complexity O(1)
     // than set in most cases, except some when collision happens O(N)
 }
+void understandingMap()
+{
+    // Map stores unique keys in sorted data structure something similar to set data structure
+    //  { key , value }
+    map<int, int> mpp;
+    // map<int, pair<int, int>> mpp;
+    // map<pair<int, int>, int> mpp; // 🚀
+
+    mpp[1] = 2; //...(i)
+    // mpp2.emplace({3, 1}); //...(ii)     >>Remember sorted keys not values
+    mpp.insert({2, 4}); //...(iii)
+
+    // mpp[{4, 2}] = 10; // for the 🚀 line
+
+    for (auto itr : mpp)
+    {
+        cout << itr.first << " " << itr.second << endl;
+    }
+
+    cout << mpp[1] << " "; // Will give us 1key's element
+    cout << mpp[5] << " "; // if doesn't exist gives us null/0
+
+    // auto it = mpp.find(1); & if doesn't exist will point at the end
+    // cout << *(it).second;
+}
 int main()
 {
-
+    understandingMap();
     cout << "\nCompilation Done 🚀✨";
 
     return 0;
