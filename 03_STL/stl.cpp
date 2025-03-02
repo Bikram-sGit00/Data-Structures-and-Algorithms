@@ -218,12 +218,36 @@ void priorityQueue()
     // size swap empty function same as others
 }
 
-void void understandingSets()()
+void understandingSets()
 {
+    set<int> st;
+    st.insert(1); //{1}
+    st.insert(4); //{1,4}
+    st.insert(4); //{1,4} --> #Unique
+    st.insert(2); //{1,2,4} --> #Sorted
+
+    auto itr1 = st.find(2); // This action returns an iterator
+    auto itr2 = st.find(3); // This action returns an iterator to the lastTh position
+
+    st.erase(4); // takes logarithmic time
+
+    int cnt = st.count(4); // returns 0 || 1
+    cout << cnt;
+
+    auto itr3 = st.find(2);
+    st.erase(itr3); // takes constant time
+
+    auto it1 = st.find(1);
+    auto it2 = st.find(4);
+    st.erase(it1, it2); // if set is {1,2,3,4,5} then output will : {4,5}
+
+    // everything --> logn
 }
+
 int main()
 {
 
+    understandingSets();
     cout << "\nCompilation Done 🚀✨";
 
     return 0;

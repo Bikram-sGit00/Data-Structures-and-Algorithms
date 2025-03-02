@@ -32,3 +32,4 @@
 *.app
 patterns/patterns.exe
 desktop.ini
+.vscode/settings.json
