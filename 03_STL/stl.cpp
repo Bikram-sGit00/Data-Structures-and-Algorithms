@@ -319,12 +319,28 @@ void algorithm()
 
     sort(a, a + n, greater<int>); // sorting in descending order (greater is a comparator)
 
+    // Custom Sorting :
+    //  sort it according to second element , if second element is same , then sort it according to first element but in descending
 
+    bool comp(pair<int, int> p1, pair<int, int> p2)
+    {
+        if (p1.second < p2.second)
+            return true;
+        if (p1.second > p2.second)
+            return false;
+        if (p1.first > p2.first)
+            return true;
+        return false;
+    }
+
+    pair<int, int> a[] = {{1, 2}, {2, 1}, {4, 1}};
+    sort(a, a + n, comp);
 }
+
 int main()
 {
 
     cout << "\nCompilation Done 🚀✨";
 
     return 0;
-}
+};
