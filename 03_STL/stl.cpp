@@ -310,6 +310,17 @@ void unorderedMap()
     // logn
     // worst case: O(n)
 }
+void algorithm()
+{
+    sort(a, a + n);           //{1,3,6,5}-->{1,3,5,6} ,where a means start and a+1 means after 5
+    sort(v.begin(), v.end()); // OR if we are using vector
+
+    sort(a + 2, a + 4); // sorting in a particular range
+
+    sort(a, a + n, greater<int>); // sorting in descending order (greater is a comparator)
+
+
+}
 int main()
 {
 
