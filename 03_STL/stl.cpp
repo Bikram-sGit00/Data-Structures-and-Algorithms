@@ -335,6 +335,22 @@ void algorithm()
 
     pair<int, int> a[] = {{1, 2}, {2, 1}, {4, 1}};
     sort(a, a + n, comp);
+
+    int num = 7;
+    int cnt = __builtin_popcount(); // returns setBits , or number on 1s in 7's binary form
+
+    long long num = 126348763426;
+    int cnt = __builtin_popcountll();
+
+    string s = "123";
+    sort(s.begin(), s.end());
+    do
+    {
+        cout << s << endl;
+
+    } while (next_permutation(s.begin(), s.end())); // at last it returns false
+
+    int maxi = *max_element(a, a + n); // finding max element address so we use *
 }
 
 int main()
