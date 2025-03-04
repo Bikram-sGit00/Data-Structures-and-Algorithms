@@ -1,0 +1,35 @@
+--> https://whimsical.com/c-stl-XVxuHHof5GTWA4NXZhXQhx
+STL: 1.Algorithms    2.Containers
+
+1. Algorithms =>
+            a. linear search
+            b. sort 
+            c. min / max 
+            d. lower/upper bound
+            e. reverse/rotate
+            f. swap
+
+2. Containers =>
+        a. sequence container: 
+                   i> array
+                   ii>vector
+                   iii>dequeue
+                   iv>list 
+                   v>forward list #
+
+        b. Containers adaptors :
+                    i> stack
+                    ii>queue
+                    iii>priority queue
+
+        c. Associate container :
+                    i>set 
+                    ii>map
+                    iii>multi set #
+                    iv> multi map #  
+
+        d. Unorder associate :
+                      i> unorder set / map
+                      ii> unorder multi set/ multi map  #
+
+    // '#' are no need or use very very rare cases
