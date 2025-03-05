@@ -1,7 +1,7 @@
 #include <iostream>
 using namespace std;
 
->> Reverse a number
+>> Reverse a number;
 class Solution
 {
 public:
@@ -20,5 +20,27 @@ public:
         }
 
         return revNum;
+    }
+};
+
+>> check palindrome;
+
+class Solution
+{
+public:
+    bool isPalindrome(int x)
+    {
+        long int revNum = 0;
+        long int dup = x;
+        while (x > 0)
+        {
+            long int ld = x % 10;
+            revNum = (revNum * 10) + ld;
+            x /= 10;
+        }
+        if (dup == revNum)
+            return true;
+        else
+            return false;
     }
 };
