@@ -1,7 +1,7 @@
 #include <iostream>
 using namespace std;
 
->> Reverse a number;
+1 >> Reverse a number;
 class Solution
 {
 public:
@@ -23,7 +23,7 @@ public:
     }
 };
 
->> check palindrome;
+2 >> check palindrome;
 
 class Solution
 {
@@ -44,3 +44,19 @@ public:
             return false;
     }
 };
+
+3 >> Armstrong Numbers;
+
+long long int revNum = 0;
+while (x > 0 || x < 0)
+{
+    if ((revNum > INT_MAX / 10) || (revNum < INT_MIN / 10))
+    {
+        return 0; // Return 0 if reversing x would cause overflow/underflow
+    }
+    long long int ld = x % 10;
+    long long int sum += (ld * ld * ld);
+    x /= 10;
+}
+
+return revNum;
