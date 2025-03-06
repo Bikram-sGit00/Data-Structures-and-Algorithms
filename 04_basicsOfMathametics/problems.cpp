@@ -93,3 +93,15 @@ if (cnt == 2)
     cout << "prime";
 else
     cout << "not prime";
+
+6 >> GCD Or HCF;
+
+// will take linear time complexity
+for (int i = MIN(n1, n2); i >= 1; i--)
+{
+    if (n1 % i == 0 && n2 % i == 0)
+    {
+        cout << i;
+        break; // will break the for loop
+    }
+}
