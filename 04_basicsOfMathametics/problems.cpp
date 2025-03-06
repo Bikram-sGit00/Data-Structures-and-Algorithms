@@ -96,7 +96,7 @@ else
 
 6 >> GCD Or HCF;
 
-// will take linear time complexity
+// will take linear time complexity. worst case--> (min(n1,n2))
 for (int i = MIN(n1, n2); i >= 1; i--)
 {
     if (n1 % i == 0 && n2 % i == 0)
@@ -104,4 +104,19 @@ for (int i = MIN(n1, n2); i >= 1; i--)
         cout << i;
         break; // will break the for loop
     }
+}
+
+7 >> gcd using Euclidean Algorithm;
+int gcd(int a, int b)
+{
+    while (a > 0 && b > 0)
+    {
+        if (a > b)
+            a = a % b;
+        else
+            b = b % a;
+    }
+    if (a == 0)
+        return b;
+    return a
 }
