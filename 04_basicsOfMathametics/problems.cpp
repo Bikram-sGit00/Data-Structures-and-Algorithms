@@ -60,3 +60,20 @@ while (x > 0 || x < 0)
 }
 
 return revNum;
+
+4 >> print all divisors;
+vector<int> ls;
+for (int i; i * i <= n; i++)
+{
+    if (n % i == 0)
+    {
+        ls.push_back(i);
+        if ((n / i) != i)
+        {
+            ls.push_back((n / i));
+        }
+    }
+}
+sort(ls.begin(), ls.end());
+for (auto itr : ls)
+    cout << itr << " ";
