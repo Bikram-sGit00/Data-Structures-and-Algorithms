@@ -77,3 +77,19 @@ for (int i; i * i <= n; i++)
 sort(ls.begin(), ls.end());
 for (auto itr : ls)
     cout << itr << " ";
+
+5 >> check prime;
+int cnt = 0;
+for (i = 0; i * i <= n; i++)
+{
+    if (n % i == 0)
+    {
+        cnt++;
+        if ((i / 2) != i)
+            cnt++;
+    }
+}
+if (cnt == 2)
+    cout << "prime";
+else
+    cout << "not prime";
