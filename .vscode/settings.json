@@ -2,6 +2,7 @@
     "C_Cpp.default.compilerPath": "",
     "C_Cpp.errorSquiggles": "disabled",
     "cSpell.words": [
-        "logn",
+        "Deque",
+        "logn"
     ]
 }
