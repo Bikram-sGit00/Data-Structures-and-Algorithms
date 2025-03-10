@@ -29,7 +29,7 @@ int main()
     cout << mpp["unknown"] << endl;    // if we try to access like this , this action creates an new entry thats why it will return us 0;
     cout << mpp.at("unknown") << endl; // but this will warn us
 
-    // MCQ: if we declare mpp[] before mpp.at() , the mpp.at() will also give us 0 cause mpp[] already have create an empty entry <--✅
+    // MCQ: if we declare mpp[] before mpp.at() , the mpp.at() will also give us 0 cause mpp[] already have create an empty entry ✅
 
     // size
     cout << mpp.size() << endl;
