@@ -351,7 +351,7 @@ void pattern19(int n)
         cout << endl;
     }
 }
-void patttern20(int n)
+void pattern20(int n)
 {
     int spaces = 2 * n - 1;
     for (int i = 1; i <= 2 * n - 1; i++)
@@ -411,9 +411,9 @@ void pattern22(int n)
         cout << endl;
     }
 }
-    int main()
-    {
-        int n = 4;
-        pattern22(n);
-        return 0;
-    }
+int main()
+{
+    int n = 4;
+    pattern22(n);
+    return 0;
+}
