@@ -17,3 +17,4 @@ int maximumFrequency(vector<int> &arr, int n)
    }
    return maxAns;
 }
+
