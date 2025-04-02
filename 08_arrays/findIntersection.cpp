@@ -1,4 +1,4 @@
-// GFG: https://www.geeksforgeeks.org/problems/intersection-of-two-arrays2404/1;
+// GFG: https://www.geeksforgeeks.org/problems/intersection-of-two-arrays2404/1
 // brute force approach;
 // Time complexity: O(n*m);
 
@@ -60,3 +60,5 @@ public:
         return intersection.size();                                   // for GFG;
     }
 };
+
+// Asked In:Accolite Amazon Microsoft PayPal Rockstand
