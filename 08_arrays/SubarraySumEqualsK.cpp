@@ -27,3 +27,33 @@ int getLongestSubarray(vector<int> &a, long long k)
 // Better Approach
 //  Time Complexity: O(n^2)
 //  Space Complexity: O(1)
+
+class Solution
+{
+public:
+    int longestSubarray(vector<int> &arr, int k)
+    {
+        map<int, int> sumMap;
+        int sum = 0;
+        int maxLen = 0;
+        for (int i = 0; i < arr.size(); i++)
+        {
+            sum += arr[i]; // adding the elements of the array;
+            if (sum == k)
+            {
+                maxLen = max(maxLen, i + 1); // if the sum is equal to k then ww will take the length of the subarray from 0 to i;
+            }
+            int rem = sum - k;
+            if (sumMap.find(rem) != sumMap.end())
+            {                              // checking if there is a rem element or not;
+                int len = i - sumMap[rem]; // getting the length of the higher length subarray;
+                maxLen = max(maxLen, len);
+            }
+            if (sumMap.find(sum) == sumMap.end()) // if the sum is not present in the map then we will insert it in the map;
+            {
+                sumMap[sum] = i; // inserting the sum and the index in the map;
+            }
+        }
+        return maxLen;
+    }
+};
