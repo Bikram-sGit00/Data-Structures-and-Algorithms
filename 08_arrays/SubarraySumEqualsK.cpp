@@ -1,3 +1,4 @@
+// https://www.geeksforgeeks.org/problems/longest-sub-array-with-sum-k0809/1?utm_source=youtube&utm_medium=collab_striver_ytdescription&utm_campaign=longest-sub-array-with-sum-k
 // Brute Force Approach
 //  Time Complexity: O(n^3)
 //  Space Complexity: O(1)
@@ -25,8 +26,8 @@ int getLongestSubarray(vector<int> &a, long long k)
 }
 
 // Better Approach
-//  Time Complexity: O(n^2)
-//  Space Complexity: O(1)
+//  Time Complexity: O(n * logn)
+//  Space Complexity: O(n)
 
 class Solution
 {
@@ -57,3 +58,34 @@ public:
         return maxLen;
     }
 };
+
+//optimal approach for positive & zero based arr[]
+//  Time Complexity: O(2n)
+//  Space Complexity: O(1)
+
+int getLongestSubarray(vector<int>& a, long long k) {
+    int n = a.size(); // size of the array.
+
+    int left = 0, right = 0; // 2 pointers
+    long long sum = a[0]; // sum as first element of the array
+    int maxLen = 0;
+    while (right < n) { // iterate until right pointer reaches the end of the array
+        // if sum > k, reduce the subarray from left
+        // until sum becomes less or equal to k:
+        while (left <= right && sum > k) { //if sum>k remove the or subtract the left guy
+            sum -= a[left];//<--
+            left++;//move forward
+        }
+
+        // if sum = k, update the maxLen i.e. answer:
+        if (sum == k) {
+            maxLen = max(maxLen, right - left + 1); //right-left+1 cause we are using 0 based indexing
+        }
+
+        // Move forward thw right pointer:
+        right++;
+        if (right < n) sum += a[right];
+    }
+
+    return maxLen;
+}
