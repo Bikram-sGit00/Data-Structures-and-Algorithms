@@ -60,7 +60,7 @@ public:
 };
 
 //optimal approach for positive & zero based arr[]
-//  Time Complexity: O(2n)
+//  Time Complexity: O(2n) , cause we have 2 while loops but the other one depends on the first one so (N+N) rather than (n^2)
 //  Space Complexity: O(1)
 
 int getLongestSubarray(vector<int>& a, long long k) {
