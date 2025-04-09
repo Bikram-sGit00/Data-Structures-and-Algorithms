@@ -49,3 +49,5 @@ class Solution {
             }
         }
 };
+
+company tags --> Paytm Flipkart MorganStanley Amazon Microsoft OYO Samsung Snapdeal Hike MakeMyTrip Ola Cabs Walmart MAQSoftware Adobe Yatra.com SAPLabs Qualcomm
