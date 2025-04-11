@@ -14,7 +14,7 @@ Brute force --> int majorityElement(vector<int> v) {
             }
         }
 
-        // check if frquency is greater than n/2:
+        // check if frequency is greater than n/2:
         if (cnt > (n / 2))
             return v[i];
     }
@@ -59,9 +59,19 @@ class Solution {
                     cnt--;
                 }
             }
-            return ele;
+            //checking if the element is >n/2 or not -->
+            int checkCounter = 0;
+            for (int i = 0; i < nums.size(); i++)
+            {
+                if(nums[i]==) checkCounter++;
+            }
+            if (checkCounter >= nums.size()/2)
+            {
+                return ele;
+            }
+            return -1;
         }
 };
-Time Complexity --> O(N), where N = size of the given array. Reason: We are traversing the array only once. Space Complexity: O(1) as we are using no extra space.
+Time Complexity --> O(N), where N = size of the given array. Reason: We are traversing the array only once. Space Complexity: O(1) as we are using no extra space. But if they mention "the array might not have an majority element" for checking we again iterating , in this case T.C --> O(2N); 
 
 Company Tags --> Flipkart Accolite Amazon Microsoft D-E-Shaw Google Nagarro Atlassian
