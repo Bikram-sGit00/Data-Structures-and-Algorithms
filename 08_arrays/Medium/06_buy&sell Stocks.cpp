@@ -1,5 +1,7 @@
 ➡️ problemLinks --> https : // www.geeksforgeeks.org/problems/maximum-sub-array5443/1 ;
 
+🚀Condition --> Single Transaction (Buy once, Sell once) selling on day 1 is not allowed because you must buy before you sell...
+
 ✅ mostOptimal --> class Solution
 {
 public:
