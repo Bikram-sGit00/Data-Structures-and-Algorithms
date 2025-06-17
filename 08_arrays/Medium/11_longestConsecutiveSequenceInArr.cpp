@@ -21,7 +21,7 @@ int longestSuccessiveElements(vector<int>&a) {
 
         //search for consecutive numbers
         //using linear search:
-        
+
         while (linearSearch(a, x + 1) == true) {
             x += 1; //increment x to check for next consecutive number
             cnt += 1; //increment count of consecutive numbers
@@ -34,3 +34,27 @@ int longestSuccessiveElements(vector<int>&a) {
 
 //Time Complexity: ~ O(n^2)
 //Space Complexity: O(1)
+
+✅ Better Approach --> here we will sort the array first and then find the longest consecutive sequence.
+int longestConsecutive(vector<int>& nums) {
+    if (nums.empty()) return 0; // If the array is empty, return 0
+
+    sort(nums.begin(), nums.end()); // Sort the array
+    int longest = 1; // Initialize the longest sequence length
+    int currentLength = 1; // Current consecutive sequence length
+
+    for (int i = 1; i < nums.size(); i++) {
+        if (nums[i] == nums[i - 1]) {
+            continue; // Skip duplicates
+        } else if (nums[i] == nums[i - 1] + 1) {
+            currentLength++; // Increment current sequence length
+        } else {
+            longest = max(longest, currentLength); // Update longest if needed
+            currentLength = 1; // Reset current sequence length
+        }
+    }
+    return max(longest, currentLength); // Final check for the last sequence
+}
+
+//Time Complexity: O(n log n) due to sorting
+//Space Complexity: O(1) if we sort in place, otherwise O(n) for the sorted array
