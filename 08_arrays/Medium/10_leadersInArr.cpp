@@ -1,4 +1,4 @@
-➡️ problemLinks --> https://leetcode.com/problems/next-permutation/
+➡️ problemLinks --> https://www.geeksforgeeks.org/problems/leaders-in-an-array-1587115620/1 && https://leetcode.com/problems/replace-elements-with-greatest-element-on-right-side/
 
 ✅ Brute Force --> vector<int> printLeadersBruteForce(int arr[], int n) {
 
