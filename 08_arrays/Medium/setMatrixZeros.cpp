@@ -43,3 +43,8 @@ vector<vector<int>> zeroMatrix(vector<vector<int>> &matrix, int n, int m) {
 
     return matrix;
 }
+
+// Time Complexity: O(n * m) / 3N
+// Space Complexity: O(1) (in-place modification)
+
+✅ Better Approach -->  
