@@ -46,8 +46,24 @@ int findAllSubarraysWithGivenSum(vector < int > & arr, int k) {
 // Space Complexity: O(1) as we are not using any extra space.
 
 ✅ Optimized Approach --> in this approach, we will use a hash map to store the cumulative sum and its frequency. This way, we can find the number of subarrays with a given sum in a single pass.
-
-
-
+class Solution {
+  public:
+    int subArraySum(vector<int>& arr, int k) {
+        map<int,int> mpp;
+        mpp[0] = 1;
+        int preSum = 0 , cnt = 0;
+        for(int i = 0; i < arr.size(); i++){
+            preSum += arr[i];
+            int remove = preSum - k;
+            cnt += mpp[remove];
+            mpp[preSum] += 1;
+            
+            
+        }
+        return cnt;
+    }
+};
+//Time Complexity: O(n) where n is the size of the given array ... if we use an unordered_map, it will be O(1) on average & O(n) in the worst case && in ordered_map, it will be O(log n) in the worst case.
+//Space Complexity: O(n) where n is the size of the given array as we are using a hash map to store the cumulative sum and its frequency.
 
 ✅ Company Tags -->  
