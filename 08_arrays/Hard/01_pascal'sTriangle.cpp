@@ -27,6 +27,8 @@ public:
     }
 };
 
+// Time Complexity: O(n^2) where n is the number of rows
+// Space Complexity: O(n^2) for storing the triangle
 
 ✅ Optimized Approach --> For GeeksforGeeks
 class Solution {
@@ -44,5 +46,7 @@ class Solution {
     }
 };
 
+// Time Complexity: O(n) for generating the nth row
+// Space Complexity: O(n) for storing the row
 
 ✅ Company Tags -->  Amazon Microsoft Adobe
