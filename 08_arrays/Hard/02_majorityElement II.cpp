@@ -25,3 +25,29 @@ public:
 
 // Time Complexity: O(n^2)
 // Space Complexity: O(1) or actually O(2)
+
+
+✅ Better Approach -->  We can use a hash map to count the occurrences of each element in a single pass, which reduces the time complexity to O(n).
+class Solution {
+public:
+    vector<int> majorityElement(vector<int>& nums) {
+        unordered_map<int, int> countMap;
+        vector<int> result;
+        int n = nums.size();
+        
+        for (int num : nums) {
+            countMap[num]++;
+        }
+        
+        for (const auto& pair : countMap) {
+            if (pair.second > n / 3) {
+                result.push_back(pair.first);
+            }
+        }
+        
+        return result;
+    }
+};
+
+// Time Complexity: O(n)
+// Space Complexity: O(n)
