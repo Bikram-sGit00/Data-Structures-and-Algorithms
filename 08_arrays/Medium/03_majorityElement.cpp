@@ -63,7 +63,7 @@ class Solution {
             int checkCounter = 0;
             for (int i = 0; i < nums.size(); i++)
             {
-                if(nums[i]==) checkCounter++;
+                if(nums[i]==0) checkCounter++;
             }
             if (checkCounter >= nums.size()/2)
             {
