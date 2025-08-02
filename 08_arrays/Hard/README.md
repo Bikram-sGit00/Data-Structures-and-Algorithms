@@ -1,7 +1,5 @@
 # Safe Integer Addition & Casting Styles in C++
 
-> 📁 Place this `README.md` inside any folder (e.g., `array/hard/`) in your GitHub repo. GitHub will automatically render it at the bottom of that folder page.
-
 ---
 
 ## 🔥 Problem: Integer Overflow
