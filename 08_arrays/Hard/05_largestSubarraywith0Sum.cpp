@@ -1,8 +1,33 @@
 ➡️ problemLinks --> https://www.geeksforgeeks.org/problems/largest-subarray-with-0-sum/1
 
-✅ Brute Force -->  
+✅ Brute Force -->  class Solution {
+public:
+    int maxLength(vector<int>& nums) {
+        int n = nums.size();
+        int maxLen = 0;  // Stores the length of the longest subarray with sum = 0
 
-✅ Better Approach --> 
+        // Try every possible subarray starting from index i
+        for (int i = 0; i < n; i++) {
+            int sum = 0;  // Reset sum for every new starting index i
+
+            // Extend the subarray to index j
+            for (int j = i; j < n; j++) {
+                sum += nums[j];  // Add current element to sum
+
+                if (sum == 0) {
+                    // If sum becomes 0, update maxLen if this subarray is longer
+                    maxLen = max(maxLen, j - i + 1);
+                }
+            }
+        }
+
+        // Return the maximum length found
+        return maxLen;
+    }
+};
+// Time Complexity: O(N^2) - due to nested loops
+// Space Complexity: O(1) - no extra space used
+
 
 ✅ Optimized Approach --> class Solution {
 public:
@@ -40,4 +65,6 @@ public:
     }
 };
 
+// Time Complexity: O(N)
+// Space Complexity: O(N) for the hash map
 ✅ Company Tags -->  Amazon Microsoft MakeMyTrip
