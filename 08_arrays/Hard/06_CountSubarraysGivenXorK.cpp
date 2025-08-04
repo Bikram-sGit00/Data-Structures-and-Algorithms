@@ -25,7 +25,27 @@ public:
 // Time Complexity: O(N^3) - due to three nested loops
 // Space Complexity: O(1) - no extra space used
 
-✅ Better Approach --> 
+✅ Better Approach -->  will use a hash map to store the frequency of prefix XORs and count subarrays with XOR equal to K
+class Solution {
+public:
+    int subarrayXor(vector<int>& arr, int k) {
+        int n = arr.size();
+        int count = 0;
+        // Three nested loops: i (start), j (end), k (for XOR calculation)
+        for (int i = 0; i < n; i++) {
+            int xorSum = 0;
+            for (int j = i; j < n; j++) {
+                xorSum ^= arr[j];
+                if (xorSum == k) {
+                    count++;
+                }
+            }
+        }
+        return count;
+    }
+};
+// Time Complexity: O(N^2) - due to two nested loops
+// Space Complexity: O(1) - no extra space used
 
 ✅ Optimized Approach --> 
 
