@@ -1,5 +1,5 @@
-➡️ problemLinks --> https://leetcode.com/problems/merge-intervals/description/
-
+➡️ problemLinks --> https://leetcode.com/problems/merge-intervals/description/  && https://www.geeksforgeeks.org/problems/overlapping-intervals--170633/1
+ 
 ✅ Brute Force -->  will be sorting the intervals and then iterating through them & compare to merge overlapping intervals 
 class Solution {
 public:
