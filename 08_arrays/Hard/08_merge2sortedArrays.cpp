@@ -47,8 +47,31 @@ void merge(long long arr1[], long long arr2[], int n, int m) {
 // Time Complexity: O(n + m) + O(n + m) where n and m are the sizes of the two input arrays. This is because we traverse both arrays once.
 // Space Complexity: O(n + m) for the additional array used to store the merged elements.
 
-✅ Better Approach -->  The better approach involves using a two-pointer technique. We can maintain two pointers, one for each input array, and compare their elements. The smaller element is added to the merged array, and the corresponding pointer is incremented. This approach avoids the need for extra space and is more efficient.
+✅ Optimized Approach 1 -->  The better approach involves using a two-pointer technique. We can maintain two pointers, one at the left array largest element (n-1) and one at smallest for another array and swaping and the corresponding pointer is incremented. This approach avoids the need for extra space and is more efficient.
+class Solution {
+public:
+    void merge(vector<int>& nums1, int m, vector<int>& nums2, int n) {
+        int left = m - 1;
+        int right = 0;
+        while (left >= 0 && right < n) {
+            if (nums1[left] > nums2[right]) {
+                swap(nums1[left], nums2[right]);
+                left--;
+                right++;
+            } else {
+                break;
+            }
+        }
+        sort(nums1.begin(), nums1.begin() + m); // sort only valid part
+        sort(nums2.begin(), nums2.end());
+        for (int k = 0; k < n; ++k) {
+            nums1[m + k] = nums2[k];
+        }
+    }
+};
+// Time Complexity: O( min(n,m) + nlog n + m log m) where n and m are the sizes of the two input arrays. This is because we sort both arrays after merging.
+// Space Complexity: O(1) since we are not using any additional space for merging.
 
-✅ Optimized Approach -->  The optimized approach involves merging the arrays in place. We can start from the end of both arrays and compare their elements, inserting the larger one into the correct position in the merged array. This approach also avoids the need for extra space and is the most efficient.
+✅ Optimized Approach 2 -->  The optimized approach involves merging the arrays in place. We can start from the end of both arrays and compare their elements, inserting the larger one into the correct position in the merged array. This approach also avoids the need for extra space and is the most efficient.
 
 ✅ Company Tags -->  
