@@ -72,6 +72,44 @@ public:
 // Time Complexity: O( min(n,m) + nlog n + m log m) where n and m are the sizes of the two input arrays. This is because we sort both arrays after merging.
 // Space Complexity: O(1) since we are not using any additional space for merging.
 
-✅ Optimized Approach 2 -->  The optimized approach involves merging the arrays in place. We can start from the end of both arrays and compare their elements, inserting the larger one into the correct position in the merged array. This approach also avoids the need for extra space and is the most efficient.
+✅ Optimized Approach 2 --> "Shell Sort" algorithm can be used to merge two sorted arrays in O(n + m) time complexity without using extra space. The idea is to use a gap-based approach, where we compare elements at a certain gap and swap them if they are out of order. This continues until the gap is reduced to 0
+class Solution {
+private:
+    void isGreater(vector<int>& nums1, int indx1, vector<int>& nums2, int indx2) {
+        if (nums1[indx1] > nums2[indx2]) {
+            swap(nums1[indx1], nums2[indx2]);
+        }
+    }
+public:
+    void mergeArrays(vector<int>& nums1, vector<int>& nums2) {
+        int n = nums1.size();
+        int m = nums2.size();
+        if (n == 0) return;
+        
+        int len = (n + m);
+        int gap = (len / 2) + (len % 2);
 
-✅ Company Tags -->  
+        while (gap > 0) {
+            int left = 0;
+            int right = left + gap;
+            while (right < len) {
+                if (left < n && right >= n) {
+                    isGreater(nums1, left, nums2, right - n);
+                } else if (left >= n) {
+                    isGreater(nums2, left - n, nums2, right - n);
+                } else {
+                    isGreater(nums1, left, nums1, right);
+                }
+                left++;
+                right++;
+            }
+            if (gap == 1) break;
+            gap = (gap / 2) + (gap % 2);
+        }
+    }
+};
+// this code will not work in leetcode 
+// Time Complexity: O(n + m) where n and m are the sizes of the two input arrays. This is because we traverse both arrays once.
+// Space Complexity: O(1) since we are not using any additional space for merging.
+
+✅ Company Tags -->  Zoho Microsoft Snapdeal Goldman Sachs Adobe Linkedin Amdocs Brocade Juniper Networks Quikr Synopsys
