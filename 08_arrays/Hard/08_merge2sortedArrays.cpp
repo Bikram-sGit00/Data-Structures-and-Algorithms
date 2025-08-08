@@ -109,7 +109,9 @@ public:
     }
 };
 // this code will not work in leetcode 
-// Time Complexity: O(n + m) where n and m are the sizes of the two input arrays. This is because we traverse both arrays once.
-// Space Complexity: O(1) since we are not using any additional space for merging.
 
+// Time Complexity: O((n+m)*log(n+m)), where n and m are the sizes of the given arrays.
+// Reason: The gap is ranging from n+m to 1 and every time the gap gets divided by 2. So, the time complexity of the outer loop will be O(log(n+m)). Now, for each value of the gap, the inner loop can at most run for (n+m) times. So, the time complexity of the inner loop will be O(n+m). So, the overall time complexity will be O((n+m)*log(n+m)).
+
+// Space Complexity: O(1) as we are not using any extra space.
 ✅ Company Tags -->  Zoho Microsoft Snapdeal Goldman Sachs Adobe Linkedin Amdocs Brocade Juniper Networks Quikr Synopsys
