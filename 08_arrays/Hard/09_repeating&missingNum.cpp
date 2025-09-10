@@ -1,10 +1,10 @@
 ➡️ problemLinks --> https://leetcode.com/problems/find-missing-and-repeated-values/  && https://leetcode.com/problems/set-mismatch/ && https://www.geeksforgeeks.org/problems/find-missing-and-repeating2512/1
 
-✅ Brute Force -->  
+✅ Brute Force -->  https://takeuforward.org/data-structure/find-the-repeating-and-missing-numbers/
 
-✅ Better Approach --> 
+✅ Better Approach --> https://takeuforward.org/data-structure/find-the-repeating-and-missing-numbers/
 
-✅ Optimized Approach --> //code for 2d array
+✅ Optimized Approach 1 --> //code for 2d array
 class Solution {
 public:
     vector<int> findMissingAndRepeatedValues(vector<vector<int>>& a) {
@@ -67,5 +67,77 @@ public:
 
 // Time Complexity --> O(n) for both 1D and 2D arrays
 // Space Complexity --> O(1) for both 1D and 2D arrays
+
+
+✅ Optimized Approach 2 --> //code for 2d array
+
+class Solution {
+public:
+    vector<int> findErrorNums(vector<int>& a) {
+        long long n = a.size();   // size of the array (numbers from 1 to n)
+        int xr = 0;
+
+        // STEP 1: XOR all numbers in the array and XOR with 1..n
+        // Why? Because XOR cancels out matching numbers.
+        // After this, xr = (missing number) ^ (repeated number)
+        for (int i = 0; i < n; i++) {
+            xr = xr ^ a[i];       // XOR with array element
+            xr = xr ^ (i + 1);    // XOR with natural number (1..n)
+        }
+
+        // STEP 2: Find a bit (position) where missing and repeated differ.
+        // Because they are different numbers, at least one bit is different.
+        int bitNo = 0;
+        while (1) {
+            if ((xr & (1 << bitNo)) != 0) {  // check if this bit is set in xr
+                break;                       // stop when we find a set bit
+            }
+            bitNo++;
+        }
+
+        // STEP 3: Divide numbers into two groups (based on that bit).
+        // Group "zero" = numbers where bitNo is 0.
+        // Group "one"  = numbers where bitNo is 1.
+        int zero = 0;
+        int one = 0;
+
+        // Separate all numbers in array into zero/one group
+        for (int i = 0; i < n; i++) {
+            if ((a[i] & (1 << bitNo)) != 0) {
+                one ^= a[i];    // XOR into "one" group
+            } else {
+                zero ^= a[i];   // XOR into "zero" group
+            }
+        }
+
+        // Separate all numbers from 1..n into zero/one group
+        for (int i = 1; i <= n; i++) {   // FIXED: should start at 1 not 0
+            if ((i & (1 << bitNo)) != 0) {
+                one ^= i;       // XOR into "one" group
+            } else {
+                zero ^= i;      // XOR into "zero" group
+            }
+        }
+
+        // STEP 4: Now we have two numbers: "zero" and "one".
+        // But we don't know which one is missing and which one is repeated.
+        // So, check which one actually appears in array.
+        int cnt = 0;
+        for (int i = 0; i < n; i++) {
+            if (a[i] == zero)   // count how many times "zero" appears
+                cnt++;
+        }
+
+        // If zero doesn’t appear, then zero = missing, one = duplicate
+        if (cnt == 0)
+            return {zero, one};
+
+        // Otherwise, one = missing, zero = duplicate
+        return {one, zero};
+    }
+};
+
+// Time Complexity --> O(4n) but if we nest the loops then ~ O(n)
+// Space Complexity --> O(1)
 
 ✅ Company Tags -->  
