@@ -65,4 +65,7 @@ public:
 };
 
 
+// Time Complexity --> O(n) for both 1D and 2D arrays
+// Space Complexity --> O(1) for both 1D and 2D arrays
+
 ✅ Company Tags -->  
