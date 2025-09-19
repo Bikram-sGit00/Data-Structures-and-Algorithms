@@ -19,7 +19,7 @@
     return ans;
 }
 
-// Time Complexity --> O(logN)
+// Time Complexity --> O(log base2^N) or O(log2(N))
 // Space Complexity --> O(1)
 
 ✅ Recursive Approach --> int bs(vector<int>& nums, int low, int high, int target) {
@@ -41,5 +41,8 @@ public:
       return  bs(nums, 0, nums.size() - 1, target);
     }
 };
+
+// Time Complexity --> O(log base2^N) or O(log2(N))
+// Space Complexity --> O(1)
 
 ✅ Company Tags -->  Infosys Oracle Wipro Linkedin Qualcomm TCS Cognizant Accenture
