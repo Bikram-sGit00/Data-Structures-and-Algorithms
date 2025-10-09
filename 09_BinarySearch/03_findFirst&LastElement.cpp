@@ -45,3 +45,54 @@ public:
 
 
 ✅ Company Tags -->  Amazon
+
+
+
+
+
+✅ Find First & Last element --> class Solution {
+public:
+    int findFirst(vector<int>& arr, int x) {
+        int low = 0, high = arr.size() - 1;
+        int ans = -1;
+        while (low <= high) {
+            int mid = low + (high - low) / 2;
+            if (arr[mid] == x) {
+                ans = mid;
+                high = mid - 1; // keep searching left
+            } else if (arr[mid] < x) {
+                low = mid + 1;
+            } else {
+                high = mid - 1;
+            }
+        }
+        return ans;
+    }
+
+    int findLast(vector<int>& arr, int x) {
+        int low = 0, high = arr.size() - 1;
+        int ans = -1;
+        while (low <= high) {
+            int mid = low + (high - low) / 2;
+            if (arr[mid] == x) {
+                ans = mid;
+                low = mid + 1; // keep searching right
+            } else if (arr[mid] < x) {
+                low = mid + 1;
+            } else {
+                high = mid - 1;
+            }
+        }
+        return ans;
+    }
+
+    vector<int> searchRange(vector<int>& arr, int x) {
+        int first = findFirst(arr, x);
+        int last = findLast(arr, x);
+        return {first, last};
+    }
+};
+
+
+
+✅ Count occurrences of a number in a sorted array with duplicates -->
