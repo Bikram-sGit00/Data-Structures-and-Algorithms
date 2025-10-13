@@ -1,6 +1,46 @@
 ➡️ problemLinks --> https://leetcode.com/problems/single-element-in-a-sorted-array/  &&  https://www.geeksforgeeks.org/problems/find-the-element-that-appears-once-in-sorted-array0624/1
 
-✅ Brute Force -->  
+✅ Brute Force 1 -->  int singleNonDuplicate(vector<int>& arr) {
+    int n = arr.size(); //size of the array.
+    if (n == 1) return arr[0];
+
+    for (int i = 0; i < n; i++) {
+
+        //Check for first index:
+        if (i == 0) {
+            if (arr[i] != arr[i + 1])
+                return arr[i];
+        }
+        //Check for last index:
+        else if (i == n - 1) {
+            if (arr[i] != arr[i - 1])
+                return arr[i];
+        }
+        else {
+            if (arr[i] != arr[i - 1] && arr[i] != arr[i + 1])
+                return arr[i];
+        }
+    }
+
+    // dummy return statement:
+    return -1;
+}
+
+// Time Complexity: O(N)
+// Space Complexity: O(1)
+
+✅ Brute Force 2 --> int singleNonDuplicate(vector<int>& arr) {
+    int n = arr.size(); //size of the array.
+    int ans = 0;
+    // XOR all the elements:
+    for (int i = 0; i < n; i++) {
+        ans = ans ^ arr[i];
+    }
+    return ans;
+}
+
+// Time Complexity: O(N)
+// Space Complexity: O(1)
 
 ✅ Optimized Approach --> class Solution {
 public:
