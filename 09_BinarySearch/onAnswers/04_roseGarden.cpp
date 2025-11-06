@@ -1,4 +1,4 @@
-➡️ problemLinks --> 
+➡️ problemLinks --> https://leetcode.com/problems/minimum-number-of-days-to-make-m-bouquets/description/ && 
 
 ✅ Optimized Approach --> bool possible(vector<int>& arr, int day, int m, int k) {
     int cnt = 0;
@@ -42,4 +42,4 @@ public:
     }
 };
 
-✅ Company Tags -->  
+✅ Company Tags -->  Bloomberg Amazon Microsoft Google Flipkart
