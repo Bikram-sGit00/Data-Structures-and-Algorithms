@@ -1,4 +1,4 @@
-➡️ problemLinks --> 
+➡️ problemLinks --> https://leetcode.com/problems/koko-eating-bananas/description/  & https://www.geeksforgeeks.org/problems/koko-eating-bananas/1
 
 ✅ Optimized Approach --> int findmax(const vector<int>& piles) { // finding the max element into the array
     int maxi = INT_MIN;
