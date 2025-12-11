@@ -18,5 +18,25 @@ public:
 // Time Complexity --> O(N)
 // Space Complexity --> O(1)
 
-✅ Optimized Approach --> 
+✅ Optimized Approach --> class Solution {
+public:
+    int findKthPositive(vector<int>& arr, int k) {
+        int n = arr.size();
+        int low = 0, high = n - 1;
+        while (low <= high) {
+            int mid = (low + high) / 2;
+            int missCount = arr[mid] - (mid + 1); // count of missing numbers
+            if (missCount < k) {
+                low = mid + 1;
+            } else {
+                high = mid - 1;
+            }
+        }
+        // return k+high+1;
+        return low + k;
+    }
+};
+
+// Time Complexity --> O(log N)
+// Space Complexity --> O(1)
 
