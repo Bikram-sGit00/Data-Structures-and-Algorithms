@@ -1,6 +1,6 @@
-➡️ problemLinks --> 
+➡️ problemLinks --> https://www.geeksforgeeks.org/problems/allocate-minimum-number-of-pages0937/1
 
-✅ Brute Force -->  https://www.geeksforgeeks.org/problems/allocate-minimum-number-of-pages0937/1
+✅ Brute Force -->  
 
 ✅ Optimized Approach --> #include <bits/stdc++.h>
 int countStud(vector<int> &books, int pages){
