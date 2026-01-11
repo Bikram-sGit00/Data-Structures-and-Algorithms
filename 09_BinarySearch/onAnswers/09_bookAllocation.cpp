@@ -38,7 +38,7 @@ class Solution {
     }
 };
 
-// Time Complexity: O(N log(sum of pages)), where N is the number of books.
+// Time Complexity: O(log base 2 (sum - max)) + )O(n)) where n is the number of books, sum is the total number of pages in all books and max is the maximum number of pages in a single book.
 // Space Complexity: O(1) as we are not using any extra space to solve this problem.
 
-✅ Company Tags -->  
+✅ Company Tags -->  Infosys Amazon Microsoft Google Codenation Uber
