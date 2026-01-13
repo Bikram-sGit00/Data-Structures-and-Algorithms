@@ -46,6 +46,62 @@ public:
 // Space Complexity: O(m + n)
 
 ✅ Better Approach --> 
+// Function to find the median of two sorted arrays
+double median(vector<int>& a, vector<int>& b) {
+
+    // Get sizes of both arrays
+    int n1 = a.size(), n2 = b.size();
+
+    // Calculate total size
+    int n = n1 + n2;
+
+    // Calculate the middle indices
+    int ind2 = n / 2;
+    int ind1 = ind2 - 1;
+
+    // Initialize pointers and counters
+    int cnt = 0, i = 0, j = 0;
+    int ind1el = -1, ind2el = -1;
+
+    // Traverse both arrays like merge step of merge sort
+    while (i < n1 && j < n2) {
+
+        // Check which element is smaller and pick it
+        if (a[i] < b[j]) {
+            if (cnt == ind1) ind1el = a[i];
+            if (cnt == ind2) ind2el = a[i];
+            i++;
+        } else {
+            if (cnt == ind1) ind1el = b[j];
+            if (cnt == ind2) ind2el = b[j];
+            j++;
+        }
+        cnt++;
+    }
+
+    // Copy remaining elements from first array if any
+    while (i < n1) {
+        if (cnt == ind1) ind1el = a[i];
+        if (cnt == ind2) ind2el = a[i];
+        cnt++;
+        i++;
+    }
+
+    // Copy remaining elements from second array if any
+    while (j < n2) {
+        if (cnt == ind1) ind1el = b[j];
+        if (cnt == ind2) ind2el = b[j];
+        cnt++;
+        j++;
+    }
+
+    // Return median depending on even or odd size
+    if (n % 2 == 1) return (double)ind2el;
+    return (ind1el + ind2el) / 2.0;
+}
+
+// Time Complexity: O(m + n)
+// Space Complexity: O(1)
 
 ✅ Optimized Approach --> 
 
