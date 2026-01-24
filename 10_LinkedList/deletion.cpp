@@ -45,3 +45,24 @@ Node* deletePos(Node* head, int k){
     return head;
 }
 
+Node* deleteElement(Node* head, int ele){
+    if(head == NULL) return head; 
+    if(head -> data == ele){
+        head = head -> next;
+        return head;
+    } 
+    int prev = NULL; // previous of 'cnt' element , set as null while cnt = 0
+    Node* temp = head;
+    while (temp != NULL)
+    {
+        if(temp -> data == ele){
+            prev -> next = prev -> next -> next; // skiping one element for deleting
+            free(temp);
+            break;
+        }
+        prev = temp;
+        temp = temp -> next;
+    }
+    
+    return head;
+}
