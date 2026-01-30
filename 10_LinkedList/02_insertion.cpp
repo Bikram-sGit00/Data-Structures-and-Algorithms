@@ -30,4 +30,17 @@ Node* insertAtPosition(Node* head, int pos, int val){
     }
     return head;
 }
-    
+
+Node* insertBeforeValue(Node* head, int target, int val){
+    if(head == NULL) return NULL;
+    Node* temp = head;
+    while (temp -> next != NULL){
+        if(temp -> next -> data == target){
+            Node* newNode = new Node(val, temp -> next);
+            temp -> next = newNode;
+            break;
+        }
+        temp = temp -> next;
+    }
+    return head;
+}
