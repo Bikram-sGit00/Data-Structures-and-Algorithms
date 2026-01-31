@@ -71,3 +71,21 @@ Node* removeAtPosition(Node* head, int pos){
         return head;
     }
 }
+
+
+void deleteNode(Node* temp)[
+    Node* prev = temp -> back;
+    Node* nextNode = temp -> next;
+
+    if(nextNode == NULL){ // if it is last node
+        prev -> next = nullptr;
+        temp -> back = nullptr;
+        delete temp;
+        return;
+    }
+    prev -> next = nextNode; // bypass temp
+    nextNode -> back = prev; // bypass temp
+
+    temp -> next = temp -> back = nullptr; // disconnect temp
+    delete temp;
+]
