@@ -70,3 +70,4 @@ Node* removeAtPosition(Node* head, int pos){
         delete kNode;
         return head;
     }
+}
