@@ -1,6 +1,8 @@
 Node* insertBeforeHead(Node* head, int val){
-    Node* newHead = new Node(val, head, nullptr); //(val, next, prev);
-    if(head != nullptr){head -> prev = newHead;}
+    Node* newHead = new Node(val, head, nullptr); //(val, next, back);
+    if(head != nullptr){
+        head -> back = newHead;
+    }
     return newHead;
 }
 
