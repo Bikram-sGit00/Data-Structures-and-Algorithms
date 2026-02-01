@@ -24,7 +24,7 @@ Node* insertBeforeTail(Node* head, int val){
 Node* insertBeforePosition(Node* head, int val, int pos){
     if(pos == 1) return insertBeforeHead(head, val);
     Node* temp =  head;
-    int cnt =1;
+    int cnt = 0;
     while(temp != NULL){
         if(cnt == pos) break;
         temp = temp -> next;
@@ -36,5 +36,12 @@ Node* insertBeforePosition(Node* head, int val, int pos){
     temp -> back = newNode;
     
     return head;
-    
+}
+
+void insertBeforeNode(Node* givenNode,int val){
+    Node* prev = givenNode -> back;
+    Node* newNode = new Node(val, givenNode, prev);
+    prev -> next = newNode;
+    givenNode -> back = newNode;
+
 }
