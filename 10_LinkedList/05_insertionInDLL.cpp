@@ -1,6 +1,6 @@
 Node* insertBeforeHead(Node* head, int val){
     Node* newHead = new Node(val, head, nullptr); //(val, next, prev);
-    head -> prev = newHead;
+    if(head != nullptr){head -> prev = newHead;}
     return newHead;
 }
 
@@ -17,4 +17,22 @@ Node* insertBeforeTail(Node* head, int val){
     prev -> next = newNode;
     tail -> back = newNode;
     return head;
+}
+
+Node* insertBeforePosition(Node* head, int val, int pos){
+    if(pos == 1) return insertBeforeHead(head, val);
+    Node* temp =  head;
+    int cnt =1;
+    while(temp != NULL){
+        if(cnt == pos) break;
+        temp = temp -> next;
+        cnt++;
+    }
+    Node *prev = temp -> back;
+    Node* newNode = new Node(val, temp, prev); //(val, next, prev);
+    prev -> next = newNode;
+    temp -> back = newNode;
+    
+    return head;
+    
 }
