@@ -45,3 +45,51 @@ void insertBeforeNode(Node* givenNode,int val){
     givenNode -> back = newNode;
 
 }
+
+
+
+✅ --> https://www.geeksforgeeks.org/problems/insert-a-node-in-doubly-linked-list/1
+
+/*
+class Node {
+  public:
+    int data;
+    Node* next;
+    Node* prev;
+
+    Node(int x) {
+        data = x;
+        next = prev = nullptr;
+    }
+};
+*/
+class Solution {
+  public:
+    Node* insertAtPos(Node* head, int pos, int val) {
+
+        Node* newNode = new Node(val);
+
+        // Empty list
+        if (head == NULL) return newNode;
+
+        Node* temp = head;
+        int cnt = 0;
+
+        // Move temp to p-th node
+        while (temp->next != NULL && cnt < pos) {
+            temp = temp->next;
+            cnt++;
+        }
+
+        // Insert AFTER temp
+        newNode->next = temp->next;
+        newNode->prev = temp;
+
+        if (temp->next != NULL)
+            temp->next->prev = newNode;
+
+        temp->next = newNode;
+
+        return head;
+    }
+};
