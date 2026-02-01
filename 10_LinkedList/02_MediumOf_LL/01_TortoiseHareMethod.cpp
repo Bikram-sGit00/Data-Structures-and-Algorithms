@@ -23,6 +23,20 @@ public:
 // Time Complexity --> O(N)
 // Space Complexity --> O(1)
 
-✅ Optimized Approach --> 
+✅ Optimized Approach --> class Solution {
+public:
+    ListNode* middleNode(ListNode* head) {
+        ListNode* slow = head;
+        ListNode* fast = head;
+        while (fast != NULL && fast->next != NULL) {
+            slow = slow->next;
+            fast = fast->next->next;
+        }
+        return slow;
+    }
+};
 
-✅ Company Tags -->  
+// Time Complexity --> O(n/2)
+// Space Complexity --> O(1)
+
+✅ Company Tags -->  VMWare Zoho Flipkart Morgan Stanley Amazon Microsoft Samsung Hike Payu MAQ Software Adobe Wipro SAP Labs Qualcomm Nagarro GEVeritas IgniteWorld Netskope
