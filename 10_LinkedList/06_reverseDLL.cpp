@@ -30,8 +30,26 @@ struct Node* reverseDLL(struct Node* head) {
 // Time Complexity: O(2N)
 // Space Complexity: O(N)
 
-✅ Better Approach --> 
+✅ Optimized Approach --> class Solution {
+  public:
+    Node *reverse(Node *head) {
+        if(head == NULL || head -> next == NULL){
+            return head;
+        }
+        Node* prev = NULL;
+        Node* current = head;
+        while(current != NULL){ // swaping like swap (a,b) problem
+            prev = current -> prev; 
+            current -> prev = current -> next;
+            current -> next = prev;
+            
+            current = current -> prev; // forward in the original list not current -> next cause we swaped
+        }
+        return prev -> prev; // last_process -> prev or nulls previous
+    }
+};
 
-✅ Optimized Approach --> 
+// Time Complexity: O(N)
+// Space Complexity: O(1)
 
-✅ Company Tags -->  
+✅ Company Tags -->  D-E-Shaw Adobe
