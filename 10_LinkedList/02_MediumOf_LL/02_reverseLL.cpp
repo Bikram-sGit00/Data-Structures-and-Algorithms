@@ -1,4 +1,4 @@
-➡️ problemLinks --> https://leetcode.com/problems/reverse-linked-list/
+➡️ problemLinks --> https://leetcode.com/problems/reverse-linked-list/  && https://www.geeksforgeeks.org/problems/reverse-a-linked-list/1
 
 ✅ Brute Force -->  using stack to store the nodes and then pop them to reverse the linked list.
 class Solution {
@@ -61,4 +61,4 @@ public:
 
 ✅ Optimized Approach --> 
 
-✅ Company Tags -->  
+✅ Company Tags -->  Paytm VMWare Zoho Accolite Amazon Microsoft Samsung ....
