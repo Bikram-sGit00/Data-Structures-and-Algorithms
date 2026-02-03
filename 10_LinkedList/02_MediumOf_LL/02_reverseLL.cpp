@@ -59,6 +59,20 @@ public:
 // Time Complexity --> O(N)
 // Space Complexity --> O(1)
 
-✅ Optimized Approach --> 
+✅ Optimized Approach --> use recursion to reverse the linked list.
+class Solution {
+public:
+    ListNode* reverseList(ListNode* head) {
+        if (!head || !head->next) 
+            return head; 
+        ListNode* newHead = reverseList(head->next); // Recur for the rest of the list
+        ListNode* nextNode = head->next; // Store the next node
+        nextNode->next = head; // Reverse the link
+        head->next = NULL; // Set the current node's next to NULL
+        return newHead;
+    }
+};
 
+// Time Complexity --> O(N)
+// Space Complexity --> O(N) (due to recursion stack)
 ✅ Company Tags -->  Paytm VMWare Zoho Accolite Amazon Microsoft Samsung ....
