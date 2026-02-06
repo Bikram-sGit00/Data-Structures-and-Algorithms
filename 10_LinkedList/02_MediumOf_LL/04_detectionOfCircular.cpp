@@ -1,4 +1,4 @@
-➡️ problemLinks --> 
+➡️ problemLinks --> https://leetcode.com/problems/linked-list-cycle-ii/
 
 ✅ Brute Force -->  class Solution {
 public:
@@ -53,4 +53,48 @@ public:
 // Time Complexity: O(N) where N is the number of nodes in the linked list. In the worst case, we may traverse the entire list to find the cycle and then again to find the starting node of the cycle.
 // Space Complexity: O(1) as we are using only two pointers (slow and fast) to detect the cycle, and no additional data structures are used.
 
-✅ Company Tags -->  
+
+➡️ Another type problemLinks --> https://www.geeksforgeeks.org/problems/remove-loop-in-linked-list/1
+
+✅ Deletion of that Loop --> class Solution {
+  public:
+    void removeLoop(Node* head) {
+        if (!head || !head->next) return;
+        Node* slow = head;
+        Node* fast = head;
+
+        // Step 1: Detect loop
+        while (fast && fast->next) {
+            slow = slow->next;
+            fast = fast->next->next;
+
+            if (slow == fast) {
+
+                // Case 1: Loop starts at head
+                if (slow == head) {
+                    while (fast->next != head) {
+                        fast = fast->next;
+                    }
+                    fast->next = NULL;
+                    return;
+                }
+
+                // Case 2: Loop starts somewhere else
+                slow = head;
+                Node* prev = NULL;
+
+                while (slow != fast) {
+                    prev = fast;
+                    slow = slow->next;
+                    fast = fast->next;
+                }
+
+                prev->next = NULL; // break loop
+                return;
+            }
+        }
+    }
+};
+
+
+✅ Company Tags -->  VMWare Morgan Stanley Amazon Microsoft Snapdeal MakeMyTrip Oracle Walmart GoldmanSachs Adobe Qualcomm Kuliz aNetskope
