@@ -43,6 +43,29 @@ public:
 // Time Complexity: O(N), we traverse the entire linked list atleast once to find the length of the loop.
 // Space Complexity: O(N) , we use a map to store the timers for the nodes in the linked list.
 
-✅ Optimized Approach --> 
+✅ Optimized Approach --> class Solution {
+  public:
+    int lengthOfLoop(Node *head) {
+        Node* slow = head;
+        Node* fast = head;
+        while(fast != NULL && fast -> next != NULL){
+            slow = slow -> next;
+            fast = fast -> next -> next;
+            if(slow == fast){
+                int cnt = 1;
+                fast = fast -> next;
+                while(fast != slow){
+                    cnt++;
+                    fast = fast -> next;
+                }
+                return cnt;
+            }
+        }
+        return 0;
+    }
+};
+
+// Time Complexity: O(N), we traverse the entire linked list atleast once to find the length of the loop.
+// Space Complexity: O(1) , we use a constant amount of additional space, regardless of the linked list's length to find the length of the loop.
 
 ✅ Company Tags -->  
