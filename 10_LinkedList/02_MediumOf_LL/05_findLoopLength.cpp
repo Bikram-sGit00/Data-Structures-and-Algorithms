@@ -51,10 +51,10 @@ public:
         while(fast != NULL && fast -> next != NULL){
             slow = slow -> next;
             fast = fast -> next -> next;
-            if(slow == fast){
-                int cnt = 1;
-                fast = fast -> next;
-                while(fast != slow){
+            if(slow == fast){ 
+                int cnt = 1;  // starting count from 1 because we are already at the first node of the loop
+                fast = fast -> next; // move the fast pointer to the next node to start counting the loop length
+                while(fast != slow){ // we will keep moving the fast pointer until it meets the slow pointer again, counting the number of nodes in the loop
                     cnt++;
                     fast = fast -> next;
                 }
