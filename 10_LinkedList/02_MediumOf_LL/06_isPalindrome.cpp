@@ -23,8 +23,47 @@ public:
 // Time Complexity: O(N) + O(N)  --> O(2N) or O(N)✔️
 // Space Complexity: O(N)  --> for stack
 
-✅ Better Approach --> 
 
-✅ Optimized Approach --> 
+✅ Optimized Approach --> ListNode* reverseList(ListNode* head) {
+    ListNode* temp = head;
+    ListNode* prev = NULL; 
+    while (temp != NULL) {
+        ListNode* nextNode = temp->next;
+        temp->next = prev;
+        prev = temp;
+        temp = nextNode;
+    }
+    return prev;
+}
 
-✅ Company Tags -->  
+class Solution {
+public:
+    bool isPalindrome(ListNode* head) {
+        if (!head || !head->next)
+            return true;
+        ListNode* slow = head;
+        ListNode* fast = head;
+        while (fast->next != NULL && fast->next->next != NULL) {
+            slow = slow->next;
+            fast = fast->next->next;
+        }
+        ListNode* newHead = reverseList(slow->next);
+        ListNode* firstPointer = head;
+        ListNode* secondPointer = newHead;
+        while (secondPointer != NULL) {
+            if (firstPointer->val != secondPointer->val) {
+                reverseList(newHead);
+                return false;
+            }
+            firstPointer = firstPointer->next;
+            secondPointer = secondPointer->next;
+        }
+        reverseList(newHead);
+        return true;
+    }
+};
+
+// Time Complexity: O(N)  --> for finding the middle and reversing the second half of the linked list
+// Space Complexity: O(1)  --> for using only constant space to store the pointers and reverse the linked list in place
+
+✅ Company Tags -->  Accolite Amazon Microsoft Snapdeal MakeMyTrip Adobe Yodlee Infotech KLA Tencor KritikalSolutions
