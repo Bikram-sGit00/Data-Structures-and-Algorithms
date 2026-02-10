@@ -46,8 +46,26 @@ public:
 // Time Complexity: O(n) for traversing the linked list and O(n) for overwriting values, resulting in O(n) overall.
 // Space Complexity: O(n) for storing the values in the vector.
 
-✅ Better Approach --> 
+✅ Optimized Approach --> class Solution {
+public:
+    ListNode* oddEvenList(ListNode* head) {
+        if(head == NULL || head->next ==NULL) return head;
+        ListNode* odd = head;
+        ListNode* even = head->next;
+        ListNode* evenHead = head->next;
+        while (even != NULL && even->next != NULL) {
+            odd->next = odd->next->next;
+            even->next = even->next->next;
 
-✅ Optimized Approach --> 
+            odd = odd->next;
+            even = even->next;
+        }
+        odd->next = evenHead;
+        return head;
+    }
+};
+
+// Time Complexity: O(n) where n is the number of nodes in the linked list, as we traverse the list once.
+// Space Complexity: O(1) as we are using only a constant amount of extra space for pointers.
 
 ✅ Company Tags -->  
