@@ -58,6 +58,27 @@ public:
 // Space Complexity: O(1), constant additional space is used.
 
 
-✅ Optimized Approach --> 
+✅ Optimized Approach --> class Solution {
+public:
+    ListNode* removeNthFromEnd(ListNode* head, int n) {
+        ListNode* fast = head;
+        ListNode* slow = head;
+        for (int i = 0; i < n; i++)
+            fast = fast->next;
+        if (fast == NULL)
+            return head->next;
+        while (fast->next != NULL) {
+            fast = fast->next;
+            slow = slow->next;
+        }
+        ListNode* toBeDel = slow->next;
+        slow->next = slow->next->next;
+        delete toBeDel;  // optional , not needed in leetcode
+        return head;
+    }
+};
+
+// Time Complexity: O(len)
+// Space Complexity: O(1) 
 
 ✅ Company Tags -->  
