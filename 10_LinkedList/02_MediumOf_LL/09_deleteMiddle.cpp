@@ -50,9 +50,35 @@ public:
     }
 };
 
+// Time Complexity: O(L + L/2) 
+// Space Complexity: O(1), constant additional space is used.
 
-✅ Better Approach --> 
+✅ Optimized Approach --> class Solution {
+public:
+    ListNode* deleteMiddle(ListNode* head) {
+        if (head == NULL || head->next == NULL)
+            return NULL;
+        ListNode* slow = head;
+        ListNode* fast = head;
+        // fast starts from head->next->next instead of head
+        // so that slow stops exactly at (middle - 1)
+        fast = head->next->next;
 
-✅ Optimized Approach --> 
+        // Move fast by 2 steps and slow by 1 step
+        // When fast reaches the end, slow is just before middle
+        while (fast != NULL && fast->next != NULL) {
+            slow = slow->next;
+            fast = fast->next->next;
+        }
+        ListNode* toBeDel = slow->next;
+        slow->next = slow->next->next;
+        // Free memory of the deleted node (important in C++)
+        delete toBeDel;
+        return head;
+    }
+};
+
+// Time Complexity: O(n/2);
+// Space Complexity: O(1), constant additional space is used.
 
 ✅ Company Tags -->  Flipkart Amazon Microsoft
