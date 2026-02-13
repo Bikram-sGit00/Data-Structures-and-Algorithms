@@ -53,3 +53,6 @@ public:
         mS(arr, 0, arr.size() - 1); // passing the given array and starting and ending index of the array
     }
 };
+
+// Time Complexity: O(N log N) [N is the number of elements in the array]
+// Space Complexity: O(N) [N is the number of elements in the array]
