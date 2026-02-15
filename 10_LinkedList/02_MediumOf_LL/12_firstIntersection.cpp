@@ -20,6 +20,26 @@ public:    ListNode *getIntersectionNode(ListNode *headA, ListNode *headB) {
 
 ✅ Better Approach --> 
 
-✅ Optimized Approach --> 
+✅ Optimized Approach --> class Solution {
+public:
+    ListNode *getIntersectionNode(ListNode *headA, ListNode *headB) {
+        if(headA == NULL || headB == NULL) return NULL;
+        ListNode* T1 = headA;
+        ListNode* T2 = headB;
 
-✅ Company Tags -->  
+        while(T1 != T2){
+            T1 = T1 -> next;
+            T2 = T2 -> next;
+
+            if(T1 == T2) return T1; // also covers null condition , as it that case T1 = T2 = NULL
+
+            if(T1 == NULL) T1 = headB;
+            if(T2 == NULL) T2 = headA;
+        }
+        return T1;
+    }
+};
+
+// Time Complexity --> O(n+m)  &&  Space Complexity --> O(1) ;
+
+✅ Company Tags -->  VMWare Flipkart Accolite Amazon Microsoft 24*7 Innovation Labs D-E-Shaw Walmart Komli Media Taxi4Sures
