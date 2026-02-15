@@ -42,4 +42,35 @@ public:
 
 // Time Complexity --> O(n+m)  &&  Space Complexity --> O(1) ;
 
+✅ GFG version : Have to return all intersections...
+class Solution {
+public:
+    Node* findIntersection(Node* head1, Node* head2) {
+        unordered_map<int, int> mp;
+
+        // Step 1: store frequency of list2
+        while (head2 != NULL) {
+            mp[head2->data]++;
+            head2 = head2->next;
+        }
+
+        Node* dummy = new Node(-1);
+        Node* tail = dummy;
+
+        // Step 2: traverse list1 and build result
+        while (head1 != NULL) {
+            if (mp[head1->data] > 0) {
+                tail->next = new Node(head1->data);
+                tail = tail->next;
+                mp[head1->data]--;
+            }
+            head1 = head1->next;
+        }
+
+        return dummy->next;
+    }
+};
+
+// Time Complexity --> O(n+m)  &&  Space Complexity --> O(n) ;
+
 ✅ Company Tags -->  VMWare Flipkart Accolite Amazon Microsoft 24*7 Innovation Labs D-E-Shaw Walmart Komli Media Taxi4Sures
