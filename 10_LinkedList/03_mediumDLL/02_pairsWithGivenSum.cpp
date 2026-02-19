@@ -6,25 +6,25 @@ class Solution
 public:
     int countPairs(struct Node* head, int x)
     {
-        int count = 0;
+        vector<pair<int, int>> ans;
+        if(head == NULL) return ans;
         Node* temp1 = head;
         while(temp1 != NULL){
             Node* temp2 = temp1->next;
             while(temp2 != NULL && temp1 -> data + temp2 -> data <= x){
                 if(temp1->data + temp2->data == x){
-                    count++;
+                    ans.push_back({temp1->data, temp2->data});
                 }
                 temp2 = temp2->next;
             }
             temp1 = temp1->next;
         }
-        return count;
+        return ans;
     }
 };
 
 // Time Complexity: O(n^2) ,near about 
 // Space Complexity: O(1)
 
-✅ Optimized Approach --> 
 
 ✅ Company Tags -->  
