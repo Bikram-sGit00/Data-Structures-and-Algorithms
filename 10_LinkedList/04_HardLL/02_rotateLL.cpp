@@ -41,4 +41,43 @@ public:
 // Time Complexity: O(2N)
 // Space Complexity: O(1)
 
+✅ GFG version --> class Solution {
+  public:
+    Node* rotate(Node* head, int k) {
+        if (head == NULL || head->next == NULL || k == 0)
+            return head;
+
+        // Find length and tail
+        Node* tail = head;
+        int len = 1;
+        while (tail->next != NULL) {
+            tail = tail->next;
+            len++;
+        }
+
+        k = k % len;
+        if (k == 0)
+            return head;
+
+        // Find kth node
+        Node* curr = head;
+        for (int i = 1; i < k; i++) {
+            curr = curr->next;
+        }
+
+        Node* newHead = curr->next;
+
+        // Make circular
+        tail->next = head;
+
+        // Break
+        curr->next = NULL;
+
+        return newHead;
+    }
+};
+
+// Time Complexity: O(2N)
+// Space Complexity: O(1)
+
 ✅ Company Tags -->  Accolite Amazon Microsoft MakeMyTrip
