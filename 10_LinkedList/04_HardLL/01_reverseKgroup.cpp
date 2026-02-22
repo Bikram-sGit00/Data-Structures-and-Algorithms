@@ -51,4 +51,35 @@ public:
     }
 };
 
+✅ GFG version --> class Solution {
+public:
+    Node* reverseKGroup(Node* head, int k) {
+        if (head == NULL) return NULL;
+
+        Node* curr = head;
+        Node* prev = NULL;
+        Node* next = NULL;
+
+        int count = 0;
+
+        // Reverse first k nodes (or remaining nodes if < k)
+        while (curr != NULL && count < k) {
+            next = curr->next;
+            curr->next = prev;
+            prev = curr;
+            curr = next;
+            count++;
+        }
+
+        // Now head becomes the last node of this reversed group
+        // Connect it with result of next recursive call
+        if (next != NULL) {
+            head->next = reverseKGroup(next, k);
+        }
+
+        // prev is new head of this group
+        return prev;
+    }
+};
+
 ✅ Company Tags -->  Paytm VMWare Accolite Amazon Microsoft Snapdeal Hike MakeMyTrip Walmart GoldmanSachs Adobe SAPLabs
