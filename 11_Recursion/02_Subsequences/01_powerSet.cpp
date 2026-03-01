@@ -1,9 +1,5 @@
 ➡️ problemLinks --> 
 
-✅ Brute Force -->  
-
-✅ Better Approach --> 
-
 ✅ Optimized Approach ( GFG Version ) --> class Solution {
   public:
     vector<string> AllPossibleStrings(string s) {
@@ -49,5 +45,51 @@
 
 // Time Complexity: O(n * 2^n) because we generate 2^n subsequences and each subsequence can take O(n) time to construct.
 // Space Complexity: O(n * 2^n) because we store all subsequences and each subsequence can be up to length n.
+
+✅ Optimized Approach ( LeetCode Version ) --> class Solution {
+public:
+    vector<vector<int>> subsets(vector<int>& nums) {
+        
+        // Length of input array
+        int n = nums.size();
+        
+        // Total subsets = 2^n (1<<n is faster than pow(2,n))
+        // Each bit position represents include(1) or exclude(0) for that number
+        int total = 1 << n;
+        
+        // Stores all subsets (each subset is a vector<int>, so result is vector of vectors)
+        vector<vector<int>> result;
+        
+        // Start from 0 (NOT 1) to INCLUDE empty subset []
+        // selector=0 means all bits OFF = no elements selected = empty subset []
+        for(int selector = 0; selector < total; selector++){
+            
+            // Fresh empty vector for EACH selector (each selector = one unique subset)
+            vector<int> subset;
+            
+            // Check each index position
+            for(int i = 0; i < n; i++){
+                
+                // (1<<i) creates number with ONLY i-th bit set
+                // & (bitwise AND) checks if i-th bit is ON in selector
+                // if ON → include nums[i] in this subset
+                // NOTE: always use & not && (&& is for true/false, & is for bit checking)
+                if(selector & (1 << i)){
+                    subset.push_back(nums[i]);  // push integer into subset vector
+                }
+            }
+            
+            // Push completed subset into result
+            // push_back(subset) not push_back(result) — push the subset, not the result itself
+            result.push_back(subset);
+        }
+        
+        // No sorting needed — problem accepts any order
+        return result; 
+    }
+};
+
+// Time Complexity: O(n * 2^n) because we generate 2^n subsets and each subset can take O(n) time to construct.
+// Space Complexity: O(n * 2^n) because we store all subsets and each subset can be up to length n.
 
 ✅ Company Tags -->  
