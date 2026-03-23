@@ -56,6 +56,14 @@ public:
     }
 };
 
+// Overall TC → O(N! × N)
+// O(N!) for state exploration
+// O(N) for each isSafe() call
+
+// Overall SC → O(N²) (excluding output)
+// Board → O(N²)
+// Recursion stack → O(N) depth
+// Output storage → O(Solutions × N²)
 
 
 ✅ Optimized Approach --> 
