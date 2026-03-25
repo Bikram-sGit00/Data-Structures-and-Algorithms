@@ -113,3 +113,56 @@ public:
 // Board → O(N²)
 // Additional space for tracking constraints → O(N)
 
+✅ GFG Version -->  class Solution {
+  public:
+  
+      void solve(int col, vector<string>& board, vector<vector<int>>& ans,
+               vector<int>& leftRow, vector<int>& lowerDiag,
+               vector<int>& upperDiag, int n) {
+            if (col == n) {
+              vector<int> temp;
+             for (int i = 0; i < n; i++) {
+              for (int j = 0; j < n; j++) {
+            if (board[i][j] == 'Q')
+                temp.push_back(j + 1);  // 1-indexed column position
+        }
+    }
+    ans.push_back(temp);
+    return;
+}
+        for (int row = 0; row < n; row++) {
+            if (leftRow[row] == 0 && lowerDiag[row + col] == 0 &&
+                upperDiag[n - 1 + col - row] == 0) {
+                board[row][col] = 'Q';
+                leftRow[row] = 1;
+                lowerDiag[row + col] = 1;
+                upperDiag[n - 1 + col - row] = 1;
+
+                solve(col + 1, board, ans, leftRow, lowerDiag, upperDiag, n);
+
+                board[row][col] = '.';
+                leftRow[row] = 0;
+                lowerDiag[row + col] = 0;
+                upperDiag[n - 1 + col - row] = 0;
+            }
+        }
+    }
+  
+    vector<vector<int>> nQueen(int n) {
+        vector<vector<int>> ans;
+        vector<string> board(n);
+        string s(n, '.'); // n size doted board
+        for (int i = 0; i < n; i++) {
+            board[i] = s;
+        }
+        vector<int> leftRow(n, 0), lowerDiag(2 * n - 1, 0),
+            upperDiag(2 * n - 1, 0);
+        solve(0, board, ans, leftRow, lowerDiag, upperDiag, n);
+        return ans;
+    }
+};
+
+// Overall TC → O(N!)
+// Overall SC → O(N²) (excluding output)
+
+✅ Company Tags -->  Accolite Amazon Microsoft D-E-Shaw Visa MAQSoftware Amdocs Twitter NPCI
