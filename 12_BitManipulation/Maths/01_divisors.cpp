@@ -1,3 +1,5 @@
+https://www.geeksforgeeks.org/problems/all-divisors-of-a-number/1
+
 vector<int> ls;      // Stores all divisors of n
 
 // =======================================================
@@ -83,5 +85,5 @@ for (int i = 1; i * i <= n; i++)
     }
 }
 
-// Time Complexity: O(sqrt(n)) + O(k*log(k))
-// Space Complexity: O(k) where k = number of divisors of n
+// Time Complexity: O(sqrt(n))
+// Space Complexity: O(sqrt(n))
