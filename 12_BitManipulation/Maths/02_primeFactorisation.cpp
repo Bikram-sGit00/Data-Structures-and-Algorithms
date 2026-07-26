@@ -1,4 +1,4 @@
-➡️ problemLinks --> 
+➡️ problemLinks --> https://www.geeksforgeeks.org/problems/prime-factor-of-a-number/1
 
 ✅ Optimized Approach --> class Solution {
 	public:
