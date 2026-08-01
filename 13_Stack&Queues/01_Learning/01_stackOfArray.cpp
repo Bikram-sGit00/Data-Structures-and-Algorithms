@@ -1,4 +1,4 @@
-➡️ problemLinks --> 
+➡️ problemLinks --> https://www.geeksforgeeks.org/problems/implement-stack-using-array/1
 
 ✅ Optimized Approach --> class myStack {
     // Pointer to dynamically allocated array (size is known only at runtime)
