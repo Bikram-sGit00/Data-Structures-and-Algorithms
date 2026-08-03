@@ -101,7 +101,7 @@ public:
 };
 
 Time Complexity : 
-- push(): O(n) - due to moving elements between stacks
+- push(): O(2n) - due to moving elements between stacks
 - pop(): O(1) - direct access to top element of s1
 - peek(): O(1) - direct access to top element of s1
 - empty(): O(1) - direct check of s1's empty status
