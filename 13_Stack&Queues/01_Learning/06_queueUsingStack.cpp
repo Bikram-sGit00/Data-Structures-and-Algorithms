@@ -1,6 +1,7 @@
 ➡️ problemLinks --> https://leetcode.com/problems/implement-queue-using-stacks/description/  &&  https://www.geeksforgeeks.org/problems/queue-using-stack/1
 
-✅ Brute Force -->  class MyQueue {
+✅ Pop & Top Optimized Code -->  Here Push is costly and Pop & Top are O(1) operations. 
+class MyQueue {
     // s1 always stores the queue in correct order
     // s2 is a temporary stack used only during push()
     stack<int> s1, s2;
@@ -106,9 +107,8 @@ Time Complexity :
 - peek(): O(1) - direct access to top element of s1
 - empty(): O(1) - direct check of s1's empty status
 
-✅ Better Approach --> 
+Space Complexity : O(n) - where n is the number of elements in the queue, as all elements are stored in s1.
 
-✅ Optimized Approach --> 
 
 ✅ Company Tags -->  Microsoft
 
