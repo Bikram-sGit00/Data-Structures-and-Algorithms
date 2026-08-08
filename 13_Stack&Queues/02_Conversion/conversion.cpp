@@ -57,8 +57,8 @@ void infixToPostfix(string s) {
 }
 
 Time Complexity :  
-
 Space Complexity :  
+
 
 ✅ infix to prefix --> 
 // Function to check if a character is an operator
@@ -158,7 +158,8 @@ string infixToPrefix(string infix) {
 }
 
 Time Complexity :  
-
 Space Complexity :  
+
+
 
 ✅ Company Tags -->  
