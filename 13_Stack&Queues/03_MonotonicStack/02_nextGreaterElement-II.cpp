@@ -32,10 +32,42 @@ Time Complexity :  O(n^2)
 
 Space Complexity : O(n)
 
-✅ Optimized Approach --> 
+✅ Optimized Approach --> class Solution {
+public:
+    vector<int> nextGreaterElements(vector<int>& arr) {
 
-Time Complexity :  
+        int n = arr.size();
+        stack<int> st;
+        vector<int> NGE(n, -1);
 
-Space Complexity :  
+        // Traverse 2N times → simulates the circular array
+        // i % n brings the virtual index back into [0, n-1]
+        for(int i = 2 * n - 1; i >= 0; i--) {
 
-✅ Company Tags -->  
+            int indx = i % n;
+
+            // Remove useless candidates:
+            // <= current can NEVER be the next greater element
+            while(!st.empty() && st.top() <= arr[indx]) {
+                st.pop();
+            }
+
+            // Only fill answers during the actual first pass
+            // During the extra pass, we only build useful stack information
+            if(i < n && !st.empty()) {
+                NGE[indx] = st.top();
+            }
+
+            // Current element becomes a candidate for elements on its left
+            st.push(arr[indx]);
+        }
+
+        return NGE;
+    }
+};
+
+Time Complexity : O(4n)
+
+Space Complexity : O(2n) + O(n)
+
+✅ Company Tags --> Flipkart Amazon Microsoft
