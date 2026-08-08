@@ -61,3 +61,48 @@ public:
 Time Complexity : O(2n) , cause while loop can run for total n times in worst case, so O(n+n) = O(2n) = O(n)
 Space Complexity : O(n) + O(n) = O(2n) = O(n) , cause we are using stack and vector of size n
 
+✅ Leetcode Version --> class Solution {
+public:
+    vector<int> nextGreaterElement(vector<int>& nums1, vector<int>& nums2) {
+
+        stack<int> st;
+        unordered_map<int, int> mpp;
+        vector<int> ans;
+
+        // nums2 = MAIN array → find NGE for every element
+        // Traverse RIGHT → LEFT because NGE exists on the right
+        for(int i = nums2.size() - 1; i >= 0; i--) {
+
+            // Eliminate useless candidates:
+            // <= current can NEVER be the next greater element
+            while(!st.empty() && st.top() <= nums2[i]) {
+                st.pop();
+            }
+
+            // Stack top = nearest greater element after removing useless ones
+            // Example: nums2 = [1,3,4,2] → NGE(1) = 3
+            if(st.empty()) {
+                mpp[nums2[i]] = -1;
+            }
+            else {
+                mpp[nums2[i]] = st.top();
+            }
+
+            // Current may be the NGE for elements to its left
+            st.push(nums2[i]);
+        }
+
+        // nums1 = QUERY array → fetch precomputed NGE from the map
+        // Example: mpp[4] = -1, mpp[1] = 3
+        for(auto x : nums1) {
+            ans.push_back(mpp[x]);
+        }
+
+        return ans;
+    }
+};
+
+Time Complexity : O(n + m) , cause we are traversing both arrays once, where n = nums1.size() and m = nums2.size()
+Space Complexity : O(n + m) , cause we are using stack and map of size m and vector of size n
+
+✅ Company Tags --> Flipkart Amazon Microsoft MakeMyTrip Adobe 
