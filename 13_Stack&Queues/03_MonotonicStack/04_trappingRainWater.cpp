@@ -72,10 +72,44 @@ public:
 Time Complexity : O(3N) ~ O(N)
 Space Complexity : O(2N) ~ O(N)
 
-✅ Optimized Approach --> 
 
-Time Complexity :  
+✅ Optimized Approach --> class Solution {
+public:
+int trap(vector<int>& height) {
+int n = height.size();
+int l = 0;
+int r = n - 1;
+int leftMax = 0;
+int rightMax = height[n-1];
+int totalWater = 0;
 
-Space Complexity :  
+    // 🚀 Two pointers scan inward from both boundaries
+    while(l < r){
+        // 🧠 Process the side with the smaller current boundary
+        if(height[l] <= height[r]){
+            // 💧 Existing left wall traps water
+            if(leftMax > height[l]) totalWater += (leftMax - height[l]);
+            
+            // 🧱 New highest left wall found
+            else leftMax = height[l];
+            
+            l++;
+        }
+        else{
+            // 💧 Existing right wall traps water
+            if(rightMax > height[r]) totalWater += (rightMax - height[r]);
+            
+            // 🧱 New highest right wall found
+            else rightMax = height[r];
+            
+            r--;
+        }
+    }
+    return totalWater;
+    }
+};
+
+Time Complexity :  O(n)
+Space Complexity :  O(1)
 
 ✅ Company Tags -->  Flipkart Amazon Microsoft Google GoldmanSachs Adobe
