@@ -73,6 +73,42 @@ Time Complexity : O(3N) ~ O(N)
 Space Complexity : O(2N) ~ O(N)
 
 
+✅ Improved Better Approach (Space Optimized) --> class Solution {
+public:
+int trap(vector<int>& arr) {
+int n = arr.size();
+int total = 0;
+
+    // 🚀 Store only the right-side skyline
+    // Example: [4,2,0,3,2,5]
+    // rightMax → [5,5,5,5,5,5]
+    vector<int> rightMax(arr.size());
+    rightMax[n - 1] = arr[n - 1];
+
+    // 🔄 Build maximum wall from right → left
+    for (int i = n - 2; i >= 0; i--) {
+        rightMax[i] = max(rightMax[i + 1], arr[i]);
+    }
+
+    int leftMax = 0;
+
+    // 🚀 Left maximum travels with us as a single variable
+    for (int i = 0; i < arr.size(); i++) {
+        leftMax = max(leftMax, arr[i]);
+
+        // 💧 Smaller wall decides the water level
+        if (arr[i] < leftMax && arr[i] < rightMax[i]) {
+            total += min(leftMax, rightMax[i]) - arr[i];
+        }
+    }
+
+    return total;
+    }
+};
+
+Time Complexity : O(2N) ~ O(N)
+Space Complexity : O(N)
+
 ✅ Optimized Approach --> class Solution {
 public:
 int trap(vector<int>& height) {
