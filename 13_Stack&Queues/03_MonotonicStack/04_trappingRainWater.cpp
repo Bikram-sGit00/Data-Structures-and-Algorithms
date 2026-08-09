@@ -33,11 +33,44 @@ Time Complexity : O(n^2)
 
 Space Complexity : O(1)
 
-✅ Better Approach --> 
+✅ Better Approach --> class Solution {
+public:
+    int trap(vector<int>& arr) {
+        int n = arr.size();
+        int total = 0;
 
-Time Complexity :  
+        vector<int> leftMax(arr.size());
+        vector<int> rightMax(arr.size());
 
-Space Complexity :  
+        // 🚀 Left skyline: carry the highest wall seen so far
+        leftMax[0] = arr[0];
+
+        // ⚠️ Start from 1 — index 0 is already initialized
+        for (int i = 1; i < arr.size(); i++) {
+            leftMax[i] = max(leftMax[i - 1], arr[i]);
+        }
+
+        // 🚀 Right skyline: carry the highest wall from the right
+        rightMax[n - 1] = arr[n - 1];
+
+        // ⚠️ Start from n-2 — last index is already initialized
+        for (int i = n - 2; i >= 0; i--) {
+            rightMax[i] = max(rightMax[i + 1], arr[i]);
+        }
+
+        // 💧 Smaller boundary decides how much water survives
+        for (int i = 0; i < arr.size(); i++) {
+            if (arr[i] < leftMax[i] && arr[i] < rightMax[i]) {
+                total += min(leftMax[i], rightMax[i]) - arr[i];
+            }
+        }
+
+        return total;
+    }
+};
+
+Time Complexity : O(3N) ~ O(N)
+Space Complexity : O(2N) ~ O(N)
 
 ✅ Optimized Approach --> 
 
