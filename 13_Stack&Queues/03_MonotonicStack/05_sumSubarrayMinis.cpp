@@ -1,10 +1,28 @@
-➡️ problemLinks --> 
+➡️ problemLinks --> https://leetcode.com/problems/sum-of-subarray-minimums/  &&  https://www.geeksforgeeks.org/problems/sum-of-subarray-minimum/1
 
-✅ Brute Force -->  
+✅ Brute Force -->  class Solution {
+public:
+    int sumSubarrayMins(vector<int>& arr) {
+        int n = arr.size(); // Array size
+        long long ans = 0; // Stores sum of all subarray minimums
+        int mod = 1e9 + 7; // Prevents answer from getting too large
 
-Time Complexity : 
+        for (int i = 0; i < n; i++) { // Fix starting point of subarray
+            int mini = arr[i]; // Minimum of current subarray starts as arr[i]
 
-Space Complexity : 
+            for (int j = i; j < n; j++) { // Extend subarray one element at a time
+                mini = min(mini, arr[j]); // Update minimum after adding arr[j]
+
+                ans = (ans + mini) % mod; // Add current subarray's minimum
+            }
+        }
+
+        return ans; // Return final sum
+    }
+};
+
+Time Complexity : O(n^2)
+Space Complexity : O(1)
 
 ✅ Optimized Approach --> class Solution {
 public:
