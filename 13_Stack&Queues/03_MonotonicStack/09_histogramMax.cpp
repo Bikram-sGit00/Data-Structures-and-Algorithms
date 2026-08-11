@@ -1,16 +1,76 @@
 ➡️ problemLinks --> 
 
-✅ Brute Force -->  
+✅ Brute Force --> 
+class Solution {
+public:
 
-Time Complexity : 
+    vector<int> findNSE(vector<int>& heights, int n) {
+        stack<int> st;
+        vector<int> NSE(n);
 
-Space Complexity : 
+        for(int i = n - 1; i >= 0; i--) {
+            // Remove elements >= current → need strictly smaller
+            while(!st.empty() && heights[st.top()] >= heights[i]) {
+                st.pop();
+            }
 
-✅ Better Approach --> 
+            // No smaller element → boundary is n
+            NSE[i] = st.empty() ? n : st.top();
 
-Time Complexity : 
+            // Store index, not element
+            st.push(i);
+        }
 
-Space Complexity : 
+        return NSE;
+    }
+
+
+    vector<int> findPSE(vector<int>& heights, int n) {
+        stack<int> st;
+        vector<int> PSE(n);
+
+        for(int i = 0; i < n; i++) {
+            // Remove elements >= current → need strictly smaller
+            while(!st.empty() && heights[st.top()] >= heights[i]) {
+                st.pop();
+            }
+
+            // No smaller element → boundary is -1
+            PSE[i] = st.empty() ? -1 : st.top();
+
+            // Store index, not element
+            st.push(i);
+        }
+
+        return PSE;
+    }
+
+
+    int largestRectangleArea(vector<int>& heights) {
+        int n = heights.size();
+        int maxArea = 0;
+
+        vector<int> NSE = findNSE(heights, n);
+        vector<int> PSE = findPSE(heights, n);
+
+        for(int i = 0; i < n; i++) {
+
+            // Width between PSE and NSE
+            int width = NSE[i] - PSE[i] - 1;
+
+            // Area = height × width
+            int area = heights[i] * width;
+
+            maxArea = max(maxArea, area);
+        }
+
+        return maxArea;
+    }
+};
+
+Time Complexity : 2 x O(2n) + O(n) => O(5n)
+
+Space Complexity : O(4n)
 
 ✅ Optimized Approach --> 
 class Solution {
