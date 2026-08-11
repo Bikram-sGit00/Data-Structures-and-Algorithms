@@ -1,4 +1,4 @@
-➡️ problemLinks --> 
+➡️ problemLinks --> https://leetcode.com/problems/largest-rectangle-in-histogram/  &&  https://www.geeksforgeeks.org/problems/maximum-rectangular-area-in-a-histogram-1587115620/1
 
 ✅ Brute Force --> 
 class Solution {
