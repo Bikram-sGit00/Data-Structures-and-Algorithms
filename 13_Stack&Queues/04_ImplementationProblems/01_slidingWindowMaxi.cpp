@@ -1,10 +1,26 @@
 ➡️ problemLinks --> https://leetcode.com/problems/sliding-window-maximum/  &&  https://www.geeksforgeeks.org/problems/maximum-of-all-subarrays-of-size-k3101/1
 
-✅ Brute Force -->  
+✅ Brute Force --> class Solution {
+public:
+    vector<int> maxSlidingWindow(vector<int>& nums, int k) {
+        int n = nums.size();
+        vector<int> list1;
+        int maxi = 0;
 
-Time Complexity : 
+        for(int i = 0;i<n-k+1;i++){
+            maxi = nums[i];
+            for(int j = i;j<=i+k-1;j++){ // or j < i + k
+                maxi = max(maxi,nums[j]);
+            }
+            list1.push_back(maxi);
+        }
+        return list1;
+    }
+}; 
 
-Space Complexity : 
+Time Complexity : O(N - K) * K 
+
+Space Complexity : O(N - k)
 
 ✅ Optimized Approach --> class Solution {
 public:
