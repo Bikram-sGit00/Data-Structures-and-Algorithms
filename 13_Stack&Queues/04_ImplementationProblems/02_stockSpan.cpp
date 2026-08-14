@@ -113,5 +113,61 @@ Time Complexity : O(≈ 2N) = O(n) amortized — each element is pushed once + p
 
 Space Complexity : O(n)
 
+✅ GFG Version -->  class Solution {
+	public:
+	vector<int> calculateSpan(vector<int>& arr) {
+		// Stock Span = number of consecutive days up to current day
+		// whose price is <= current day's price.
+		//
+		// Optimal idea:
+		// Find the Previous Greater Element (PGE) using a monotonic stack.
+		// Stack stores {price, index}.
+
+		int n = arr.size();
+		stack<pair<int, int>> st;
+		vector<int> ans(n);
+		int PGEindx = -1;
+		
+		for (int i = 0; i<n; i++) {
+
+			// Remove all previous prices <= current price.
+			// They cannot be the PGE of the current price.
+			//
+			// Example: [100, 80, 90] -> for 90, remove 80.
+			while(!st.empty() && st.top().first <= arr[i]){
+			    st.pop();
+			}
+
+			// After popping, stack.top() is the nearest Previous
+			// Greater Element (PGE).
+			//
+			// If stack is empty, no PGE exists, so use -1.
+			PGEindx = st.empty() ? -1 : st.top().second;
+
+			// Span = current index - PGE index.
+			//
+			// Example: current index = 2, PGE index = 0
+			// Span = 2 - 0 = 2.
+			//
+			// If no PGE exists:
+			// PGEindx = -1 -> span = i - (-1) = i + 1.
+			// Example: i = 3 -> span = 3 - (-1) = 4.
+			ans[i] = i - PGEindx;
+
+			// Store current {price, index} so it can act as
+			// a PGE for future prices.
+			//
+			// IMPORTANT: Don't clear the stack.
+			// It carries useful previous greater elements forward.
+			st.push({arr[i], i});
+			
+		}
+		return ans;
+	}
+};
+
+TC = O(n) amortized — each element is pushed once + popped at most once (≈ 2n operations); SC = O(n) — stack stores at most n {price,index} pairs + ans[n].
+
+
 ✅ Company Tags -->  Flipkart Accolite Amazon Microsoft Samsung Adobe NPCI
 
