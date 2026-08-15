@@ -30,6 +30,34 @@ Time Complexity : O(n^2) --> for traversing the matrix
 Space Complexity : O(2n) --> for storing the knows and knownBy arrays
 
 
+
+✅ Better Approach -->  class Solution {
+public:
+    int celebrity(vector<vector<int>>& mat) {
+        int n = mat.size();
+
+        for(int i = 0; i < n; i++) { // try every person as a possible celebrity
+            bool celebrity = true;
+
+            for(int j = 0; j < n; j++) { // check this person against everyone
+                if(i == j) continue;                   // skip checking the person against themselves
+
+                if(mat[i][j] == 1 || mat[j][i] == 0) { // celebrity knows someone OR someone doesn't know them
+                    celebrity = false;
+                    break; // no need to check further
+                }
+            }
+
+            if(celebrity) return i; // all conditions passed → found celebrity
+        }
+
+        return -1; // no celebrity exists
+    }
+};
+
+Time Complexity : O(n^2)
+Space Complexity : O(1)
+
 ✅ Optimized Approach --> 
 
 Time Complexity : 
