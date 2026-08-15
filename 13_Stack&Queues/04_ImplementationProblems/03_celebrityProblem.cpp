@@ -58,10 +58,40 @@ public:
 Time Complexity : O(n^2)
 Space Complexity : O(1)
 
-✅ Optimized Approach --> 
 
-Time Complexity : 
 
-Space Complexity : 
+✅ Optimized Approach --> class Solution {
+	public:
+	int celebrity(vector<vector<int>> & mat) {
+		// code here
+		int n = mat.size(); // number of people
+		int top = 0; // left candidate
+		int down = n - 1; // right candidate
+		
+		while (top<down) {
+			if (mat[top][down] == 1) top++;       // top knows down → top cannot be celebrity
+			else if (mat[down][top] == 1) down--; // down knows top → down cannot be celebrity
+			else top ++, down --;                 // both can't be celebrity → eliminate both
+		}
+
+		if(top > down) return -1;         // no candidate remains
+
+		else{
+		    for(int i=0;i<n;i++){
+		        if(i == top) continue;    // skip checking the candidate against itself
+
+		        if(mat[top][i]== 0 && mat[i][top] == 1)
+		            continue;             // top knows nobody and everybody knows top
+		        else
+		            return -1;            // candidate fails celebrity condition
+		    }
+		}
+        return top; // candidate is celebrity
+	}
+};
+
+Time Complexity : O(2N)
+
+Space Complexity : O(1)
 
 ✅ Company Tags -->  Zoho Flipkart Amazon Microsoft Google Fab.com One97 UnitedHealthGroup NPCI
