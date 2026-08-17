@@ -23,7 +23,7 @@ public:
 Time Complexity : O(n^2)
 Space Complexity : O(1)
 
-✅ Better Approach --> class Solution { 
+✅ Better Approach (Recommended) --> class Solution { 
 public: 
     int longestOnes(vector<int>& nums, int k) { 
         int n = nums.size(); 
@@ -54,10 +54,32 @@ public:
 Time Complexity : O(2N)
 Space Complexity : O(1)
 
-✅ Optimized Approach --> 
+✅ Optimized Approach --> class Solution { 
+public: 
+    int longestOnes(vector<int>& nums, int k) { 
+        int n = nums.size(); 
+        int l = 0;                  // left pointer of the window
+        int maxLen = 0;             // stores maximum window length
+        int zeroCnt = 0;             // counts zeros in the current window
 
-Time Complexity : 
+        for (int r = 0; r < n; r++) { 
+            if(nums[r] == 0) zeroCnt++;          // count zero when expanding window
 
-Space Complexity : 
+            if (zeroCnt > k) {                    // if zeros exceed allowed limit
+                if(nums[l] == 0) zeroCnt--;      // remove zero if left element is zero
+                l++;                              // shrink window from the left
+            } 
+
+            int len = r - l + 1;                 // calculate current window length
+            maxLen = max(maxLen, len);           // update maximum length
+        } 
+
+        return maxLen;                           // return longest valid window
+    } 
+};
+
+Time Complexity : O(N)
+
+Space Complexity : O(1)
 
 ✅ Company Tags -->  Accolite Amazon Microsoft MakeMyTrip OlaCabs
