@@ -28,11 +28,38 @@ public:
 Time Complexity : O(n^2)  --> Two nested loops, where n is the number of fruits.
 Space Complexity : O(n)  --> The set can store up to n distinct fruit types in the worst case.
 
-✅ Better Approach --> 
+✅ Better Approach --> class Solution {
+public:
+    int totalFruit(vector<int>& fruits) {
+        int n = fruits.size();
+        int l = 0;
+        int maxLen = 0;
 
-Time Complexity : 
+        unordered_map<int, int> mp;  // fruit -> frequency
 
-Space Complexity : 
+        for (int r = 0; r < n; r++) {
+            mp[fruits[r]]++;         // Add fruits[r] to the window
+
+            while (mp.size() > 2) {  // More than 2 fruit types
+                mp[fruits[l]]--;     // Remove fruits[l] from the window
+
+                if (mp[fruits[l]] == 0)
+                    mp.erase(fruits[l]); // Remove fruit type completely
+
+                l++;                 // Shrink window from left
+            }
+
+            int len = r - l + 1;     // Current valid window length
+            maxLen = max(maxLen, len); // Update maximum length
+        }
+
+        return maxLen;
+    }
+};
+
+Time Complexity : O(n)  --> Single pass through the array, where n is the number of fruits.
+
+Space Complexity : O(k)  --> The unordered_map can store up to k distinct fruit types, where k is the number of distinct fruits in the input.
 
 ✅ Optimized Approach --> 
 
@@ -40,4 +67,10 @@ Time Complexity :
 
 Space Complexity : 
 
-✅ Company Tags -->  
+✅ Company Tags -->  Amazon - asked 20 times in the last 6 months
+Google - asked 7 times in the last 6 months
+Bloomberg - asked 3 times in the last 6 months
+TikTok - asked 2 times in the last 6 months
+Salesforce - asked 2 times in the last 6 months
+Meta - asked 2 times in the last 6 months
+Microsoft - asked 2 times in the last 6 months
