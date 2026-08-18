@@ -28,11 +28,39 @@ public:
 Time Complexity : O(n^2)  --> Two nested loops, where n is the length of the string.
 Space Complexity : O(26)  --> The freqArray has a fixed size of 26, so its constant space
 
-✅ Better Approach --> 
+✅ Better Approach --> class Solution {
+public:
+    int characterReplacement(string s, int k) {
+        int n = s.size();
+        int l = 0; 
+        int maxLen = 0; 
+        int maxFreq = 0; // highest frequency seen so far in the window
+        vector<int> freqArray(26,0); // frequency of each uppercase character
 
-Time Complexity : 
+        for(int r = 0; r < n; r++){ 
+            freqArray[s[r] - 'A']++; // increase frequency of current character
+            maxFreq = max(maxFreq,freqArray[s[r] - 'A']); // update max frequency only when adding a character
 
-Space Complexity : 
+            // int len = r - l + 1; // DON'T keep len here because l can change inside while, making len stale
+
+            while(r - l + 1 - maxFreq > k){ // window needs more than k changes, so shrink it
+                freqArray[s[l] - 'A']--; // remove left character from current window
+                l++; // move left pointer forward
+
+                // We use (r-l+1) directly because l changes inside while;
+                // if len was calculated before while, it would keep the OLD window size.
+            }
+
+            int len = r - l +1; // calculate length AFTER shrinking, so l and r represent the current window
+            maxLen = max(maxLen, len); // update answer with the current valid window
+        }
+
+        return maxLen; 
+    }
+};
+
+Time Complexity : O(n)  --> Each element is visited at most twice (once by right pointer, once by left pointer).
+Space Complexity : O(26)  --> The freqArray has a fixed size of 26, so its constant space
 
 ✅ Optimized Approach --> 
 
