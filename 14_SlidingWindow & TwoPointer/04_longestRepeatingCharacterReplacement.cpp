@@ -28,7 +28,7 @@ public:
 Time Complexity : O(n^2)  --> Two nested loops, where n is the length of the string.
 Space Complexity : O(26)  --> The freqArray has a fixed size of 26, so its constant space
 
-✅ Better Approach --> class Solution {
+✅ Better Approach --> class Solution {  // make sure to read readme file to understand the approach properly ...
 public:
     int characterReplacement(string s, int k) {
         int n = s.size();
@@ -43,9 +43,9 @@ public:
 
             // int len = r - l + 1; // DON'T keep len here because l can change inside while, making len stale
 
-            while(r - l + 1 - maxFreq > k){ // window needs more than k changes, so shrink it
-                freqArray[s[l] - 'A']--; // remove left character from current window
-                l++; // move left pointer forward
+            while(r - l + 1 - maxFreq > k){ // window needs more than k changes, so shrink it     |  No need to recalculate maxFreq here because,
+                freqArray[s[l] - 'A']--; // remove left character from current window                we only care about the max frequency seen so far in the window,
+                l++; // move left pointer forward                                                    not necessarily the current window's max frequency. (readme for better understanding.)
 
                 // We use (r-l+1) directly because l changes inside while;
                 // if len was calculated before while, it would keep the OLD window size.
