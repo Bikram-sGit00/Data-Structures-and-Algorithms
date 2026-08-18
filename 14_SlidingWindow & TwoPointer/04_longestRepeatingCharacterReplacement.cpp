@@ -13,7 +13,7 @@ public:
                 maxFreq = max(maxFreq, freqArray[s[j] - 'A']); // if j = 'B', so freq[1] -> maybe 2 , and now compare with other frequencies e.g A or C.
 
                 int len = j - i + 1; // if 'AAB', its better to change B right. so we count length 
-                int changesRequired = len - maxFreq; // and then maxFreq(A's Freq) - len => 2 - 1, convert 1 element.
+                int changesRequired = len - maxFreq; // and then len - maxFreq(A's Freq) => 2 - 1, convert 1 element.
 
                 if(changesRequired <= k) maxLen = max(maxLen, len);
 
