@@ -28,7 +28,7 @@ public:
 Time Complexity : O(n^2)  --> Two nested loops, where n is the number of fruits.
 Space Complexity : O(n)  --> The set can store up to n distinct fruit types in the worst case.
 
-✅ Better Approach --> class Solution {
+✅ Better Approach (Recommended) --> class Solution {
 public:
     int totalFruit(vector<int>& fruits) {
         int n = fruits.size();
@@ -61,11 +61,37 @@ Time Complexity : O(n)  --> Single pass through the array, where n is the number
 
 Space Complexity : O(k)  --> The unordered_map can store up to k distinct fruit types, where k is the number of distinct fruits in the input.
 
-✅ Optimized Approach --> 
+✅ Optimized Approach --> class Solution { 
+public: 
+    int totalFruit(vector<int>& fruits) { 
+        int n = fruits.size();                    // Store array size
+        int maxLen = 0;                           // Store maximum valid window length
+        int l = 0;                                // Left pointer of sliding window
+        unordered_map<int, int> mpp;              // Store fruit type and its frequency
+ 
+        for (int r = 0; r < n; r++) { 
+            mpp[fruits[r]]++;                     // Add current fruit to the window
 
-Time Complexity : 
+            if(mpp.size() > 2){                   // More than 2 unique fruit types
+                mpp[fruits[l]]--;                 // Remove leftmost fruit from the map
 
-Space Complexity : 
+                if(mpp[fruits[l]] == 0)            // If no such fruit remains in window  
+                    mpp.erase(fruits[l]);          // Remove its key from the map & make sure we write this before l++, unlike better approach, as doing l++ first will erase the next
+
+                l++;                              // Shrink window from the left
+            } 
+
+            int len = r - l + 1;
+            maxLen = max(maxLen,len);
+        } 
+
+        return maxLen;
+    } 
+};
+
+Time Complexity : O(n)  --> Single pass through the array, where n is the number of fruits.
+    
+Space Complexity : O(K) 
 
 ✅ Company Tags -->  Amazon - asked 20 times in the last 6 months
 Google - asked 7 times in the last 6 months
