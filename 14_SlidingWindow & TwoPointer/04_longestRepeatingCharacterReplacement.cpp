@@ -59,10 +59,10 @@ public:
     }
 };
 
-Time Complexity : O(n)  --> Each element is visited at most twice (once by right pointer, once by left pointer).
+Time Complexity : O(2N)  --> The outer loop runs for N iterations, and the inner while loop also runs for a total of N iterations across all iterations of the outer loop. Therefore, the overall time complexity is O(2N), which simplifies to O(N).
 Space Complexity : O(26)  --> The freqArray has a fixed size of 26, so its constant space
 
-✅ Optimized Approach --> 
+✅ Optimized Approach --> submit code using if
 
 Time Complexity : 
 
