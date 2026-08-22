@@ -12,7 +12,7 @@ Time Complexity :
 
 Space Complexity : 
 
-✅ Optimized Approach 1 --> class Solution {
+✅ Optimized Approach 1 (Recommended)--> class Solution {
 public:
     int helper(vector<int>& nums, int goal){
         int n = nums.size();
@@ -40,4 +40,8 @@ Time Complexity : O(2N)
 
 Space Complexity : O(1)
 
-✅ Company Tags --
+
+✅ Optimized Approach 2 -->
+
+
+✅ Company Tags -->
