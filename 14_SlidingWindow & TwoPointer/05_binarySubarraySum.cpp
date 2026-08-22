@@ -12,7 +12,7 @@ Time Complexity :
 
 Space Complexity : 
 
-✅ Optimized Approach 1 (Recommended)--> class Solution {
+✅ Optimized Approach 1 (Recommended) --> class Solution {
 public:
     int helper(vector<int>& nums, int goal){
         int n = nums.size();
