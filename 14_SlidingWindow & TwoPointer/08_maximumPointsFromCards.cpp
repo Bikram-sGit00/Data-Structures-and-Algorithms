@@ -36,16 +36,35 @@ Time Complexity : O(k^2)
 
 Space Complexity : O(1)
 
-✅ Better Approach --> 
 
-Time Complexity : 
+✅ Optimized Approach --> class Solution { 
+public: 
+    int maxScore(vector<int>& nums, int k) { 
+        int n = nums.size(); 
+        int leftSum = 0; 
+        int rightSum = 0; 
+        int maxSum = 0; 
 
-Space Complexity : 
+        for(int i = 0; i < k ; i++){ 
+            leftSum += nums[i]; // Sum of the first k cards from the left
+            maxSum = leftSum; // Initially, take all k cards from the left
+        } 
 
-✅ Optimized Approach --> 
+        int rightIndx = n - 1; 
 
-Time Complexity : 
+        for(int i = k - 1; i >= 0; i--){ 
+            leftSum -= nums[i]; // Remove one card from the left
+            rightSum += nums[rightIndx]; // Add one card from the right
+            rightIndx--; // Move to the next card from the right
+            maxSum = max(maxSum, leftSum + rightSum); 
+        } 
 
-Space Complexity : 
+        return maxSum;
+    } 
+};
+
+Time Complexity : O(2 x k)
+
+Space Complexity : O(1)
 
 ✅ Company Tags -->  
