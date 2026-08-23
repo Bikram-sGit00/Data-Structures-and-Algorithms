@@ -20,11 +20,39 @@ Time Complexity : O(n^2)
 
 Space Complexity : O(1)
 
-✅ Better Approach --> 
+✅ Optimized Brute Force --> class Solution {
+public:
+    int numberOfSubstrings(string s) {
+        int n = s.size();
+        int cnt  = 0;
+        for(int i = 0; i < n; i++){
+            vector<int> hash(3,0);
+            for(int j = i; j < n; j++){
+                hash[s[j] - 'a'] = 1;
+                if(hash[0]+hash[1]+hash[2] == 3){  
+                    cnt += n - j; // Explanation: ↓
+                    break;
+                }
+            }
+        }
+        return cnt;
+    }
+};
 
-Time Complexity : 
+// s = "abcabc"
+//             j
+//             ↓
+// index:  0 1 2 3 4 5
+//         a b c a b c
 
-Space Complexity : 
+// when j = 2, we got valid string "abc" and after that every thing will be valid we know 
+// abca
+// abcab            // these all are valid, and to know how many just do n - j, for now j = 2 and n = 6 => 4, "abc" + other 3 on the left 
+// abcabc
+
+Time Complexity : just a suttle improvement over brute force, still O(n^2) in worst case  
+
+Space Complexity : O(1)
 
 ✅ Optimized Approach --> 
 
