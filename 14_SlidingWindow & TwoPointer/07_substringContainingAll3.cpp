@@ -45,7 +45,7 @@ public:
 // index:  0 1 2 3 4 5
 //         a b c a b c
 
-// when j = 2, we got valid string "abc" and after that every thing will be valid we know 
+// when j = 2, we got valid substring "abc" and after that every thing will be valid we know 
 // abca
 // abcab            // these all are valid, and to know how many just do n - j, for now j = 2 and n = 6 => 4, "abc" + other 3 on the left 
 // abcabc
