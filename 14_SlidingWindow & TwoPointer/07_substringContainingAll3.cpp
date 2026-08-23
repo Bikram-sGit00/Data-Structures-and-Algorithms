@@ -31,7 +31,7 @@ public:
                 hash[s[j] - 'a'] = 1;
                 if(hash[0]+hash[1]+hash[2] == 3){  
                     cnt += n - j; // Explanation: ↓
-                    break;
+                    break; // don't check further 
                 }
             }
         }
