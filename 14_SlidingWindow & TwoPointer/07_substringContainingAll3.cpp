@@ -54,10 +54,27 @@ Time Complexity : just a suttle improvement over brute force, still O(n^2) in wo
 
 Space Complexity : O(1)
 
-✅ Optimized Approach --> 
+✅ Optimized Approach --> class Solution {
+public:
+    int numberOfSubstrings(string s) {
+        int n = s.size();
+        int substringCnt  = 0;
+        vector<int> lastSeen(3,-1);
+        for(int i = 0; i < n; i++){
+            lastSeen[s[i] - 'a'] = i; // Update last seen index of current character
+            if(lastSeen[0] != -1 && lastSeen[1] != -1 && lastSeen[2] != -1){ // if present value will be anything apart from -1
+                substringCnt += *min_element(lastSeen.begin(), lastSeen.end()) + 1; // nested min
+            }
+        }
+        return substringCnt;
+    }
+};
 
-Time Complexity : 
+Notes :: min_element(lastSeen.begin(), lastSeen.end()), returns an iterator pointing to the smallest element.
+        *min_element(lastSeen.begin(), lastSeen.end()), So the * is used to dereference that iterator and get the actual value.
 
-Space Complexity : 
+Time Complexity : O(n)
+
+Space Complexity : O(1)
 
 ✅ Company Tags -->  
