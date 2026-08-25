@@ -27,7 +27,7 @@ public:
 
 Time Complexity : O(n^2)
 
-Space Complexity : O(k), at worst case the unordered_map can store k distinct elements.
+Space Complexity : O(N), at worst case the unordered_map can store k distinct elements.
 
 
 ✅ Optimized Approach --> class Solution { 
@@ -58,7 +58,7 @@ public:
     } 
 };
 
-Time Complexity : O(n)
-Space Complexity : O(k)
+Time Complexity : O(2 x 2N) = O(N)
+Space Complexity : O(N)
 
 ✅ Company Tags -->  
