@@ -30,10 +30,35 @@ Time Complexity : O(n^2)
 Space Complexity : O(k), at worst case the unordered_map can store k distinct elements.
 
 
-✅ Optimized Approach --> 
+✅ Optimized Approach --> class Solution { 
+public: 
+    int helper(vector<int>& nums, int k){ 
+        int n = nums.size(); 
+        int l = 0; 
+        int subarrayCnt = 0; 
+        unordered_map<int, int> mpp; // Stores frequency of each element in the window
 
-Time Complexity : 
+        for(int r = 0; r < n; r++){ 
+            mpp[nums[r]]++; // Add current element to the window
 
-Space Complexity : 
+            // Shrink the window until it has at most k distinct elements
+            while(mpp.size() > k){ 
+                mpp[nums[l]]--; // Remove the leftmost element
+                if(mpp[nums[l]] == 0) mpp.erase(nums[l]); // Remove it from the map if its frequency becomes 0
+                l++; // Move left pointer forward
+            } 
+            // All subarrays ending at r and starting from l to r are valid
+            subarrayCnt += r - l + 1; 
+        } 
+        return subarrayCnt; 
+    } 
+
+    int subarraysWithKDistinct(vector<int>& nums, int k) { 
+        return helper(nums, k) - helper(nums, k - 1); 
+    } 
+};
+
+Time Complexity : O(n)
+Space Complexity : O(k)
 
 ✅ Company Tags -->  
