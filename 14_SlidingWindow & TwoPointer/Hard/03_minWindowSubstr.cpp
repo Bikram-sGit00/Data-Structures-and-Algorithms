@@ -42,10 +42,49 @@ Time Complexity : O(n^2 * 256) where n is the length of string s and 256 is the 
 
 Space Complexity : O(256) for the hash array.
 
-✅ Optimized Approach --> 
+✅ Optimized Approach --> class Solution {
+public:
+    string minWindow(string s, string t) {
+        int n = s.size();
+        int m = t.size();
+        int l = 0;
+        int cnt = 0;
+        int strIndx = -1;
+        int minLen = INT_MAX;
+        vector<int> hash(256, 0);
+        for (int i = 0; i < m; i++) { //O(m)
+            hash[t[i]]++; // add all the t's elements into hash
+        }
+        for (int r = 0; r < n; r++) { //O(n)
+            if (hash[s[r]] > 0) { // we found something in s that also in t, so we increase ther counter
+                cnt++;
+            }
+            hash[s[r]]--; // now decrease that in hash, as we have increased the counter
+O(n), overall while (cnt == m) { // our conter gets equal to the size of t, means we got a substring containing all t'elements
+                int len = r - l + 1;
+                if (len < minLen) { //update the minimum possible
+                    minLen = len;
+                    strIndx = l; // can't use min(), as we have to update our starting position everytime, as we will return the string, not the size of min
+                }
+                hash[s[l]]++; // now we will keep checking for possible answer with minimum length, so keep moving l while counter == size of t, and why ++ ? as by default its -1 so -- will increase that to -2, -3 so one, where as ++ will set this as 0, 1, 2
+                if (hash[s[l]] > 0) // and after removal or moving l, if we found its value > 0, means we are not  
+                    cnt--; // using it for answer, so remove this from cnt
+                l++; // now forward l
+            }
+        }
+        return strIndx == -1 ? "" : s.substr(strIndx, minLen); // if starting index never been updated,means we never find a substring containing all t'element, return empty string
+    }
+};
 
-Time Complexity : 
+Time Complexity : O(2n) + O(M)
 
-Space Complexity : 
+Space Complexity : O(256)
 
-✅ Company Tags -->  
+✅ Company Tags -->  Amazon - asked 18 times in the last 6 months
+Microsoft - asked 5 times in the last 6 months
+Google - asked 3 times in the last 6 months
+Lyft - asked 3 times in the last 6 months
+Meta - asked 2 times in the last 6 months
+Bloomberg - asked 2 times in the last 6 months
+Oracle - asked 2 times in the last 6 months
+Goldman Sachs - asked 2 times in the last 6 months
