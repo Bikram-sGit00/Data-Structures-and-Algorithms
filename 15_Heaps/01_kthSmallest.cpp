@@ -1,6 +1,6 @@
-➡️ problemLinks --> 
+➡️ problemLinks --> https://www.geeksforgeeks.org/problems/kth-smallest-element5635/1
 
-✅ Brute Force -->  will be to sort the array and return the kth largest element.
+✅ Brute Force -->  will be to sort the array and return the kth smallest element.
 
 Time Complexity : O(n log n)
 
@@ -8,18 +8,18 @@ Space Complexity : O(1)
 
 ✅ Better Approach --> class Solution {
   public:
-    int kthLargest(vector<int> &arr, int k) {
-        priority_queue<int, std::vector<int>, std::greater<int>> minHeap;
+    int kthSmallest(vector<int> &arr, int k) {
+        priority_queue<int> heap;
         for(int i = 0; i < k; i++){
-            minHeap.push(arr[i]);
+            heap.push(arr[i]);
         }
         for(int i = k; i < arr.size(); i++){
-            if(minHeap.top() < arr[i]){
-                minHeap.pop();
-                minHeap.push(arr[i]);
+            if(heap.top() > arr[i]){
+                heap.pop();
+                heap.push(arr[i]);
             }
         }
-        return minHeap.top();
+        return heap.top();
     }
 };
 
@@ -27,10 +27,10 @@ Time Complexity : O(n log k)
 
 Space Complexity : O(k)
 
-✅ Optimized Approach --> 
+✅ Optimized Approach --> will be to use Quick Select Algorithm.
 
-Time Complexity : 
+Time Complexity : O(n) average, O(n^2) worst case
 
-Space Complexity : 
+Space Complexity : O(1)
 
-✅ Company Tags -->  
+✅ Company Tags -->  VMWare Accolite Amazon Microsoft Snapdeal Hike Adobe Google ABCO Cisco
