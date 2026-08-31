@@ -1,6 +1,6 @@
 ➡️ problemLinks --> https://www.geeksforgeeks.org/problems/kth-smallest-element5635/1
 
-✅ Brute Force -->  will be to sort the array and return the kth smallest element.
+✅ Brute Force -->  will be to sort the array and return the kth smallest element. arr[k-1]
 
 Time Complexity : O(n log n)
 
