@@ -1,10 +1,36 @@
 ➡️ problemLinks --> https://leetcode.com/problems/top-k-frequent-elements/  &&  https://www.geeksforgeeks.org/problems/top-k-frequent-elements-in-array/1
 
-✅ Brute Force -->  
+✅ Brute Force -->  Store {frequency, element} pairs in an array/vector, sort in descending order of frequency, and take the first k elements.
+class Solution {
+public:
+    vector<int> topKFrequent(vector<int>& nums, int k) {
+        unordered_map<int, int> mpp; // Count frequency
+        for (int num : nums) {
+            mpp[num]++;
+        }
+        
+        vector<pair<int, int>> arr; // Store {frequency, element}
+        for (auto it : mpp) {
+            arr.push_back({it.second, it.first});
+        }
+        
+        sort(arr.rbegin(), arr.rend());// Sort in descending order of frequency
+
+        vector<int> ans;// Take first k elements
+        for (int i = 0; i < k; i++) {
+            ans.push_back(arr[i].second);
+        }
+        return ans;
+    }
+};
 
 Time Complexity : 
+- Frequency counting → O(n)
+- Sorting            → O(n log n)
+- Taking k elements  → O(k)
+- Overall → O(n log n)
 
-Space Complexity : 
+Space Complexity : O(n)
 
 ✅ Better Approach --> 
 
