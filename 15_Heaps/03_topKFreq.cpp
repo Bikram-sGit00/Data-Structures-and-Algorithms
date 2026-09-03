@@ -32,11 +32,40 @@ Time Complexity :
 
 Space Complexity : O(n)
 
-✅ Better Approach --> 
+✅ Better Approach --> class Solution {
+public:
+    struct Compare {
+        bool operator()(const pair<int, int>& a, const pair<int, int>& b) {
+            return a.second < b.second; // Max heap based on frequency
+        }
+    };
+    vector<int> topKFrequent(vector<int>& nums, int k) {
+        // Step 1: Count frequency
+        unordered_map<int, int> mpp;
+        for (int num : nums) {
+            mpp[num]++;
+        }
+        // Step 2: Max heap of {element, frequency}
+        priority_queue<pair<int, int>,vector<pair<int, int>>,Compare> pq;
+        
+        // Step 3: Push all elements into heap
+        for (auto it : mpp) {
+            pq.push({it.first, it.second});
+        }
 
-Time Complexity : 
+        // Step 4: Take top k frequent elements
+        vector<int> ans;
+        while (k--) {
+            ans.push_back(pq.top().first);
+            pq.pop();
+        }
+        return ans;
+    }
+};
 
-Space Complexity : 
+Time Complexity : O(n) + O(n log n) = O(n log n)
+
+Space Complexity : O(n) for the frequency map + O(n) for the heap = O(n)
 
 ✅ Optimized Approach --> 
 
