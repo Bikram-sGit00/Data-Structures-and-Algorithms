@@ -63,7 +63,7 @@ public:
     }
 };
 
-Time Complexity : O(n) + O(n log n) = O(n log n)
+Time Complexity : O(n) + O(n log n) + O(k log n)= O(n log n)
 
 Space Complexity : O(n) for the frequency map + O(n) for the heap = O(n)
 
