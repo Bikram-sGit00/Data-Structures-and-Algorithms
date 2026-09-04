@@ -200,7 +200,7 @@ avoids that by keeping the heap size capped at `k`.
 
 
 <div align="center">
-<h1>Heap Problem Solving Template</h1>
+<h1>Heap Problem Solving Template🚀✨</h1>
 </div>
 
 ## Step 1 — Decide the heap type from the problem signal
