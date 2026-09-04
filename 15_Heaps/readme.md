@@ -198,9 +198,11 @@ heap, even though we only need the top `k`. The optimization (next step)
 avoids that by keeping the heap size capped at `k`.
 
 
-
 <div align="center">
-<h1>✅ Heap Problem Solving Template</h1>
+  <h1>
+    <sub><img width="35" height="35" alt="icons8-document-50" src="https://github.com/user-attachments/assets/58e5d1e9-0de7-44ef-815c-99667496f527"></sub>
+    Heap Problem Solving Template
+  </h1>
 </div>
 
 ## Step 1 — Decide the heap type from the problem signal
