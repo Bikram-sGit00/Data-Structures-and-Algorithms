@@ -67,11 +67,43 @@ Time Complexity : O(n) + O(n log n) + O(k log n)= O(n log n)
 
 Space Complexity : O(n) for the frequency map + O(n) for the heap = O(n)
 
-✅ Optimized Approach --> 
+✅ Optimized Approach --> class Solution {
+public:
+    vector<int> topKFrequent(vector<int>& nums, int k) {
+      priority_queue<pair<int,int>, vector<pair<int,int>>, greater<pair<int,int>>> minMinHeap;
 
-Time Complexity : 
+      unordered_map<int, int> mpp;
+      for(auto i : nums) mpp[i]++; // insert all with their freqency
 
-Space Complexity : 
+      for(auto i : mpp){
+        int element = i.first; 
+        int freq = i.second;
+        pair<int, int> currEle = {freq, element}; // make sure to Keep frequency first as the min heap prioritizes 
+        if(minMinHeap.size() < k){                // cause pair comparison checks `.first` before `.second`
+            minMinHeap.push(currEle);
+            continue;
+        }
+        else{
+            if(currEle.first > minMinHeap.top().first){
+                minMinHeap.pop();
+                minMinHeap.push(currEle);
+            }else{
+                continue; //currEle.first < minMinHeap.top().first, means current is more smaller than the top, which in smallest in the heap & we want max, so this current is the most useless element just skip it
+            } 
+        }
+      }
+      vector<int> ans;
+      while(!minMinHeap.empty()){               //extract heap elements, and there will be only k elements as we 
+        ans.push_back(minMinHeap.top().second); // don't allow heap to extend by poping while finding greater
+        minMinHeap.pop();
+      }
+      return ans;
+    }
+};
+
+Time Complexity : O(n) + O(n log k) + O(k log k) ≈ O(n log k)
+
+Space Complexity : O(n + k)  ≈ O(n)
 
 ✅ Company Tags -->  Amazon - asked 25 times in the last 6 months
 Google - asked 9 times in the last 6 months
