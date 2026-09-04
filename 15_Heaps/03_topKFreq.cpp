@@ -105,6 +105,52 @@ Time Complexity : O(n) + O(n log k) + O(k log k) ≈ O(n log k)
 
 Space Complexity : O(n + k)  ≈ O(n)
 
+
+
+Note :: to understand GFG version better, check the code in 15_Heaps/04_topKWords.cpp
+
+✅ GFG Version --> class Solution {
+	public:
+	vector<int> topKFreq(vector<int> &nums, int k) {
+		priority_queue<pair<int, int>, vector<pair<int, int>>, greater<pair<int, int>> > minMinHeap;
+		
+		unordered_map<int, int> mpp;
+		for (auto i : nums) mpp[i]++; // insert all with their freqency
+		
+		for (auto i : mpp) {
+			int element = i.first;
+			int freq = i.second;
+			pair<int, int> currEle = {freq, element}; // make sure to Keep frequency first as the min heap prioritizes
+			if (minMinHeap.size() < k) { // cause pair comparison checks `.first` before `.second`
+				minMinHeap.push(currEle);
+				continue;
+			}
+			else {
+				if (currEle.first > minMinHeap.top().first ||
+				(currEle.first == minMinHeap.top().first && currEle.second > minMinHeap.top().second)) {
+					minMinHeap.pop();
+					minMinHeap.push(currEle);
+				} else {
+					continue; // currEle.second < minMinHeap.top().first, means current is more smaller than the top, which in smallest in the heap & we want max, so this current is the most useless element just skip it
+				}
+			}
+		}
+		vector<int> ans;
+		while (!minMinHeap.empty()) { // extract heap elements, and there will be only k elements as we
+			ans.push_back(minMinHeap.top().second); // don't allow heap to extend by poping while finding greater
+			minMinHeap.pop();
+		}
+		reverse(ans.begin(), ans.end());
+		return ans;
+		
+	}
+};
+
+Time Complexity : O(n) + O(n log k) + O(k log k) ≈ O(n log k)
+
+Space Complexity : O(n + k)  ≈ O(n)
+
+
 ✅ Company Tags -->  Amazon - asked 25 times in the last 6 months
 Google - asked 9 times in the last 6 months
 Bloomberg - asked 5 times in the last 6 months
