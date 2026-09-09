@@ -129,7 +129,7 @@ Repeat
 
 ---
 
-## 🔹 Given Solution
+## 🔹 Code
 
 ```cpp
 class Solution {
@@ -177,7 +177,7 @@ public:
 
 ---
 
-## 🔹 Line-by-Line Understanding
+## 🔹 Line-by-Line Explanation
 
 ### Store projects
 
@@ -306,7 +306,7 @@ Now projects requiring up to `8` capital can become available.
 
 ---
 
-## ⏱️ Time Complexity
+## Time Complexity
 
 ### Sorting
 
@@ -342,7 +342,7 @@ TC = O(n log n)
 
 ---
 
-## 💾 Space Complexity
+## Space Complexity
 
 `project` stores `n` projects:
 
@@ -364,13 +364,13 @@ SC = O(n)
 
 ---
 
-## 🔥 Final Complexity
+## Final Complexity
 
 ```text
 TC → O(n log n)
 SC → O(n)
 ```
 
-### 🧠 Pattern to Remember
+### Pattern to Remember
 
 > **Sort by the constraint (capital), then use a max heap to greedily choose the best available value (profit).**
