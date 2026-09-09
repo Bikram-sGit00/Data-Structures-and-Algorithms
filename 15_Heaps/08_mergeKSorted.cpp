@@ -8,7 +8,7 @@
 		int row;
 		int col;
 		
-// 		Node(int val, int row, int col) {// Can't declear member and parameter both same name so
+// 		Node(int val, int row, int col) {// Can't declare member and parameter both same name so use "this pointer"
 // 			this -> val = val;        this->row = row;
 // 			this -> row = row;          ↑          ↑
 // 			this -> col = col;        member    parameter
@@ -30,7 +30,7 @@
 		int n = mat.size();
 		int m = mat[0].size();
 		for(int i = 0; i < n; i++){ // insert first element of every row
-		    minHeap.push({mat[i][0], i, 0});// {value, row, colloum}
+		    minHeap.push({mat[i][0], i, 0});// {value, row, column}
 		}
 		while(!minHeap.empty()){
 		    Node element = minHeap.top();
