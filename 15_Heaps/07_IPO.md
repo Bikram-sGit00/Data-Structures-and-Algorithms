@@ -1,12 +1,10 @@
-# IPO — Maximize Capital
-
 <div align="center">
 
-## 🚀 IPO — Maximize Capital
-
+<h1> IPO — Maximize Capital </h1>
+<p>[text](https://leetcode.com/problems/ipo/)</p>
 </div>
 
----
+
 
 ## 🔹 Overview
 
