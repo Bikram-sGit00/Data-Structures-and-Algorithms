@@ -1,7 +1,7 @@
 <div align="center">
 
 <h1> IPO — Maximize Capital </h1>
-[text](https://leetcode.com/problems/ipo/)
+<p> ➡️ problemLink --> (https://leetcode.com/problems/ipo/) </p>
 </div>
 
 
