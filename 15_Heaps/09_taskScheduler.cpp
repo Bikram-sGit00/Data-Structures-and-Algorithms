@@ -46,11 +46,61 @@ Time Complexity : O(n log k)
 
 Space Complexity : O(k) where k is the number of unique tasks.
 
-✅ Optimized Approach --> 
+✅ Optimized Approach --> class Solution { 
+public: 
+    int leastInterval(vector<char>& tasks, int n) { 
+        vector<int> freqArray(26, 0); // all are in uppercase so taken vector instead of map 
+        for(auto ch : tasks){ 
+            freqArray[ch - 'A']++; // convert char to index: A->0, B->1... and count frequency
+        } 
 
-Time Complexity : 
+        int time = 0; 
+        priority_queue<int> maxHeap; // max heap keeps the task with highest frequency at the top
 
-Space Complexity : 
+        for(int i = 0; i < 26; i++){ 
+            if(freqArray[i] > 0){ // push into heap if frequency > 0 
+                maxHeap.push(freqArray[i]); // only frequency is needed; task identity doesn't matter
+            } 
+        } 
+
+        while(!maxHeap.empty()){ 
+            vector<int> temp; // stores remaining frequencies of tasks used in the current cycle
+
+            // We create a cycle of n+1 slots so the same task gets at least n gaps before repeating
+            for(int i = 0; i < n+1; i++){ 
+                if(!maxHeap.empty()){ 
+                    int freq = maxHeap.top(); 
+                    maxHeap.pop(); // take the most frequent task first to reduce future idle time
+
+                    freq--; // use one occurrence of this task in the current cycle
+                    temp.push_back(freq); // save its remaining frequency; don't reuse it in this same cycle
+                } 
+            } 
+
+            // Put unfinished tasks back so they can be selected in the next cycle
+            for(auto it : temp){ 
+                if(it > 0){ 
+                    maxHeap.push(it); 
+                } 
+            } 
+
+            // If heap is empty, all tasks are finished, so no idle slots are needed at the end, e.g., if heap have [A -> 1] nothing else, so pop this A,
+            if(maxHeap.empty()){//                                                                     let answer is something like => A,B,A,_,A - so for this time we also add gap + 1
+                time += temp.size(); //                                                                then it will be => A,B,A,_,A,_,_ - so what we will do with the last blank spaces?
+            }else{ //                                                                                  that is why we add temp's size, and why temp size ? cause the 
+                // Tasks are still remaining, so the complete n+1 cycle is counted,                    last task(means when freq = 1 for that element) wii be in temp, cause temp is
+                // including idle slots if there weren't enough different tasks                        storing their frequencies, so why waste gap + 1 slots or time, just add the size
+                time += n + 1; 
+            } 
+        } 
+
+        return time; 
+    } 
+};
+
+Time Complexity : O(Nlog26) ≈ O(N)
+
+Space Complexity : O(26) ≈ O(1) 
 
 ✅ Company Tags -->  
 Amazon - asked 10 times in the last 6 months
