@@ -1,5 +1,7 @@
 ➡️ problemLinks --> https://www.geeksforgeeks.org/problems/nearly-sorted-1587115620/1
 
+✅ pattern --> now there is not told to find any k elements, but we have to sort the array which is nearly sorted, means if we take any element then it will be at most k distance away from its original position. So we can use minHeap to sort the array. For merge sort it will have taken O(nlogn), but with heap we are sorting k elements not all in one run so O(nlogk) will be the time complexity.
+
 ✅ with ans variable --> class Solution {
 	public:
 	void nearlySorted(vector<int>& arr, int k) {
@@ -27,6 +29,35 @@
 	}
 };
 
+✅ without any variable -->
+class Solution {
+	public:
+	void nearlySorted(vector<int>& arr, int k) {
+		priority_queue<int, vector<int>, greater<int>> minHeap;
+		
+		for(int i = 0 ; i <= k; i++){
+		    minHeap.push(arr[i]);
+		}
+		
+		int indx = 0; // for rearranging, and i will handel original 
+		for(int i = k + 1; i < arr.size(); i++){
+		    arr[indx] = minHeap.top();
+		    minHeap.pop();
+		    minHeap.push(arr[i]);
+		    indx++;
+		}
+		
+		while(!minHeap.empty()){
+		    arr[indx] = minHeap.top();
+		    minHeap.pop();
+		    indx++;
+		}
+	
+	}
+};
 
+Time Complexity : O(n log k)
+
+Space Complexity : O(k)
 
 ✅ Company Tags -->  Google
