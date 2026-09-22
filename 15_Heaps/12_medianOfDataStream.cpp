@@ -70,7 +70,7 @@ public:
     } 
 };
 
-Time Complexity : O(log n) for addNum() and O(1) for findMedian().
+Time Complexity : O(log n) for addNum() and O(1) for findMedian(). Overall --> O(n log n) 
 
 Space Complexity : O(n) for storing the numbers in the heaps.
 
@@ -106,7 +106,7 @@ class Solution {
     }
 };
 
-Time Complexity : O(n log n) overall, for each insertion and O(1) for finding the median.
+Time Complexity : O(log n) for each insertion and O(1) for finding the median, overall -> O(n log n) 
 Space Complexity : O(n) for storing the numbers in the heaps.
 
 ✅ Company Tags -->  Amazon - asked 9 times in the last 6 months
