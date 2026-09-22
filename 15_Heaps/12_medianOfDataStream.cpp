@@ -1,10 +1,35 @@
 ➡️ problemLinks --> https://leetcode.com/problems/find-median-from-data-stream/  && https://www.geeksforgeeks.org/problems/find-median-in-a-stream-1587115620/1
 
-✅ Brute Force -->  
+✅ Brute Force --> 
+class MedianFinder {
+public:
+    vector<int> nums;
 
-Time Complexity : 
+    MedianFinder() {}
 
-Space Complexity : 
+    void addNum(int num) {
+        nums.push_back(num);
+    }
+    
+    double findMedian() {
+        // Brute force: sort all numbers whenever we need the median
+        sort(nums.begin(), nums.end());
+
+        int n = nums.size();
+
+        // Odd number of elements → middle element
+        if(n % 2 != 0) {
+            return nums[n / 2];
+        }
+
+        // Even number of elements → average of two middle elements
+        return (nums[n / 2 - 1] + nums[n / 2]) / 2.0;
+    }
+};
+
+Time Complexity : O(n log n) for findMedian() due to sorting the array every time we need to find the median.
+
+Space Complexity : O(n) for storing the numbers in the vector.
 
 
 ✅ Optimized Approach --> 
