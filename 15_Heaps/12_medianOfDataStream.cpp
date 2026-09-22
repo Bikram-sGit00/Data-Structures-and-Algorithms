@@ -74,6 +74,41 @@ Time Complexity : O(log n) for addNum() and O(1) for findMedian().
 
 Space Complexity : O(n) for storing the numbers in the heaps.
 
+
+✅GFG version -->
+class Solution {
+  public:
+    vector<double> getMedian(vector<int> &arr) {
+        priority_queue<int> leftMaxHeap;
+        priority_queue<int, vector<int>, greater<int>> rightMinHeap;
+        vector<double> ansArray;
+        
+        for(int i = 0; i < arr.size(); i++){
+            if(leftMaxHeap.empty() || arr[i] < leftMaxHeap.top()) leftMaxHeap.push(arr[i]);
+            else rightMinHeap.push(arr[i]);
+            
+            if(leftMaxHeap.size() > rightMinHeap.size() + 1){
+                rightMinHeap.push(leftMaxHeap.top());
+                leftMaxHeap.pop();
+            }else if(rightMinHeap.size() > leftMaxHeap.size()){
+                leftMaxHeap.push(rightMinHeap.top());
+                rightMinHeap.pop();
+            }
+            
+            if(leftMaxHeap.size() == rightMinHeap.size()){
+                double mean = (leftMaxHeap.top() + rightMinHeap.top())/2.0;
+                ansArray.push_back(mean);
+            }else{
+                ansArray.push_back(leftMaxHeap.top());
+            } 
+        }
+        return ansArray;
+    }
+};
+
+Time Complexity : O(n log n) overall, for each insertion and O(1) for finding the median.
+Space Complexity : O(n) for storing the numbers in the heaps.
+
 ✅ Company Tags -->  Amazon - asked 9 times in the last 6 months
 Intuit - asked 4 times in the last 6 months
 Google - asked 3 times in the last 6 months
