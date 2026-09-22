@@ -1,5 +1,10 @@
 ➡️ problemLinks --> https://leetcode.com/problems/find-median-from-data-stream/  && https://www.geeksforgeeks.org/problems/find-median-in-a-stream-1587115620/1
 
+✅USE ::
+i> Streaming medians help monitor latency, response times, and sensor readings online, where a few extreme values could distort the average.
+ii> The median is central to real-time signal and image processing, including median filters that reduce isolated noise while preserving edges.
+
+
 ✅ Brute Force --> 
 class MedianFinder {
 public:
