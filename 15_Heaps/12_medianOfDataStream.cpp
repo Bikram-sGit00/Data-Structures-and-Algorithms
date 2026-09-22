@@ -37,11 +37,42 @@ Time Complexity : O(n log n) for findMedian() due to sorting the array every tim
 Space Complexity : O(n) for storing the numbers in the vector.
 
 
-✅ Optimized Approach --> 
+✅ Optimized Approach --> class MedianFinder { 
+public: 
+    priority_queue<int> leftMaxHeap; 
+    priority_queue<int, vector<int>, greater<int>> rightMinHeap; 
+ 
+    MedianFinder() {} 
+ 
+    void addNum(int num) { 
+       if(leftMaxHeap.empty() || num < leftMaxHeap.top()) leftMaxHeap.push(num); 
+       else rightMinHeap.push(num); 
+ 
+       // Balance rule:
+       // Left heap can have at most 1 extra element.
+       // Even size  → both heaps have equal elements
+       // Odd size   → left heap has exactly 1 extra element, not more than that.
 
-Time Complexity : 
+       if(leftMaxHeap.size() > rightMinHeap.size() + 1){ // Left has 2+ extra elements, Move its largest element to the right heap.
+            rightMinHeap.push(leftMaxHeap.top()); 
+            leftMaxHeap.pop(); 
+       
+       }else if(rightMinHeap.size() > leftMaxHeap.size()){ // Right has more elements Move its smallest element to the left heap.
+            leftMaxHeap.push(rightMinHeap.top()); 
+            rightMinHeap.pop(); 
+       } 
+    } 
+     
+    double findMedian() {
+//Or -> if(leftMaxHeap.size() == rightMinHeap.size()) return (double)(leftMaxHeap.top() + rightMinHeap.top())/2;
+        if(leftMaxHeap.size() == rightMinHeap.size()) return (leftMaxHeap.top() + rightMinHeap.top()) / 2.0; 
+        else return leftMaxHeap.top(); 
+    } 
+};
 
-Space Complexity : 
+Time Complexity : O(log n) for addNum() and O(1) for findMedian().
+
+Space Complexity : O(n) for storing the numbers in the heaps.
 
 ✅ Company Tags -->  Amazon - asked 9 times in the last 6 months
 Intuit - asked 4 times in the last 6 months
