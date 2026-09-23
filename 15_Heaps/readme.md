@@ -862,7 +862,7 @@ Eventually:
 [50, 52, 53, 54, 55]
 ```
  
-###  Note::
+###  Note ::
  
 You can think of Heap Sort as repeatedly doing Delete Max, except instead of actually deleting the maximum, we swap it to the end.
  
