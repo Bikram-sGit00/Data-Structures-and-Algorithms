@@ -1,3 +1,9 @@
+<div align="center">
+  <h1>
+    HEAP - Notes
+  </h1>
+</div>
+
 ## 1. What is a Heap?
 
 A **heap** is a **complete binary tree** that follows the heap property.
@@ -449,6 +455,264 @@ Height = O(log N)
 ```
 
 
+# 8. Insertion into Max Heap
+ 
+Suppose we have:
+ 
+```
+        55
+       /  \
+     54    52
+    /  \
+   50   53
+```
+ 
+Array:
+ 
+```
+[55, 54, 52, 50, 53]
+```
+ 
+Now insert `60`.
+ 
+### Step 1: Put `60` at the end
+ 
+```
+        55
+       /  \
+     54    52
+    /  \   /
+   50  53 60
+```
+ 
+Array:
+ 
+```
+[55, 54, 52, 50, 53, 60]
+```
+ 
+But now:
+ 
+```
+60 > 52
+```
+ 
+❌ Heap property is broken.
+ 
+### Step 2: Move it upward — "heapify up"
+ 
+Swap `60` with its parent:
+ 
+```
+        55
+       /  \
+     54    60
+    /  \   /
+   50  53 52
+```
+ 
+Still:
+ 
+```
+60 > 55
+```
+ 
+So swap again:
+ 
+```
+        60
+       /  \
+     54    55
+    /  \   /
+   50  53 52
+```
+ 
+Now it's a valid max heap.
+ 
+Insertion =
+ 
+```
+Insert at bottom
+       ↓
+Compare with parent
+       ↓
+Swap if bigger
+       ↓
+Keep moving UP
+```
+ 
+This is called heapify up / bubble up / sift up.
+ 
+Time: `O(log n)`
+ 
+```cpp
+void insert(vector<int>& heap, int value) {
+    // Step 1: Put the new element at the end
+    heap.push_back(value);
+ 
+    int i = heap.size() - 1;
+ 
+    // Step 2: Heapify Up
+    while (i > 0) {
+        int parent = (i - 1) / 2;
+ 
+        // Already satisfies max-heap property
+        if (heap[parent] >= heap[i]) {
+            break;
+        }
+ 
+        // Parent is smaller → swap
+        swap(heap[parent], heap[i]);
+ 
+        // Move upward
+        i = parent;
+    }
+}
+```
+ 
+---
+ 
+# 9. Deletion from Max Heap
+ 
+Usually when we say delete from a max heap, we mean:
+ 
+Delete the root, i.e. the maximum element.
+ 
+Start:
+ 
+```
+        60
+       /  \
+     54    55
+    /  \   /
+   50  53 52
+```
+ 
+Array:
+ 
+```
+[60, 54, 55, 50, 53, 52]
+```
+ 
+### Step 1: Remove the root
+ 
+We want to delete `60`.
+ 
+But we can't simply leave the root empty.
+ 
+So take the last element (`52`) and put it at the root:
+ 
+```
+        52
+       /  \
+     54    55
+    /  \
+   50  53
+```
+ 
+Array:
+ 
+```
+[52, 54, 55, 50, 53]
+```
+ 
+Now heap property is broken:
+ 
+```
+52 < 54
+52 < 55
+```
+ 
+❌
+ 
+### Step 2: Move it downward — "heapify down"
+ 
+Compare `52` with its children:
+ 
+```
+     52
+    /  \
+   54  55
+```
+ 
+Take the larger child, `55`.
+ 
+Swap:
+ 
+```
+        55
+       /  \
+     54    52
+    /  \
+   50  53
+```
+ 
+Now valid max heap.
+ 
+Deletion =
+ 
+```
+Remove root
+     ↓
+Move last element to root
+     ↓
+Compare with children
+     ↓
+Swap with LARGER child
+     ↓
+Keep moving DOWN
+```
+ 
+This is called heapify down / bubble down / sift down.
+ 
+Time: `O(log n)`
+ 
+```cpp
+void deleteMax(vector<int>& heap) {
+    // If heap is empty
+    if (heap.empty()) {
+        return;
+    }
+ 
+    // Step 1: Move last element to root
+    heap[0] = heap.back();
+ 
+    // Remove last element
+    heap.pop_back();
+ 
+    int i = 0;
+ 
+    // Step 2: Heapify Down
+    while (true) {
+        int left = 2 * i + 1;
+        int right = 2 * i + 2;
+ 
+        int largest = i;
+ 
+        // Check left child
+        if (left < heap.size() && heap[left] > heap[largest]) {
+            largest = left;
+        }
+ 
+        // Check right child
+        if (right < heap.size() && heap[right] > heap[largest]) {
+            largest = right;
+        }
+ 
+        // Already satisfies max-heap property
+        if (largest == i) {
+            break;
+        }
+ 
+        // Swap with larger child
+        swap(heap[i], heap[largest]);
+ 
+        // Move downward
+        i = largest;
+    }
+}
+```
+ 
 
 
 
@@ -456,8 +720,7 @@ Height = O(log N)
 
 
 
-
-
+---
 
 
 
