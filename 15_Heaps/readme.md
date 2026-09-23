@@ -1,3 +1,487 @@
+## 1. What is a Heap?
+
+A **heap** is a **complete binary tree** that follows the heap property.
+
+There are two main types:
+
+- **Max-Heap** → parent is always greater than or equal to its children.
+- **Min-Heap** → parent is always smaller than or equal to its children.
+
+> Important: A heap is **not a sorted tree**.
+> It only guarantees that the **top/root element** has the required priority.
+
+---
+
+## 2. Complete Binary Tree
+
+A heap must always be a **complete binary tree**.
+
+That means:
+
+1. Every level is completely filled except possibly the last level.
+2. The last level is filled **from left to right**.
+
+Example:
+
+```
+             50
+           /    \
+         30      40
+        /  \    /
+      10   20  35
+```
+
+This is a complete binary tree because the last level is filled from left to right.
+
+---
+
+## 3. Max-Heap
+
+In a **Max-Heap**:
+
+```
+             50
+           /    \
+         30      40
+        /  \    /
+      10   20  35
+```
+
+Every parent is greater than its children:
+
+```
+50 > 30
+50 > 40
+
+30 > 10
+30 > 20
+
+40 > 35
+```
+
+So:
+
+```
+             50
+           /    \
+         30      40
+        /  \    /
+      10   20  35
+```
+
+The maximum element is always at the root:
+
+```
+             ↓
+             50
+```
+
+---
+
+# 4. Heap Representation Using an Array
+
+Although we visualize a heap as a tree, we normally store it in an **array/vector**.
+
+The above tree:
+
+```
+             50
+           /    \
+         30      40
+        /  \    /
+      10   20  35
+```
+
+is stored as:
+
+```
+Index:  0   1   2   3   4   5
+        ↓   ↓   ↓   ↓   ↓   ↓
+Array: [50, 30, 40, 10, 20, 35]
+```
+
+No pointers are required.
+
+---
+
+## 5. Parent and Child Index Formula
+
+For an element at index `i`:
+
+```
+Parent       = (i - 1) / 2
+
+Left child   = 2 * i + 1
+
+Right child  = 2 * i + 2
+```
+
+Example:
+
+```
+             50
+           /    \
+         30      40
+        /  \    /
+      10   20  35
+```
+
+Array:
+
+```
+[50, 30, 40, 10, 20, 35]
+```
+
+For `30`:
+
+```
+i = 1
+
+Left child  = 2(1) + 1 = 3  → 10
+Right child = 2(1) + 2 = 4  → 20
+```
+
+For `40`:
+
+```
+i = 2
+
+Left child  = 2(2) + 1 = 5  → 35
+```
+
+---
+## 4. Index Arithmetic
+
+For any zero-indexed element at position `i`:
+
+| Node | Formula |
+| :--- | :--- |
+| **Parent** | `(i - 1) / 2` |
+| **Left Child** | `2 * i + 1` |
+| **Right Child** | `2 * i + 2` |
+
+### Example
+For index `i = 1` (Value = `30`):
+* Left Child Index: `2(1) + 1 = 3` $\rightarrow$ Value = `10`
+* Right Child Index: `2(1) + 2 = 4` $\rightarrow$ Value = `20`
+
+---
+
+
+# 6. Insertion in a Max-Heap
+
+Suppose our current Max-Heap is:
+
+```
+             50
+           /    \
+         30      40
+        /  \    /
+      10   20  35
+```
+
+Array:
+
+```
+[50, 30, 40, 10, 20, 35]
+```
+
+Now insert:
+
+```
+45
+```
+
+### Step 1 — Insert at the next available position
+
+Because a heap must remain a **complete binary tree**, we first put the new element at the next empty position.
+
+```
+             50
+           /    \
+         30      40
+        /  \    / \
+      10   20  35  45
+```
+
+Array:
+
+```
+[50, 30, 40, 10, 20, 35, 45]
+```
+
+But the heap property is broken:
+
+```
+40 < 45
+```
+
+So `45` must move upward.  Heapify
+
+## 1. What is Heapify?
+
+**Heapify** is the process of rearranging elements so that they follow the **heap property**.
+
+For a **Max-Heap**:
+
+```text
+Parent >= Children
+
+```
+
+For a **Min-Heap**:
+
+```text
+Parent <= Children
+
+```
+
+Heapify does **not sort the entire array**.
+
+It only fixes the heap property.
+
+---
+
+## 2. What Does Heapify Do?
+
+Suppose we have:
+
+```text
+             20
+           /    \
+         50      30
+        /  \
+      10   40
+
+```
+
+Here `20 < 50`, so this is **not a Max-Heap**.
+
+Heapify rearranges the tree:
+
+```text
+             50
+           /    \
+         40      30
+        /  \
+      10   20
+
+```
+
+Now every parent is greater than its children.
+
+So this is a Max-Heap.
+
+---
+
+## 3. Heapify Down
+
+Heapify commonly works by moving an element **downward** until the heap property is restored.
+
+Example:
+
+```text
+             20
+           /    \
+         50      30
+
+```
+
+Compare `20` with its children:
+
+```text
+20, 50, 30
+
+```
+
+For Max-Heap, choose the **largest child = 50**.
+
+Swap:
+
+```text
+             50
+           /    \
+         20      30
+
+```
+
+Now the heap property is satisfied.
+
+---
+
+## 4. Tree Structure → Array
+
+The tree:
+
+```text
+             20
+           /    \
+         50      30
+        /  \
+      10   40
+
+```
+
+is stored as:
+
+```text
+[20, 50, 30, 10, 40]
+
+```
+
+For index `i`:
+
+```cpp
+left  = 2 * i + 1;
+right = 2 * i + 2;
+
+```
+
+---
+
+## 5. Heapify Code — Max-Heap
+
+```cpp
+void heapify(vector<int>& arr, int n, int i) {
+
+    int largest = i;
+
+    int left = 2 * i + 1;
+    int right = 2 * i + 2;
+
+    // Find the largest among parent, left child and right child
+    if (left < n && arr[left] > arr[largest])
+        largest = left;
+
+    if (right < n && arr[right] > arr[largest])
+        largest = right;
+
+    // If child is larger, swap and continue downward
+    if (largest != i) {
+        swap(arr[i], arr[largest]);
+
+        heapify(arr, n, largest);
+    }
+}
+
+```
+
+---
+
+## 6. Example
+
+Given:
+
+```text
+arr = [20, 50, 30, 10, 40]
+
+```
+
+Tree:
+
+```text
+             20
+           /    \
+         50      30
+        /  \
+      10   40
+
+```
+
+Call:
+
+```cpp
+heapify(arr, 5, 0);
+
+```
+
+At index `0`:
+
+```text
+20
+├── 50
+└── 30
+
+```
+
+Largest = `50`
+
+Swap:
+
+```text
+             50
+           /    \
+         20      30
+        /  \
+      10   40
+
+```
+
+Now heapify the affected subtree:
+
+```text
+             50
+           /    \
+         20      30
+        /  \
+      10   40
+
+```
+
+`20 < 40`, so swap again:
+
+```text
+             50
+           /    \
+         40      30
+        /  \
+      10   20
+
+```
+
+Final array:
+
+```text
+[50, 40, 30, 10, 20]
+
+```
+
+Now it satisfies the **Max-Heap property**.
+
+---
+
+## 7. Time & Space Complexity
+
+For one `heapify` operation:
+
+```text
+Time  → O(log N)
+Space → O(log N)   // recursive call stack
+
+```
+
+The element can move from the root down to the leaf, which is at most the height of the heap:
+
+```text
+Height = O(log N)
+
+```
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 # Heap on Pairs — Notes
 
 ## 1. Priority Queue basics 
