@@ -149,25 +149,6 @@ i = 2
 Left child  = 2(2) + 1 = 5  → 35
 ```
 
----
-## 4. Index Arithmetic
-
-For any zero-indexed element at position `i`:
-
-| Node | Formula |
-| :--- | :--- |
-| **Parent** | `(i - 1) / 2` |
-| **Left Child** | `2 * i + 1` |
-| **Right Child** | `2 * i + 2` |
-
-### Example
-For index `i = 1` (Value = `30`):
-* Left Child Index: `2(1) + 1 = 3` $\rightarrow$ Value = `10`
-* Right Child Index: `2(1) + 2 = 4` $\rightarrow$ Value = `20`
-
----
-
-
 # 6. Insertion in a Max-Heap
 
 Suppose our current Max-Heap is:
