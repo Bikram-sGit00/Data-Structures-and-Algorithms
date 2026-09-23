@@ -723,10 +723,12 @@ void deleteMax(vector<int>& heap) {
 ---
 
 
+<div align="center">
+  <h1>
+    HEAP on Pairs - Notes
+  </h1>
+</div>
 
-
-
-# Heap on Pairs — Notes
 
 ## 1. Priority Queue basics 
 
