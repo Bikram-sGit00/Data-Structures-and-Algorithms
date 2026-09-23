@@ -713,7 +713,187 @@ void deleteMax(vector<int>& heap) {
 }
 ```
  
-
+# 10. Heap Sort using Max Heap
+ 
+Goal: sort the array in ascending order.
+ 
+```
+[50, 54, 52, 55, 53]
+```
+ 
+### Core idea
+ 
+```
+1. Build a Max Heap
+2. Maximum is at index 0
+3. Swap maximum with the last element
+4. Reduce heap size
+5. Heapify Down
+6. Repeat
+```
+ 
+Why max heap?
+ 
+Because every time we get the largest element, we put it at the end.
+ 
+### C++ Code
+ 
+```cpp
+void heapify(vector<int>& arr, int n, int i) {
+    int largest = i;
+ 
+    int left = 2 * i + 1;
+    int right = 2 * i + 2;
+ 
+    // Check left child
+    if (left < n && arr[left] > arr[largest]) {
+        largest = left;
+    }
+ 
+    // Check right child
+    if (right < n && arr[right] > arr[largest]) {
+        largest = right;
+    }
+ 
+    // If parent is not the largest
+    if (largest != i) {
+        swap(arr[i], arr[largest]);
+ 
+        // Heapify the affected subtree
+        heapify(arr, n, largest);
+    }
+}
+ 
+void heapSort(vector<int>& arr) {
+    int n = arr.size();
+ 
+    // Step 1: Build Max Heap
+    for (int i = n / 2 - 1; i >= 0; i--) {
+        heapify(arr, n, i);
+    }
+ 
+    // Step 2: Extract maximum one by one
+    for (int i = n - 1; i > 0; i--) {
+ 
+        // Move maximum to the end
+        swap(arr[0], arr[i]);
+ 
+        // Heapify remaining heap
+        heapify(arr, i, 0);
+    }
+}
+```
+ 
+### Let's understand the important part
+ 
+Suppose:
+ 
+```
+[50, 54, 52, 55, 53]
+```
+ 
+**Step 1 — Build Max Heap**
+ 
+After heapifying:
+ 
+```
+[55, 54, 52, 50, 53]
+```
+ 
+`55` is at the root.
+ 
+**Step 2 — Put maximum at the end**
+ 
+```
+swap(arr[0], arr[i]);
+```
+ 
+So:
+ 
+```
+[55, 54, 52, 50, 53]
+ ↓
+[53, 54, 52, 50, 55]
+```
+ 
+Now `55` is in its final position.
+ 
+We don't touch it anymore.
+ 
+The active heap is only:
+ 
+```
+[53, 54, 52, 50] | [55]
+```
+ 
+That's why we call:
+ 
+```
+heapify(arr, i, 0);
+```
+ 
+Notice `i`, not `n`.
+ 
+We're saying: "Only heapify the remaining part."
+ 
+Then:
+ 
+```
+[54, 53, 52, 50] | [55]
+```
+ 
+Extract `54`:
+ 
+```
+[50, 53, 52] | [54, 55]
+```
+ 
+Heapify:
+ 
+```
+[53, 50, 52] | [54, 55]
+```
+ 
+Eventually:
+ 
+```
+[50, 52, 53, 54, 55]
+```
+ 
+### 🔥 The connection with what you just learned
+ 
+You can think of Heap Sort as repeatedly doing Delete Max, except instead of actually deleting the maximum, we swap it to the end.
+ 
+```
+DELETE MAX:
+ 
+root → remove
+last element → root
+heapify down
+ 
+ 
+HEAP SORT:
+ 
+root → swap with last
+reduce heap size
+heapify down
+```
+ 
+That's the whole trick.
+ 
+### Complexity
+ 
+```
+Build Max Heap     → O(n)
+Heapify × n times  → O(n log n)
+ 
+Total              → O(n log n)
+Space              → O(1)
+```
+ 
+One sentence to remember:
+ 
+Heap Sort = Build Max Heap → repeatedly move the maximum to the end → heapify the remaining heap.
 
 
 
