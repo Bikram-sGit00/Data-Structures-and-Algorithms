@@ -205,7 +205,7 @@ But the heap property is broken:
 
 So `45` must move upward.  Heapify
 
-## 1. What is Heapify?
+## 7. What is Heapify?
 
 **Heapify** is the process of rearranging elements so that they follow the **heap property**.
 
@@ -229,7 +229,7 @@ It only fixes the heap property.
 
 ---
 
-## 2. What Does Heapify Do?
+## 8. What Does Heapify Do?
 
 Suppose we have:
 
@@ -261,7 +261,7 @@ So this is a Max-Heap.
 
 ---
 
-## 3. Heapify Down
+## 9. Heapify Down
 
 Heapify commonly works by moving an element **downward** until the heap property is restored.
 
@@ -296,7 +296,9 @@ Now the heap property is satisfied.
 
 ---
 
-## 4. Tree Structure → Array
+## 10. Heapify Up
+
+Heapify also works by moving an element **upward** until the heap property is restored.
 
 The tree:
 
@@ -326,7 +328,7 @@ right = 2 * i + 2;
 
 ---
 
-## 5. Heapify Code — Max-Heap
+## Heapify Code — Max-Heap
 
 ```cpp
 void heapify(vector<int>& arr, int n, int i) {
@@ -355,7 +357,7 @@ void heapify(vector<int>& arr, int n, int i) {
 
 ---
 
-## 6. Example
+## Example
 
 Given:
 
@@ -437,7 +439,7 @@ Now it satisfies the **Max-Heap property**.
 
 ---
 
-## 7. Time & Space Complexity
+## 11. Time & Space Complexity
 
 For one `heapify` operation:
 
@@ -455,7 +457,7 @@ Height = O(log N)
 ```
 
 
-# 8. Insertion into Max Heap
+# 12. Insertion into Max Heap
  
 Suppose we have:
  
@@ -572,7 +574,7 @@ void insert(vector<int>& heap, int value) {
  
 ---
  
-# 9. Deletion from Max Heap
+# 13. Deletion from Max Heap
  
 Usually when we say delete from a max heap, we mean:
  
@@ -713,7 +715,7 @@ void deleteMax(vector<int>& heap) {
 }
 ```
  
-# 10. Heap Sort using Max Heap
+# 14. Heap Sort using Max Heap
  
 Goal: sort the array in ascending order.
  
@@ -860,7 +862,7 @@ Eventually:
 [50, 52, 53, 54, 55]
 ```
  
-### 🔥 The connection with what you just learned
+###  Note::
  
 You can think of Heap Sort as repeatedly doing Delete Max, except instead of actually deleting the maximum, we swap it to the end.
  
