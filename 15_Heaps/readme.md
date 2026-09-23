@@ -106,7 +106,7 @@ No pointers are required.
 
 ## 5. Parent and Child Index Formula
 
-For an element at index `i`:
+For an element at index `i`: (`0` based indexing)
 
 ```
 Parent       = (i - 1) / 2
