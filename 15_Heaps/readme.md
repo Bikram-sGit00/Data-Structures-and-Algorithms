@@ -1,6 +1,6 @@
 # Heap on Pairs — Notes
 
-## 1. Priority Queue basics (recap)
+## 1. Priority Queue basics 
 
 ```cpp
 #include <queue>
@@ -21,7 +21,7 @@ comparator — everything below is just a bigger version of this idea.
 
 ---
 
-## 2. Heap on pairs — plain syntax
+## 2. Heap on pairs 
 
 ```cpp
 priority_queue<pair<int,int>> pq;   // default max-heap of pairs
