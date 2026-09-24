@@ -115,12 +115,41 @@ Time Complexity : O(n1 + n2) + O(n1 + n2 + n3) + O(n1 + n2 + n3 + n4)  , assume 
 Space Complexity : O(1)
 
 ✅ Optimized Approach --> 
+class Solution {
+    struct cmp {
+        bool operator()(const std::pair<int, ListNode*>& a, const std::pair<int, ListNode*>& b) {
+            return a.first > b.first;
+        }
+    };
+public:
+    ListNode* mergeKLists(vector<ListNode*>& lists) {
+        priority_queue<pair<int, ListNode*>, vector<pair<int, ListNode*>>, cmp>minHeap;
+        int countOfList = lists.size(); // not all elements, just the number of individual lists
 
-Time Complexity : 
+        ListNode* dummy = new ListNode(-1);
+        ListNode* temp = dummy;
 
-Space Complexity : 
+        // Put the first node of every non-empty list into the heap, because each list is already sorted & the first node is the smallest node from that list.
+        for(int i = 0; i < countOfList; i++){ // O(k log k), where k is the number of linked lists, and log k is for inserting into the minHeap
+            if(lists[i]) minHeap.push({lists[i] -> val, lists[i]});
+        }
+
+        while(!minHeap.empty()){ // O(n x k) assuming each linked list is of size n
+            pair<int, ListNode*> curr = minHeap.top();  // Get the smallest node currently available.
+            temp -> next = curr.second;                 // Attach that node to our answer.
+            minHeap.pop();
+
+            if(curr.second -> next){ // check if the list has more nodes, if yes, push the next node into the heap.
+                minHeap.push({curr.second -> next -> val, curr.second -> next});
+            }
+            temp = temp -> next; // move the temp pointer to the newly added node, and we will not lost the head as we have dummy pointer
+        }
+        return dummy -> next; // dummy's next is the head of the merged list
+    }
+};
+
+Time Complexity : O(k log k) + O(n x k x log k) ≈ O(n log k)
+
+Space Complexity : O(k), at max heap will contain k elements, one from each list.
 
 ✅ Company Tags -->  
-
-
-
