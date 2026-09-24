@@ -47,11 +47,72 @@ Time Complexity : O(n x k) + O(nlogn) + O(n) = O(nlogn)
 
 Space Complexity : O(n) + O(n) ≈ O(n), where n is the total number of nodes across all linked lists
 
-✅ Better Approach --> 
+✅ Better Approach --> class Solution {
+public:
 
-Time Complexity : 
+    // Merges two already sorted linked lists
+    ListNode* mergeTwoLists(ListNode* list1, ListNode* list2) {
 
-Space Complexity : 
+        ListNode* dummy = new ListNode(-1);
+        ListNode* temp = dummy;
+
+        // Pick the smaller node and attach it to the answer
+        while(list1 && list2) {
+
+            if(list1->val <= list2->val) {
+                temp->next = list1;
+                list1 = list1->next;
+            }
+            else {
+                temp->next = list2;
+                list2 = list2->next;
+            }
+
+            temp = temp->next;
+        }
+
+        // Attach whichever list still has nodes
+        if(list1) {
+            temp->next = list1;
+        }
+        else {
+            temp->next = list2;
+        }
+
+        return dummy->next;
+    }
+
+    ListNode* mergeKLists(vector<ListNode*>& lists) {
+
+        if(lists.empty()) {
+            return nullptr;
+        }
+
+        ListNode* ans = lists[0];
+
+        // Merge the current answer with each remaining list
+        for(int i = 1; i < lists.size(); i++) {
+            ans = mergeTwoLists(ans, lists[i]);
+            //                 O(n1),  O(n2)   for merging first 2
+            //                O(n1+n2),O(n3)   for merging new list made from first 2 + 3rd list 
+            // so on ...
+        }
+
+        return ans;
+    }
+};
+
+Time Complexity : O(n1 + n2) + O(n1 + n2 + n3) + O(n1 + n2 + n3 + n4)  , assume each linkedlist is nearly same size n1 = n2 = n3 = n4 = n
+
+              => n + 2n + 3n + 4n + ... + kn (added extra n, doing lot of iterations so single `n` is doesn`t matter && till `kn` cause we are merging k lists)
+
+              => n(1 + 2 + 3 + ... + k)
+
+                    n(k x (k + 1))
+              => ≈ ----------------
+                          2
+
+Space Complexity : O(1)
 
 ✅ Optimized Approach --> 
 
