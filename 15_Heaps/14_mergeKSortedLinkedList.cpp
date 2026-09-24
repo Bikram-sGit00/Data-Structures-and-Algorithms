@@ -152,4 +152,32 @@ Time Complexity : O(k log k) + O(n x k x log k) ≈ O(n log k)
 
 Space Complexity : O(k), at max heap will contain k elements, one from each list.
 
+
+✅ Without Comparator --> class Solution {
+public:
+    ListNode* mergeKLists(vector<ListNode*>& lists) {
+        priority_queue<pair<int, ListNode*>,vector<pair<int, ListNode*>>, greater<pair<int, ListNode*>>> minHeap;
+        int countOfList = lists.size(); // not all elements, just the number of individual lists
+
+        ListNode* dummy = new ListNode(-1);
+        ListNode* temp = dummy;
+
+        for(int i = 0; i < countOfList; i++){
+            if(lists[i]) minHeap.push({lists[i] -> val, lists[i]});
+        }
+
+        while(!minHeap.empty()){
+            auto curr = minHeap.top(); 
+            temp -> next = curr.second;
+            minHeap.pop();
+
+            if(curr.second -> next){
+                minHeap.push({curr.second -> next -> val, curr.second -> next});
+            }
+            temp = temp -> next;
+        }
+        return dummy -> next;
+    }
+};
+
 ✅ Company Tags -->  
