@@ -69,4 +69,30 @@ Time Complexity : O(n log n)
 Space Complexity : O(n)
 
 
+✅ GFG Approach -->  class Solution {
+	public:
+	void replaceWithRank(vector<int>& arr) {
+        // Store {value, original index}.
+        // This allows duplicate values to receive different ranks.
+        
+	    vector<pair<int, int>> sortArr;
+	    for(int i = 0; i < arr.size(); i++){
+	        sortArr.push_back({arr[i], i});
+	    }
+
+        // Sort by value first.
+        // If values are equal, original index is compared automatically.
+	    sort(sortArr.begin(), sortArr.end());
+	    
+        // Assign ranks according to sorted order.
+	    int rank = 0;
+	    for(int i = 0; i < sortArr.size(); i++){
+	        arr[sortArr[i].second] = rank++; // most small elemente.second, means that element's index
+	    }                                   // arr[thatIndex] will get lowest rank then continue...
+	}
+};
+
+Time Complexity : O(n log n)
+Space Complexity : O(n)
+
 ✅ Company Tags -->  
