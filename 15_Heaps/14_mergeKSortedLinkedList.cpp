@@ -181,3 +181,16 @@ public:
 };
 
 ✅ Company Tags -->  
+Amazon - asked 13 times in the last 6 months
+Microsoft - asked 7 times in the last 6 months
+Google - asked 5 times in the last 6 months
+Bloomberg - asked 4 times in the last 6 months
+Oracle - asked 3 times in the last 6 months
+Apple - asked 3 times in the last 6 months
+Meta - asked 2 times in the last 6 months
+Deloitte - asked 2 times in the last 6 months
+tcs - asked 2 times in the last 6 months
+Snap - asked 2 times in the last 6 months
+FreshWorks - asked 2 times in the last 6 months
+Nvidia - asked 2 times in the last 6 months
+Salesforce - asked 2 times in the last 6 months
