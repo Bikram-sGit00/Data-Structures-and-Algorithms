@@ -1,4 +1,4 @@
-➡️ problemLinks --> https://leetcode.com/problems/jump-game/ 
+➡️ problemLinks --> https://leetcode.com/problems/jump-game/ &&  https://www.geeksforgeeks.org/problems/jump-game/1
 
 ✅ Optimized Approach --> class Solution {
 public:
