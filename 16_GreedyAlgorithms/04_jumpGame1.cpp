@@ -1,4 +1,4 @@
-➡️ problemLinks --> https://leetcode.com/problems/jump-game/  &&  https://www.geeksforgeeks.org/problems/minimum-number-of-jumps-1587115620/1
+➡️ problemLinks --> https://leetcode.com/problems/jump-game/ 
 
 ✅ Optimized Approach --> class Solution {
 public:
