@@ -67,4 +67,7 @@ Time Complexity : O(n log n + n x maxDeadline)
 
 Space Complexity : O(n + maxDeadline)
 
+
+✅ Optimized Approach --> with Disjoint Set Union (DSU) , do after graph
+
 ✅ Company Tags -->  Flipkart Accolite Microsoft NPCI, Google(2021)
