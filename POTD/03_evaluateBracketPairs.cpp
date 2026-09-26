@@ -4,7 +4,7 @@ Problem::
 Given a string containing normal characters and keys inside parentheses, replace each (key) with its corresponding value from the knowledge list.
 If a key is not present, replace it with ?.
 
-My Approach:
+My Approach::
 - Store the knowledge pairs in an unordered_map for fast lookup.
 - Traverse the string using i.
 - Whenever "(" is found, use find(')') to locate the closing bracket.
