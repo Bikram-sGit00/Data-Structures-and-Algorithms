@@ -45,8 +45,19 @@ To get the maximum number, we use a greedy approach: always choose the meeting t
     }
 };
 
-Time Complexity : O(nlogn) + O(n) + O(klogk) = O(nlogn) where n is the number of meetings and k is the number of meetings that can be attended.
+Time Complexity : O(n) + O(nlogn) + O(n) + O(klogk) = O(nlogn) where n is the number of meetings and k is the number of meetings that can be attended.
 
-Space Complexity : O(n) where n is the number of meetings.
+Space Complexity :
+- start → n
+- end → n
+- indx → n
+
+- O(3 x n) = O(3n)
+
+- + O(n) for storing the result vector
+
+- (logn) sorting takes O(logn) auxiliary stack space
+
+overall :: O(3n) + O(n) ≈ O(n)
 
 ✅ Company Tags -->  
