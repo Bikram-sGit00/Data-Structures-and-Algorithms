@@ -39,9 +39,9 @@ public:
         sort(arr.begin(), arr.end());
         for (int i = 0; i < n; i++) {
             if (ans.empty() ||
-                arr[i][0] > ans.back()[1]) { // means new interval
-                ans.push_back(arr[i]);
-            } else { // lying in current inrterval
+                arr[i][0] > ans.back()[1]) { // means new interval,     ans.back() gives us the last element of ans, & ans.back()[0] -> start , of a pair
+                ans.push_back(arr[i]);      //                                                                         ans.back()[1] -> end  
+            } else { // lying in current interval
                 ans.back()[1] = max(ans.back()[1], arr[i][1]);
             }
         }
@@ -49,7 +49,26 @@ public:
     }
 };
 
-// Time Complexity: O(nlogn) for sorting + O(n) for merging 
+// Time Complexity: O(nlogn) for sorting + O(n) for merging, first ask the interviewer if the vector will be sorted or not before attempting
 // Space Complexity: O(n) for storing the merged intervals
 
-✅ Company Tags -->  Amazon Microsoft Google Nutanix Zoho
+✅ Company Tags (2026 Data) -->  Amazon - asked 22 times in the last 6 months
+Bloomberg - asked 13 times in the last 6 months
+Apple - asked 13 times in the last 6 months
+Microsoft - asked 7 times in the last 6 months
+Google - asked 5 times in the last 6 months
+Yandex - asked 5 times in the last 6 months
+Salesforce - asked 4 times in the last 6 months
+micro1 - asked 4 times in the last 6 months
+JPMorgan Chase - asked 4 times in the last 6 months
+Meta - asked 3 times in the last 6 months
+Infosys - asked 3 times in the last 6 months
+TikTok - asked 3 times in the last 6 months
+Palo Alto Networks - asked 3 times in the last 6 months
+IBM- asked 3 times in the last 6 months
+Morgan Stanley - asked 3 times in the last 6 months
+Visa - asked 3 times in the last 6 months
+tcs - asked 2 times in the last 6 months
+LinkedIn - asked 2 times in the last 6 months
+Walmart Labs - asked 2 times in the last 6 months
+Goldman Sachs - asked 2 times in the last 6 months
