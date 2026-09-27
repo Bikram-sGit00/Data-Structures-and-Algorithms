@@ -511,6 +511,12 @@ public:
 };
 ```
 
+# ✅ Time & Space Complexity
+
+> **`O(n)`** <br>
+> **`O(n)`**
+
+
 # ✅ Company Tags (2026 Data)
 
 > **`Google`**
