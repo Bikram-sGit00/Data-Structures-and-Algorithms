@@ -1,6 +1,6 @@
-# Insert Interval - [text](https://leetcode.com/problems/insert-interval/)
+# Insert Interval 
 
-## Problem Overview
+## Problem Overview - [Leetcode](https://leetcode.com/problems/insert-interval/) [GFG](https://www.geeksforgeeks.org/problems/insert-interval-1666733333/1)
 
 We are given a list of **non-overlapping intervals sorted by starting time**, and one `newInterval`.
 
@@ -30,7 +30,7 @@ There is a gap, so they stay separate.
 
 ---
 
-# 💡 Main Idea
+# Main Idea
 
 We divide all existing intervals into **3 parts**:
 
@@ -99,7 +99,7 @@ result = [[1,3]]
 
 ---
 
-## ⚠️ Why `<` and NOT `<=`?
+## Why `<` and NOT `<=`?
 
 This is VERY important.
 
@@ -247,7 +247,7 @@ So they merge:
 
 ---
 
-# 🔥 Important: Why Does the Second Condition Work?
+# Why Does the Second Condition Work?
 
 Imagine:
 
@@ -390,7 +390,7 @@ Just copy them into `result`.
 
 ---
 
-# 🧠 The Two Conditions You MUST Remember
+# The Two Conditions You MUST Remember
 
 ### First `while`
 
@@ -441,7 +441,7 @@ The existing interval starts before the new interval has finished.
 
 ---
 
-# 🚨 The Recall Trick
+# 
 
 Think of the new interval as a **person standing in the middle**.
 
@@ -475,7 +475,7 @@ existing_start <= new_end
 
 ---
 
-# 📝 Your Code With Revision Comments
+# Code 
 
 ```cpp
 class Solution {
@@ -511,12 +511,11 @@ public:
 };
 ```
 
-# ⚡ One-Line Memory Rule
+# Company Tags -> (2026)
 
-> **`end < newStart` → LEFT (no collision)**
-> **`start <= newEnd` → MIDDLE (merge)**
-> **remaining → RIGHT**
+> **`Google`**
+> **`Amazon`**
+> **`Meta`**
+> **`Amazon`**
+> **`Microsoft`**
 
-And the most important rule:
-
-> **If intervals overlap OR touch, merge them into one interval.**
