@@ -1,6 +1,6 @@
-# Insert Interval
+# Insert Interval - [text](https://leetcode.com/problems/insert-interval/)
 
-## 🧠 Problem Overview
+## Problem Overview
 
 We are given a list of **non-overlapping intervals sorted by starting time**, and one `newInterval`.
 
