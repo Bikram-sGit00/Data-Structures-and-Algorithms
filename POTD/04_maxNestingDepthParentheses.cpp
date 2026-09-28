@@ -15,3 +15,19 @@ public:
         return maxDepth;
     }
 };
+
+
+
+class Solution {
+public:
+    int maxDepth(string s) {
+        int maxDepth = 0;
+        int openBrac = 0;
+        for(int i = 0; i < s.size(); i++){
+            if(s[i] == '(') openBrac++;
+            else if(s[i] == ')') openBrac--;
+            maxDepth = max(maxDepth, openBrac);
+        }
+        return maxDepth;
+    }
+};
