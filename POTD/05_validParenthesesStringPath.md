@@ -409,3 +409,8 @@ And initialization:
 ```cpp
 memset(memo, -1, sizeof(memo));
 ```
+
+# ✅ Company Tags (2026 Data)
+
+> **`Google`**
+
