@@ -1,6 +1,6 @@
 # Valid Parenthesis Path — Recursion + Memoization
 
-## Problem
+## Problem - [Leetcode](https://leetcode.com/problems/check-if-there-is-a-valid-parentheses-string-path/description/?envType=daily-question&envId=2026-09-29)
 
 We are given a grid containing `(` and `)`.
 
