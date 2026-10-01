@@ -1,4 +1,4 @@
-➡️ problemLinks --> 
+➡️ problemLinks --> https://www.geeksforgeeks.org/problems/minimum-platforms-1587115620/1
 
 ✅ Brute Force --> 
 Approach::
@@ -65,16 +65,80 @@ Time Complexity : O(N²)
 
 Space Complexity : O(1)
 
-✅ Better Approach --> 
-
-Time Complexity : 
-
-Space Complexity : 
-
 ✅ Optimized Approach --> 
 
-Time Complexity : 
+The core intuition
+Think of the two sorted arrays as two events:
 
-Space Complexity : 
+Arrival  →  +1 platform
+Departure → -1 platform
+
+We always compare the next arrival with the next departure:
+
+if(arr[i] <= dep[j])
+
+If arrival comes first (or at the same time):
+
++1 platform
+Otherwise, a train has already left:
+-1 platform
+
+
+class Solution {
+  public:
+    int minPlatform(vector<int>& arr, vector<int>& dep) {
+
+        // Sort arrivals and departures separately so we can process
+        // all trains in chronological order.
+        sort(arr.begin(), arr.end());
+        sort(dep.begin(), dep.end());
+        
+        // i -> points to the next train arrival.
+        // j -> points to the earliest train departure.
+        int i = 0;
+        int j = 0;
+
+        // Current number of platforms being used.
+        int platform = 0;
+
+        // Maximum number of platforms needed at any moment.
+        int maxi = 0;
+        
+        // Process every train arrival.
+        while(i < arr.size()){
+
+            // If a train arrives before or exactly when the next train departs,
+            // both trains need separate platforms at that moment.
+            if(arr[i] <= dep[j]){
+
+                // A new train has arrived, so one more platform is needed.
+                platform++;
+                i++;
+
+            }else{
+
+                // A train has already departed before the next arrival,
+                // so its platform becomes free.
+                platform--;
+                j++;
+            }
+
+            // Keep track of the maximum platforms needed at any time.
+            maxi = max(maxi, platform);
+        }
+
+        // The maximum number of simultaneously occupied platforms is the answer.
+        return maxi;
+    }
+};
+
+
+
+Time Complexity : 
+ => O(N log N) + O(N log N) + O(2N) 
+ => (2 * O(N log N)) + O(2N) 
+ => O(2(N log N + N))
+
+Space Complexity : O(1)
 
 ✅ Company Tags -->  Paytm Amazon Microsoft D-E-Shaw Hike Walmart Adobe Google BoomerangCommerce Zillious Atlassian NPCI MorganStanley
