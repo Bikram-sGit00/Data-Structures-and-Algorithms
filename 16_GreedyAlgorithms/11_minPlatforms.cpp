@@ -132,13 +132,69 @@ class Solution {
     }
 };
 
-
-
 Time Complexity : 
  => O(N log N) + O(N log N) + O(2N) 
  => (2 * O(N log N)) + O(2N) 
  => O(2(N log N + N))
 
 Space Complexity : O(1)
+
+
+✅ Leetcode Version --> class Solution { 
+public: 
+    int minGroups(vector<vector<int>>& intervals) { 
+        int n = intervals.size(); 
+ 
+        // Separate all starting and ending points.
+        vector<int> start; 
+        vector<int> end; 
+
+        for(auto i : intervals){ 
+            start.push_back(i[0]); 
+            end.push_back(i[1]); 
+        } 
+ 
+        // Process starts and ends in chronological order.
+        sort(start.begin(), start.end()); 
+        sort(end.begin(), end.end()); 
+ 
+        // i -> next interval that is starting
+        // j -> earliest interval that is ending
+        int i = 0; 
+        int j = 0; 
+
+        // Maximum number of groups needed at any time.
+        int ans = 0; 
+
+        // Current number of groups occupied.
+        int grp = 0; 
+
+        while(i < n){ 
+
+            // A new interval starts before the earliest one ends,
+            // so it overlaps and needs a new group.
+            if(start[i] <= end[j]){  
+                grp++; 
+                i++; 
+
+            }else{ 
+
+                // An interval has ended before the next one starts,
+                // so its group can be reused.
+                grp--; 
+                j++; 
+            } 
+
+            // Keep the maximum number of groups used simultaneously.
+            ans = max(ans, grp);  
+        } 
+
+        return ans; 
+    } 
+};
+
+Time Complexity :: O(n) + O(n log n) + O(n log n) + O(n)  =>  O(n log n)
+Space Complexity :: O(n) + O(n)  =>  O(n)
+
 
 ✅ Company Tags -->  Paytm Amazon Microsoft D-E-Shaw Hike Walmart Adobe Google BoomerangCommerce Zillious Atlassian NPCI MorganStanley
