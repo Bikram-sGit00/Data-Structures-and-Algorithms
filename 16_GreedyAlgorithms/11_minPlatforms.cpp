@@ -1,4 +1,4 @@
-➡️ problemLinks --> https://www.geeksforgeeks.org/problems/minimum-platforms-1587115620/1
+➡️ problemLinks --> https://www.geeksforgeeks.org/problems/minimum-platforms-1587115620/1  &&  https://leetcode.com/problems/divide-intervals-into-minimum-number-of-groups/description/
 
 ✅ Brute Force --> 
 Approach::
