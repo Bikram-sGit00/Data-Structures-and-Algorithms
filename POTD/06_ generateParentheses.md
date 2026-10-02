@@ -289,3 +289,20 @@ Ask yourself:
 > **"Can I know a choice is invalid before making the recursive call?"**
 
 - If **Yes**, enforce constraints immediately (`open < n`, `close < open`) to prune the recursion tree.
+
+
+# ✅ Company Tags (2026 Data)
+
+> **`Google`** — asked 11 times in the last 6 months
+
+> **`Amazon`** — asked 6 times in the last 6 months
+
+> **`Microsoft`** — asked 4 times in the last 6 months
+
+> **`Bloomberg`** — asked 4 times in the last 6 months
+
+> **`Meta`** — asked 2 times in the last 6 months
+
+> **`Infosys`** — asked 2 times in the last 6 months
+
+> **`Salesforce`** — asked 2 times in the last 6 months
