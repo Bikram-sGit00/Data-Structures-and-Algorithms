@@ -110,24 +110,37 @@ public:
 };
 ```
 
-### Dry-Run Idea ($n = 2$)
+### Brute Force Recursion Tree ($n = 2$)
 
-Required length: $2 \times n = 4$.
+For $n = 2$, string length is $2 \times 2 = 4$. The brute-force recursion explores every branch of the binary decision tree until length 4:
 
-1. The recursion first prioritizes choosing `'('`:
-   ```text
-   "" → "(" → "((" → "(((" → "((((" (Base case reached: length 4)
-   ```
-2. Check `isValid("((((")` $\rightarrow$ `false`.
-3. Backtrack:
-   ```cpp
-   curr.pop_back(); // "((((" becomes "((("
-   ```
-4. Move to Choice 2:
-   ```cpp
-   curr.push_back(')'); // "(((" becomes "(()"
-   ```
-5. Recurse down on `"(()"`, and so on.
+```text
+                                      ""
+                           ┌──────────┴──────────┐
+                           ↓                     ↓
+                          "("                   ")"
+                     ┌─────┴─────┐         ┌─────┴─────┐
+                     ↓           ↓         ↓           ↓
+                   "(("        "()"      ")("         "))"
+                  ┌─┴─┐       ┌─┴─┐     ┌─┴─┐       ┌─┴─┐
+                  ↓   ↓       ↓   ↓     ↓   ↓       ↓   ↓
+                "(((" "(()" "()(" "())" ") ((" ")()" "))(" "))("
+                 ↓     ↓      ↓    ↓      ↓    ↓      ↓    ↓
+               "((()" "(())" "(() )" "()()" ")(()" ")()" "))( " "))()"
+```
+
+#### Detailed Leaf Breakdown ($2^4 = 16$ Candidates)
+
+At depth 4, each leaf is evaluated by `isValid()`:
+
+```text
+From "((":  "((((" ✗   "((()" ✗   "(()(" ✗   "(())" ✓
+From "()":  "()((" ✗   "()()" ✓   "())(" ✗   "()))" ✗
+From ")(":  ")(((" ✗   ")(()" ✗   ")()(" ✗   ")())" ✗
+From "))":  "))((" ✗   "))()" ✗   ")))( " ✗   "))))" ✗
+
+Result: Only 2 out of 16 combinations are valid! [ "(())", "()()" ]
+```
 
 ### Complexity Analysis
 
@@ -150,7 +163,7 @@ The brute-force method wastes significant operations generating clearly invalid 
 - `"(((((("`
 - `"())()"`
 
-Instead of generating and validating post-hoc, we can prune invalid branches during recursion by tracking:
+Instead of generating and validating post-hoc, we can prevent invalid choices during recursion by tracking:
 - `open`: count of `'('` used so far
 - `close`: count of `')'` used so far
 
@@ -170,11 +183,27 @@ if (close < open)
 - A closing bracket can only be added if there is an unmatched opening bracket already placed.
 - If `close == open`, adding `')'` immediately creates an invalid prefix like `")"` or `"())"`.
 
-### Important Observation
+### Pruned Recursion Tree ($n = 2$)
 
-Because choices are strictly bound by `open < n` and `close < open`:
-- Every string that reaches `curr.length() == 2 * n` is **guaranteed to be well-formed**.
-- We never need to call `isValid()`.
+Notice how pruning cuts off the entire invalid right half of the tree immediately at step 1:
+
+```text
+                                  ""
+                                  │
+                                  ↓ (open < n: 0 < 2)
+                                 "("
+                        ┌─────────┴─────────┐
+      (open < n: 1 < 2) ↓                   ↓ (close < open: 0 < 1)
+                      "(("                 "()"
+                        │                   │
+  (close < open: 0 < 2) ↓                   ↓ (open < n: 1 < 2)
+                      "(()"               "()("
+                        │                   │
+  (close < open: 1 < 2) ↓                   ↓ (close < open: 1 < 2)
+                     "(())" ✓             "()()" ✓
+```
+
+> **Huge Savings:** The entire right branch starting with `")"` is pruned immediately because `close < open` (`0 < 0`) is false!
 
 ### C++ Code
 
@@ -235,7 +264,7 @@ public:
 | **Strategy** | Generate all $2^{2n}$ strings, then validate | Constrain choices during generation |
 | **Time Complexity** | $\mathcal{O}(n \cdot 2^{2n})$ | $\mathcal{O}\left(\frac{4^n}{\sqrt{n}}\right) = \mathcal{O}(2n \cdot C_n)$ |
 | **Space Complexity** | $\mathcal{O}(n)$ | $\mathcal{O}(n)$ |
-| **Strings Checked** | $2^{2n}$ | $C_n$ (Only valid combinations) |
+| **Strings Explored ($n=2$)** | 16 leaves | 2 leaves |
 | **Validation Needed?** | Yes (`isValid()`) | No (Guaranteed valid by construction) |
 
 ### Mental Model
