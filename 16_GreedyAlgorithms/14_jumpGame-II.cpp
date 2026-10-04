@@ -51,11 +51,45 @@ Time Complexity : O(n^2) , where n is the length of the input array nums
 
 Space Complexity : O(n) + O(n) = O(n) , memorization array + recursion stack space
 
-✅ Optimized Approach --> 
+✅ Optimized Approach --> class Solution {
+public:
+    int jump(vector<int>& nums) {
 
-Time Complexity : 
+        int l = 0;       // Start of the current range of indices.
+        int r = 0;       // End of the current range of indices.
+        int jumps = 0;   // Number of jumps taken so far.
 
-Space Complexity : 
+        // Continue until the current range can reach the last index.
+        while(r < nums.size() - 1){
+
+            int farthest = 0;   // Store the farthest index we can reach
+                                // using one more jump from the current range.
+
+            // Check every index inside the current range.
+            // From each index, calculate how far we can jump.
+            for(int i = l; i <= r; i++){
+                farthest = max(i + nums[i], farthest);
+            }
+
+            // The current range is finished.
+            // The next range will start just after 'r'
+            // and will end at the farthest index we found.
+            l = r + 1;
+            r = farthest;
+
+            // Moving from the current range to the next range
+            // requires one more jump.
+            jumps++;
+        }
+
+        // Minimum number of jumps needed to reach the last index.
+        return jumps;
+    }
+};
+                
+Time Complexity : O(n) , where n is the length of the input array nums
+
+Space Complexity : O(1)
 
 ✅ Company Tags -->  Amazon — Asked count: Unknown — Time period: Unknown
 Google — Asked count: Unknown — Time period: Unknown
