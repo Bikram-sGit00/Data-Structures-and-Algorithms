@@ -1,4 +1,4 @@
-➡️ problemLinks --> https://leetcode.com/problems/jump-game-ii/description/  &&
+➡️ problemLinks --> https://leetcode.com/problems/jump-game-ii/description/  &&  https://www.geeksforgeeks.org/problems/minimum-number-of-jumps-1587115620/1
 
 ✅ Brute Force -->  
 
