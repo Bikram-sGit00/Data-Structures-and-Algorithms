@@ -91,6 +91,48 @@ Time Complexity : O(n) , where n is the length of the input array nums
 
 Space Complexity : O(1)
 
+
+🚀 My Way of Writing this Code --> class Solution {
+public:
+    int jump(vector<int>& nums) {
+        // If there is only one element, we are already at the destination. 
+        if(nums.size() <= 1) return 0;
+
+        int jump = 0;       // Number of jumps taken so far.
+        int canReach = 0;  // Farthest index we can reach from the current range.
+        int currEnd = 0;   // End of the range reachable using the current number of jumps.
+
+        for(int i = 0; i < nums.size(); i++){
+
+            // If the current index is beyond our reachable range,
+            // then we can never reach this index or anything after it.
+            if(i > canReach) return -1;
+
+            // From all indices we have scanned so far,
+            // find the farthest index we can reach with the NEXT jump.
+            canReach = max(canReach, i + nums[i]);
+
+            // We have reached the end of the current jump's range.
+            // So now we must take one more jump to reach the next range.
+            if(i == currEnd){
+                jump++;
+                currEnd = canReach;
+            }
+
+            // If the current jump can already reach or cross the last index,
+            // we don't need any more jumps, so return the answer immediately.
+            if(currEnd >= nums.size() - 1) return jump;
+        }
+
+        // If the last index could not be reached.
+        return -1;
+    }
+};
+
+Time Complexity : O(n) , where n is the length of the input array nums
+Space Complexity : O(1)
+
+
 ✅ Company Tags -->  Amazon — Asked count: Unknown — Time period: Unknown
 Google — Asked count: Unknown — Time period: Unknown
 Microsoft — Asked count: Unknown — Time period: Unknown
