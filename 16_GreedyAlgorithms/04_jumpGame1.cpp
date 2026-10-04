@@ -24,3 +24,9 @@ Meta - asked 4 times in the last 6 months
 Infosys - asked 3 times in the last 6 months
 Microsoft - asked 2 times in the last 6 months
 Tom - asked 2 times in the last 6 months
+
+
+
+Note :: Move to Jump Game II -> file:///D:/DSA/16_GreedyAlgorithms/14_jumpGame-II.cpp [local - ctrl+click to open]
+
+[Github](../16_GreedyAlgorithms/14_jumpGame-II.cpp)
