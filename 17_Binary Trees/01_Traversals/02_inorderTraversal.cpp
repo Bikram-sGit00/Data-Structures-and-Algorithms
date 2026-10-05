@@ -20,6 +20,8 @@ Time Complexity : O(n)
 
 Space Complexity : O(n) + O(n) = O(n)  // recursive stack space + result vector space
 
+Note :: Recursive stack space = O(h), where h is the height of the tree.
+In the worst case, the tree can be completely skewed, making h = n, so the worst-case auxiliary space is O(n).
 
 ✅ Iterative Approach --> 
 
