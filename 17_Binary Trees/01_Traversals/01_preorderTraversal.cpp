@@ -43,11 +43,47 @@ Space Complexity : O(n) + O(h) = O(n)  // recursive stack space + result vector 
 Note :: Recursive stack space = O(h), where h is the height of the tree.
 In the worst case, the tree can be completely skewed, making h = n, so the worst-case auxiliary space is O(n).
 
-✅ Iterative Approach --> 
+✅ Iterative Approach --> class Solution {
+public:
+    vector<int> preorderTraversal(TreeNode* root) {
+        vector<int> preorder;
 
-Time Complexity : 
+        // if tree is empty, return empty answer
+        if(root == nullptr) return preorder;
 
-Space Complexity : 
+        stack<TreeNode*> st;
+        st.push(root); // start traversal with root
 
-✅ Company Tags -->  
+        while(!st.empty()){
+            TreeNode* node = st.top();
+            st.pop();
+
+            //preorder is root -> left -> right, but as stack follows LIFO, we push in reverse direction
+            if(node -> right != nullptr) st.push(node -> right); 
+            if(node -> left != nullptr) st.push(node -> left); 
+
+            // process root before its left and right subtrees
+            preorder.push_back(node -> val); 
+        }
+
+        return preorder;
+    }
+};
+
+The important recall pattern is:
+
+Preorder = Root → Left → Right
+
+Since `stack` is LIFO, push:
+
+Right first → Left second
+
+so that Left comes out first.
+
+
+Time Complexity : O(n)
+
+Space Complexity : O(n) at worst case, else -> O(h)
+
+✅ Company Tags -->  Flipkart Amazon Microsoft Walmart
 
