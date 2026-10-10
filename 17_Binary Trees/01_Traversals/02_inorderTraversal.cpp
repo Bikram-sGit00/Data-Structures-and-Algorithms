@@ -23,11 +23,31 @@ Space Complexity : O(n) + O(h) = O(n)  // recursive stack space + result vector 
 Note :: Recursive stack space = O(h), where h is the height of the tree.
 In the worst case, the tree can be completely skewed, making h = n, so the worst-case auxiliary space is O(n).
 
-✅ Iterative Approach --> 
+✅ Iterative Approach --> class Solution {
+public:
+    vector<int> inorderTraversal(TreeNode* root) {
+        stack<TreeNode*> st;
+        vector<int> inorder;
+        TreeNode* node = root;
+        while(true){
+            if(node != nullptr){
+                st.push(node);
+                node = node -> left;
+            }else{
+                if(st.empty()) break;
+                node = st.top();
+                st.pop();
+                inorder.push_back(node -> val);
+                node = node -> right;
+            }
+        }
+        return inorder;
+    }
+};
 
-Time Complexity : 
+Time Complexity : O(n)
 
-Space Complexity : 
+Space Complexity : O(h) 
 
 ✅ Company Tags -->  
 
