@@ -47,7 +47,7 @@ public:
 
 Time Complexity : O(n)
 
-Space Complexity : O(h) 
+Space Complexity : O(h) , & O(n) in worst case, in case of skewed tree.
 
 ✅ Company Tags -->  
 
