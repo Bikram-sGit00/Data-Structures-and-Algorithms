@@ -294,4 +294,13 @@ Approach 2 is also optimal in asymptotic time and is perfectly acceptable in an 
 
 "After sorting, all elements smaller than the target appear before it, and all occurrences of the target occupy consecutive indices. I count the elements smaller than the target to find the starting index and count the target occurrences to determine how many indices to return. I can then generate the answer directly in linear time without sorting."
 
+
+
+# ✅ Company Tags (2026 Data)
+
+> **`Google`** — Exact 6-month count not verifiable
+> **`Amazon`** — Exact 6-month count not verifiable
+> **`Meta`** — Exact 6-month count not verifiable
+
+
 **Pattern to remember:** When a problem asks for indices after sorting, check whether you can derive their positions using counts instead of actually sorting the array.
