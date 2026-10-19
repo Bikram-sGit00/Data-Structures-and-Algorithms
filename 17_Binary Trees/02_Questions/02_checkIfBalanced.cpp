@@ -1,4 +1,4 @@
-➡️ problemLinks --> https://leetcode.com/problems/balanced-binary-tree/
+➡️ problemLinks --> https://leetcode.com/problems/balanced-binary-tree/  &&  https://www.geeksforgeeks.org/problems/check-for-balanced-tree/1
 
 ✅ Optimized Approach -->
 - Pattern: Postorder DFS — Left → Right → Root.
