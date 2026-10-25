@@ -517,3 +517,46 @@ Time is still O(n * m). Space is O(min(n, m)) for the queue in the typical case,
 One detail worth noting: the cell is marked `'0'` when it is pushed, not when it is popped. If you wait until pop, the same cell can get pushed several times by different neighbours, which wastes time and memory.
 
 There is also a Union Find approach, which is handy if the interviewer follows up with a version where land gets added over time (that is Number of Islands II).
+
+
+# ✅ Company Tags
+
+> **`Amazon`** — 25 times
+
+> **`Google`** — 15 times
+
+> **`Microsoft`** — 6 times
+
+> **`Bloomberg`** — 5 times
+
+> **`Anduril`** — 5 times
+
+> **`Walmart Labs`** — 5 times
+
+> **`TikTok`** — 4 times
+
+> **`LinkedIn`** — 4 times
+
+> **`Goldman Sachs`** — 4 times
+
+> **`Snap`** — 4 times
+
+> **`Waymo`** — 4 times
+
+> **`Apple`** — 3 times
+
+> **`Uber`** — 3 times
+
+> **`ByteDance`** — 3 times
+
+> **`Visa`** — 3 times
+
+> **`Meta`** — 2 times
+
+> **`Infosys`** — 2 times
+
+> **`TCS`** — 2 times
+
+> **`Oracle`** — 2 times
+
+> **`Autodesk`** — 2 times
