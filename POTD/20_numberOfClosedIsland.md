@@ -1,4 +1,4 @@
-# Number of Closed Islands - 
+# Number of Closed Islands - [Leetcode](https://leetcode.com/problems/number-of-closed-islands/description/?envType=daily-question&envId=2026-10-25)
 
 **Problem:** LeetCode 1254
 **Topic:** Matrix, DFS, Flood Fill
