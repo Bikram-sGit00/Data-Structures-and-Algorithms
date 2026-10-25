@@ -236,6 +236,6 @@ Instead of returning a boolean from the DFS, flip the thinking around:
 Time and space are the same, O(n * m), and the DFS gets simpler because it no longer needs a return value. It is worth knowing both, since interviewers like to ask for the second one as a follow up.
 
 
-# ✅ Company Tags (2026 Data)
+# ✅ Company Tags
 
 > **`Google`**
