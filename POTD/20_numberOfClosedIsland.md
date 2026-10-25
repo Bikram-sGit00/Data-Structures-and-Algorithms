@@ -1,4 +1,4 @@
-# Number of Closed Islands
+# Number of Closed Islands - 
 
 **Problem:** LeetCode 1254
 **Topic:** Matrix, DFS, Flood Fill
@@ -234,3 +234,8 @@ Instead of returning a boolean from the DFS, flip the thinking around:
 2. Then scan the grid normally. Every `0` that remains must be part of a closed island, so each new DFS start is one closed island.
 
 Time and space are the same, O(n * m), and the DFS gets simpler because it no longer needs a return value. It is worth knowing both, since interviewers like to ask for the second one as a follow up.
+
+
+# ✅ Company Tags (2026 Data)
+
+> **`Google`**
