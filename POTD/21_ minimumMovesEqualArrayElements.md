@@ -154,15 +154,6 @@ One thing to watch: `sum` and `mini * n` can pass the range of `int` on big inpu
 Start with the brute force and say it's simulation, then point out it's too slow because moves can be enormous. Then the observation: +1 on n-1 elements is the same as -1 on one element, so everything just comes down to the min. Gap sum first, then compress it to `sum - n*min`. Finish with the overflow note.
 
 ## Where it has been asked
-
-I checked a few places and the real data here is thin, so this is what I could actually verify and nothing more.
-
 - Amazon: a candidate report on Hello Interview lists it for a mid-level role, dated mid February 2025. That's the most recent concrete sighting I found.
 - Twitter, Morgan Stanley, Adobe: listed on the Naukri Code360 version of the problem. That page was last updated in December 2021, so treat it as older data.
 - Meta: there is a Meta-tagged page on Taro, but it gives no date or details I could confirm.
-
-I'm not putting down any frequency percentages. One practice site showed a Google/Microsoft/Facebook breakdown, but it looked auto-generated with no source behind it, so I left it out. Overall it looks like a fairly easy, math-trick medium that shows up now and then rather than a staple, and the lesson it teaches (find the invariant instead of simulating) carries over to other problems.
-
-## Related
-
-- 462. Minimum Moves to Equal Array Elements II (target becomes the median instead of the min)
